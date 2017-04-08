@@ -25,6 +25,8 @@ public class Piegeur extends Robot {
 	}
 	
 	private List<Coordonnees> liste;
+
+	private Scanner sc;
 	
 	public  int getDeplacement() {
 		return deplacement;
@@ -78,7 +80,7 @@ public class Piegeur extends Robot {
 	public Coordonnees choixMouvement(){
 		String choix;
 		boolean corect= false;
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");

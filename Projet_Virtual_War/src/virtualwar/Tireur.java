@@ -14,6 +14,7 @@ public class Tireur extends Robot{
 	private static String type = "T";
 	private List<Coordonnees> liste;
 	private List<Coordonnees> listeTir;
+	private Scanner sc;
 	
 	public List<Coordonnees> getListeTir(){
 		return this.listeTir;
@@ -111,7 +112,7 @@ public class Tireur extends Robot{
 	public Coordonnees choixMouvement(){
 		String choix;
 		boolean corect= false;
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");

@@ -9,6 +9,10 @@ public class Joueur {
 	private int nbRobot;
 	private int equipe;
 	private List<Robot> listeRobot;
+	private Scanner sc;
+	private Scanner sc2;
+	private Scanner sc3;
+	private Scanner sc4;
 	
 	public Joueur(String nom,int nbRobot,int equipe){
 		this.listeRobot = new ArrayList<>();
@@ -68,7 +72,7 @@ public class Joueur {
 		int robot = -1;
 		System.out.print("Vos robos dans votre base : ");
 		ArrayList<Robot> robotInvocable = new ArrayList<>();
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		for(Robot r : this.getListeRobot()){
 			if(!r.getInvoque()){
 				robotInvocable.add(r);
@@ -88,7 +92,7 @@ public class Joueur {
 	}
 	//a finir pour coordener deja prise
 	public void invoqueRobot(Robot r){
-		Scanner sc = new Scanner(System.in);
+		sc2 = new Scanner(System.in);
 		boolean ok = false;
 		int i =-1,y=-1,x=-1,z=-1;
 		
@@ -101,8 +105,8 @@ public class Joueur {
 				System.out.println("Coordonnee possible : [2,1]");
 			}
 			while(!ok){
-				 i = sc.nextInt();
-				 y = sc.nextInt();
+				 i = sc2.nextInt();
+				 y = sc2.nextInt();
 				if((i>=1 && i<=2)&&(y>=1 && y<=2)){
 					ok = true;
 				}
@@ -122,8 +126,8 @@ public class Joueur {
 				System.out.println("Coordonnee possible : ["+x+","+(z-1)+"]");
 			}
 			while(!ok){
-				i = sc.nextInt();
-				y = sc.nextInt();
+				i = sc2.nextInt();
+				y = sc2.nextInt();
 				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z)){
 					ok = true;
 				}
@@ -144,7 +148,7 @@ public class Joueur {
 		return baseVide;
 	}
 	public int choixActions(){
-		Scanner sc = new Scanner(System.in);
+		sc3 = new Scanner(System.in);
 		boolean saisieOK = false;
 		int res = -1;
 		System.out.println("Que voulez vous faire ce tour ci ?");
@@ -155,7 +159,7 @@ public class Joueur {
 		System.out.println("2-Deplacer un robot");
 		System.out.println("3-Tirer avec un robot");
 		while(!saisieOK){
-			res = sc.nextInt();
+			res = sc3.nextInt();
 			if((this.baseVide() && res<4 && res>1)||(!this.baseVide() && res<4 && res>0)){
 				saisieOK = true;
 			}
@@ -164,7 +168,7 @@ public class Joueur {
 	}
 	
 	public Robot choixRobot(){
-		Scanner sc = new Scanner(System.in);
+		sc4 = new Scanner(System.in);
 		ArrayList<Robot> robotInvoque = new ArrayList<>();
 		int robot = -1;
 		boolean saisieOK = false;
@@ -180,7 +184,7 @@ public class Joueur {
 		}
 		System.out.println("Quel robot voulez vous utiliser ?");
 		while(!saisieOK){
-			robot = sc.nextInt();
+			robot = sc4.nextInt();
 			if(robot>0 && robot <=robotInvoque.size()){
 				saisieOK = true;
 			}
