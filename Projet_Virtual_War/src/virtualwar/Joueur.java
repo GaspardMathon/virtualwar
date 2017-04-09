@@ -70,7 +70,7 @@ public class Joueur {
 	public Robot choisirInvocation(){
 		boolean saisieOK = false;
 		int robot = -1;
-		System.out.print("Vos robos dans votre base : ");
+		System.out.print("Vos robots dans votre base : ");
 		ArrayList<Robot> robotInvocable = new ArrayList<>();
 		sc = new Scanner(System.in);
 		for(Robot r : this.getListeRobot()){
@@ -100,9 +100,11 @@ public class Joueur {
 		if(this.equipe == 1){
 			if(r.getVue().estDisponible(new Coordonnees(1,2))){
 				System.out.println("Coordonnee possible : [1,2]");
+				//System.out.println("Coordonnee possible : " + new Coordonnees(1,2).toString());
 			}
 			if(r.getVue().estDisponible(new Coordonnees(2,1))){
 				System.out.println("Coordonnee possible : [2,1]");
+				//System.out.println("Coordonnee possible : " + new Coordonnees(2,1).toString());
 			}
 			while(!ok){
 				 i = sc2.nextInt();
@@ -121,9 +123,11 @@ public class Joueur {
 			System.out.println(x+"       "+ z);
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z))){
 				System.out.println("Coordonnee possible : ["+(x-1)+","+z+"]");
+				//System.out.println(new Coordonnees(x-1,z).toString());
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x,z-1))){
 				System.out.println("Coordonnee possible : ["+x+","+(z-1)+"]");
+				////System.out.println(new Coordonnees(x,z-1).toString());
 			}
 			while(!ok){
 				i = sc2.nextInt();
@@ -154,7 +158,7 @@ public class Joueur {
 		System.out.println("Que voulez vous faire ce tour ci ?");
 		
 		if(!this.baseVide()){
-			System.out.println(" 1-Invoquer un robot ?");
+			System.out.println("1-Invoquer un robot ?");
 		}
 		System.out.println("2-Deplacer un robot");
 		System.out.println("3-Tirer avec un robot");
@@ -178,11 +182,11 @@ public class Joueur {
 				robotInvoque.add(r);
 			}
 		}
-		System.out.print("Voici vos robots utilisable :  ");
+		System.out.print("Voici vos robots utilisables :  ");
 		for(Robot r : robotInvoque){
 			System.out.print("  "+r.toString());
 		}
-		System.out.println("Quel robot voulez vous utiliser ?");
+		System.out.println("Quel robot voulez-vous utiliser ?");
 		while(!saisieOK){
 			robot = sc4.nextInt();
 			if(robot>0 && robot <=robotInvoque.size()){

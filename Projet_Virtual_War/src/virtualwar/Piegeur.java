@@ -48,7 +48,7 @@ public class Piegeur extends Robot {
 		return type;
 	}
 	
-	//on a modifier ton truc 
+	//on a modifié 
 	public List<Coordonnees> getDeplacements(){
 		this.liste = new ArrayList<>();
 	
@@ -83,8 +83,8 @@ public class Piegeur extends Robot {
 		sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
-			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.DIAGHG 6.DIAGHD 7.DIAGBG 8.DIAGBD");
+			System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.HAUT-GAUCHE 6.HAUT-DROITE 7.BAS-GAUCHE 8.BAS-DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -132,7 +132,7 @@ public class Piegeur extends Robot {
 		boolean mouvement = false;
 		Coordonnees c = new Coordonnees(-1,-1);
 		if(this.getEnergie()< Constante.COUTDEPLACEMENT){
-			System.out.println("Votre robot n'as pas assez d'energie pour se deplacer");
+			System.out.println("Votre robot n'as pas assez d'énergie pour se déplacer");
 		}else{
 			while(!mouvement){
 				c = this.choixMouvement();

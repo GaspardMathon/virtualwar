@@ -115,8 +115,8 @@ public class Tireur extends Robot{
 		sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
-			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.DIAGHG 6.DIAGHD 7.DIAGBG 8.DIAGBD");
+			System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.HAUT-GAUCHE 6.HAUT-DROITE 7.BAS-GAUCHE 8.BAS-DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
