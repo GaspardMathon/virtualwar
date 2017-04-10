@@ -1,14 +1,16 @@
-/*package virtualwar;
+package virtualwar;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Test {
 
+	private static Scanner sc;
+
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		Random r = new Random();
-		boolean finDePartie=false,joueur = r.nextBoolean();
+		boolean finDePartie = false,joueur = r.nextBoolean();
 		Joueur joueurEnCour;
 		int choix = -1;
 		
@@ -80,10 +82,10 @@ public class Test {
 			
 			if(choix == 1){
 				joueurEnCour.invoqueRobot(joueurEnCour.choisirInvocation());
-			}else{
-				if(choix == 2){
-					joueurEnCour.choixRobot().deplacement();
-				}
+			}else if(choix == 2){
+				joueurEnCour.choixRobot().deplacement();
+			}else {
+				System.out.println("ERREUR");
 			}
 			System.out.println(plat);
 			joueur = !joueur;
@@ -93,4 +95,3 @@ public class Test {
 		
 	}
 }
-*/
