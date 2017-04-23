@@ -1,7 +1,7 @@
 package virtualwar;
 public abstract class Action {
-	private Robot robot;
-	private Coordonnees direction;
+	protected Robot robot;
+	protected Coordonnees direction;
 	
 	public Robot getRobot(){
 		return this.robot;
@@ -15,7 +15,7 @@ public abstract class Action {
 		return null;
 	}
 	
-	public Action (Robot robot, Coordonnees direction){
+	public Action(Robot robot, Coordonnees direction){
 		this.robot = robot;
 		this.direction = direction;
 	}

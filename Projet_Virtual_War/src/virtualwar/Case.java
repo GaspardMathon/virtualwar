@@ -14,10 +14,13 @@ public class Case extends Cellule {
 		public Case(int hauteur,int largeur,boolean obstacle){
 			super(hauteur,largeur,obstacle,false);
 		}
-		//ajoute un robot a la case une apres s'etre deplace sur celle ci
+		//ajoute un robot a la case un Robot apres s'etre deplace sur celle ci, inflige des degat au robot si il marche sur une mine enemi
 		public void deplacerSur(Robot robot){
 			super.robot = robot;
 			super.contientRobot = true;
+			if(this.mine != 0 && this.mine != robot.getEquipe()){
+				robot.setEnergie(robot.getEnergie()-Constante.DEGATMINE);
+			}
 		}
 		
 		//ajoute une base d'une equipe donne 
@@ -30,9 +33,14 @@ public class Case extends Cellule {
 			super.base = 0;
 			super.mine = 0;
 			super.robot = null;
-			super.image = null;
 			super.obstacle = false;
 		}
-
+		
+		//restaure, au fil des tours, l'énergie du robot sur la Case
+		public void regenEnergie(){
+			if(this.getContientRobot()){
+				this.getRobot().setEnergie(this.getRobot().getEnergie()+2);
+			}
+		}
 	
 }

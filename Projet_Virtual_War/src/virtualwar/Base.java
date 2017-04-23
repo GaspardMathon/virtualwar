@@ -34,6 +34,13 @@ private int equipe;
 			super.image = null;
 		}
 	
+	public void regenEnergie(){
+		if(this.getContientRobot()){
+			this.getRobot().setEnergie(this.getRobot().getEnergie()+2);
+		}
+	}
+	
 
 }
+
 

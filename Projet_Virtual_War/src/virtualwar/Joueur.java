@@ -30,7 +30,7 @@ public class Joueur {
 	}
 	
 	public void ajouterTireur(Vue vue,int h,int l){
-		listeRobot.add(new Tireur(vue,h,l,equipe));
+		listeRobot.add(new Tireur(vue,h,l,equipe,1));
 	}
 	public void ajouterPiegeur(Vue vue,int h,int l){
 		listeRobot.add(new Piegeur(vue,h,l,equipe));
@@ -72,7 +72,7 @@ public class Joueur {
 		int robot = -1;
 		System.out.print("Vos robots dans votre base : ");
 		ArrayList<Robot> robotInvocable = new ArrayList<>();
-		sc = new Scanner(System.in);
+		sc4 = new Scanner(System.in);
 		for(Robot r : this.getListeRobot()){
 			if(!r.getInvoque()){
 				robotInvocable.add(r);
@@ -81,9 +81,9 @@ public class Joueur {
 		for(Robot r : robotInvocable){
 			System.out.print("  " + r.toString());
 		}
-		System.out.println("  Quel Robot voulez vous invoquer(ecrivez le numero du robot");
+		System.out.println(" \n Quel  robot voulez vous invoquer : écrivez le numero du n-ieme robot");
 		while(!saisieOK){
-			robot = sc.nextInt();
+			robot = sc4.nextInt();
 			if(robot>0 && robot <=robotInvocable.size()){
 				saisieOK = true;
 			}
@@ -92,7 +92,7 @@ public class Joueur {
 	}
 	//a finir pour coordener deja prise
 	public void invoqueRobot(Robot r){
-		sc2 = new Scanner(System.in);
+		sc3 = new Scanner(System.in);
 		boolean ok = false;
 		int i =-1,y=-1,x=-1,z=-1;
 		
@@ -100,16 +100,14 @@ public class Joueur {
 		if(this.equipe == 1){
 			if(r.getVue().estDisponible(new Coordonnees(1,2))){
 				System.out.println("Coordonnee possible : [1,2]");
-				//System.out.println("Coordonnee possible : " + new Coordonnees(1,2).toString());
 			}
 			if(r.getVue().estDisponible(new Coordonnees(2,1))){
 				System.out.println("Coordonnee possible : [2,1]");
-				//System.out.println("Coordonnee possible : " + new Coordonnees(2,1).toString());
 			}
 			while(!ok){
-				 i = sc2.nextInt();
-				 y = sc2.nextInt();
-				if((i>=1 && i<=2)&&(y>=1 && y<=2)){
+				 i = sc3.nextInt();
+				 y = sc3.nextInt();
+				if((i>=1 && i<=2)&&(y>=1 && y<=2)&& !(i==1 && y==1)){
 					ok = true;
 				}
 			}
@@ -123,16 +121,15 @@ public class Joueur {
 			System.out.println(x+"       "+ z);
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z))){
 				System.out.println("Coordonnee possible : ["+(x-1)+","+z+"]");
-				//System.out.println(new Coordonnees(x-1,z).toString());
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x,z-1))){
 				System.out.println("Coordonnee possible : ["+x+","+(z-1)+"]");
-				////System.out.println(new Coordonnees(x,z-1).toString());
 			}
 			while(!ok){
-				i = sc2.nextInt();
-				y = sc2.nextInt();
-				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z)){
+				System.out.println("Entrez les coordonnee : ");
+				i = sc3.nextInt();
+				y = sc3.nextInt();
+				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z) && !(i ==x && y == z)){
 					ok = true;
 				}
 			}
@@ -151,19 +148,32 @@ public class Joueur {
 		}
 		return baseVide;
 	}
+	public boolean plateauVide(){
+		boolean plateauVide = true;
+		
+		for(Robot r : this.getListeRobot()){
+			if(r.getInvoque()){
+				plateauVide = false;
+			}
+		}
+		return plateauVide;
+	}
+	
 	public int choixActions(){
-		sc3 = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		boolean saisieOK = false;
 		int res = -1;
 		System.out.println("Que voulez vous faire ce tour ci ?");
 		
 		if(!this.baseVide()){
-			System.out.println("1-Invoquer un robot ?");
+			System.out.println(" 1-Invoquer un robot ?");
 		}
-		System.out.println("2-Deplacer un robot");
-		System.out.println("3-Tirer avec un robot");
+		if(!this.plateauVide()){
+			System.out.println("2-Deplacer un robot");
+			System.out.println("3-Attaquer/Miner avec un robot");
+		}
 		while(!saisieOK){
-			res = sc3.nextInt();
+			res = sc.nextInt();
 			if((this.baseVide() && res<4 && res>1)||(!this.baseVide() && res<4 && res>0)){
 				saisieOK = true;
 			}
@@ -172,7 +182,7 @@ public class Joueur {
 	}
 	
 	public Robot choixRobot(){
-		sc4 = new Scanner(System.in);
+		sc2 = new Scanner(System.in);
 		ArrayList<Robot> robotInvoque = new ArrayList<>();
 		int robot = -1;
 		boolean saisieOK = false;
@@ -186,9 +196,9 @@ public class Joueur {
 		for(Robot r : robotInvoque){
 			System.out.print("  "+r.toString());
 		}
-		System.out.println("Quel robot voulez-vous utiliser ?");
+		System.out.println("  Quel robot voulez vous utiliser ?");
 		while(!saisieOK){
-			robot = sc4.nextInt();
+			robot = sc2.nextInt();
 			if(robot>0 && robot <=robotInvoque.size()){
 				saisieOK = true;
 			}

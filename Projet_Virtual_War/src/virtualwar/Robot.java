@@ -60,6 +60,8 @@ abstract class Robot {
 			
 			abstract public void deplacement();
 			
+			abstract public void attaque();
+			
 			abstract public List<Coordonnees> getDeplacements();
 			
 			public void setVue(Vue vue){
@@ -72,7 +74,7 @@ abstract class Robot {
 				this.invoque = b;
 			}
 			public String toString(){
-				String nom = type;
+				String nom = type+" ";
 				if(this.getInvoque()){
 					nom += this.getCoordonnees().toString()+", Vie :"+this.getEnergie();
 				}

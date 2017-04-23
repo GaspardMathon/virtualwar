@@ -14,14 +14,17 @@ public class Tireur extends Robot{
 	private static String type = "T";
 	private List<Coordonnees> liste;
 	private List<Coordonnees> listeTir;
+	private int portee;
 	private Scanner sc;
+	private Scanner sc2;
 	
 	public List<Coordonnees> getListeTir(){
 		return this.listeTir;
 	}
 	
-	public Tireur(Vue vue, int l ,int h,int equipe){
+	public Tireur(Vue vue, int l ,int h,int equipe,int portee){
 		super(vue,l,h,equipe,type,ENERGIEDEBASET);
+		this.portee = portee;
 	}
 	
 	public  int getDeplacement() {
@@ -51,8 +54,8 @@ public class Tireur extends Robot{
 	
 		for(int i = -1; i<2;i++){
 			for(int j =-1 ; j<2;j++){
-				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getLargeur()+i,this.getCoordonnees().getHauteur()+j))){
-					liste.add(new Coordonnees(this.getCoordonnees().getLargeur()+i,this.getCoordonnees().getHauteur()+j)); 
+				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j))){
+					liste.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
 				}
 			}
 		}
@@ -81,9 +84,9 @@ public class Tireur extends Robot{
 		while(cpt < portee){
 			memoire.modif(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recupère l'information : est ce que la cellule contient un robot ?
+				// RecupÃ¨re l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//Récupère l'information est ce que le robot est de l'équipe ennemi ?
+					//RÃ©cupÃ¨re l'information est ce que le robot est de l'Ã©quipe ennemi ?
 					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getRobot().getEquipe() != this.getEquipe() ){
 						return memoire;
 					}
@@ -97,6 +100,8 @@ public class Tireur extends Robot{
 		}
 		return new Coordonnees(0,0); 
 	}
+	
+
 	
 	public boolean estDans(Coordonnees c){
 		boolean res = false;
@@ -115,8 +120,8 @@ public class Tireur extends Robot{
 		sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
-			System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.HAUT-GAUCHE 6.HAUT-DROITE 7.BAS-GAUCHE 8.BAS-DROITE");
+			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
+		System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.HAUT GAUCHE 6.HAUT DROITE 7.BAS GAUCHE 8.BAS DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -178,4 +183,36 @@ public class Tireur extends Robot{
 			d.agit();
 		}
 	}
+	public ArrayList<Robot> getTir(){
+		ArrayList<Robot> listeTir = new ArrayList<>();
+		for(int i = -this.portee; i < this.portee+1; i++){
+			for(int y =-this.portee; y < this.portee+1; y++){
+				if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].contientRobot){
+					if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getRobot().getEquipe() != this.getEquipe())
+					listeTir.add(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getRobot());
+				}
+			}
+		}
+		return listeTir;
+	}
+	
+	public Robot choixTir(){
+		sc2 = new Scanner(System.in);
+		Robot choix;
+		System.out.println("Voici les cibles de ce robots : " + this.getTir());
+		System.out.println("Sur quel Robot voulez vous tirer ? (Entrez le numero du robot dans la liste)");
+		choix = this.getTir().get(sc2.nextInt()-1);
+		return choix;
+	}
+		
+	public void attaque(){
+		if(this.getEnergie()<this.getCoutAction()){
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
+		}else{
+			Attaque a = new Attaque(this,this.choixTir().getCoordonnees());
+			a.agit();
+		}
+		
+	}
+	
 }

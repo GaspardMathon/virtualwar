@@ -63,11 +63,11 @@ public class Char extends Robot {
 	public int getCoutDeplacement(){
 		return coutDep;
 	}
-	/*public boolean peutPieger(){
-		if 
-	}*/
 
 	public void deplacement() {
+		
+	}
+	public void attaque(){
 		
 	}
 }

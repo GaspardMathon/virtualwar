@@ -36,7 +36,6 @@ public class Vue {
 		Cellule cel = this.plateau.getGrille()[c.getHauteur()][c.getLargeur()];
 		if(!cel.obstacle  && !cel.contientRobot ){
 			return true;
-			
 		}else{
 			return false;
 		}

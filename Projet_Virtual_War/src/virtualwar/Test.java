@@ -10,31 +10,31 @@ public class Test {
 	public static void main(String[] args) {
 		sc = new Scanner(System.in);
 		Random r = new Random();
-		boolean finDePartie = false,joueur = r.nextBoolean();
+		boolean joueur = r.nextBoolean();
 		Joueur joueurEnCour;
 		int choix = -1;
 		
 		
 		System.out.println("Bienvenue dans cette version prototype de VirtualWar");
-		System.out.println("Veuillez entrer le nom du joueur 1");
-		String nom1 = sc.next();
-		System.out.println("Entrez le nombre de Robot par equipe");
+		System.out.print("Entrez le nombre de Robot par equipe : ");
 		int nbRobot = sc.nextInt(5);
+		System.out.print("\nVeuillez entrer le nom du joueur 1 : ");
+		String nom1 = sc.next();
 		Joueur J1 = new Joueur(nom1,nbRobot,1);
-		System.out.println("Veuillez entrer le nom du joueur 2");
+		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
 		String nom2 = sc.next();
 		Joueur J2 = new Joueur(nom2,nbRobot,2);
-		System.out.println("Entrez la taille de la map:");
-		System.out.println("la hauteur :");
+		System.out.println("Entrez la taille de la map : ");
+		System.out.print("la hauteur : ");
 		int hauteur = sc.nextInt();
-		System.out.println("la largeur :");
+		System.out.print("\nla largeur : ");
 		int largeur = sc.nextInt();
 		Plateau plat = new Plateau(hauteur,largeur);
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
 		for(int copt = 1;copt < 3 ; copt++){
 			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
-				System.out.print("Joueur ");System.out.print(copt); System.out.print(" choisissez votre" );System.out.print(cpt);System.out.print("Robot");
+				System.out.print("\nJoueur ");System.out.print(copt); System.out.print(" choisissez vos robots : " );
 				System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
 				boolean correct = false;
 				while(!correct){
@@ -70,8 +70,8 @@ public class Test {
 			}
 				
 		}
-		System.out.println(plat);
-		while(!J1.aPerdu() && !J2.aPerdu()){
+		System.out.println("Voici le plateau de jeu : \n" + plat);
+		while(!J1.aPerdu() || !J2.aPerdu()){
 			if(joueur){
 				joueurEnCour = J1;
 			}else{
@@ -82,12 +82,19 @@ public class Test {
 			
 			if(choix == 1){
 				joueurEnCour.invoqueRobot(joueurEnCour.choisirInvocation());
-			}else if(choix == 2){
-				joueurEnCour.choixRobot().deplacement();
-			}else {
-				System.out.println("ERREUR");
+			}else{
+				if(choix == 2){
+					joueurEnCour.choixRobot().deplacement();
+				}else{
+					if(choix == 3){
+						joueurEnCour.choixRobot().attaque();
+					}
+				}
 			}
-			System.out.println(plat);
+			plat.getGrille()[1][1].regenEnergie();
+			plat.getGrille()[plat.getHauteur()][plat.getLargeur()].regenEnergie();
+			System.out.println("Voici le plateau de jeu : \n" + plat);
+			System.out.println(joueurEnCour.getListeRobot());
 			joueur = !joueur;
 		}
 

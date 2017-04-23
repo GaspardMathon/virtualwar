@@ -1,8 +1,7 @@
 package virtualwar;
 
 public class Deplacement extends Action{
-	private Robot robot;
-	private Coordonnees direction;
+	
 	
 	public Deplacement(Robot robot, Coordonnees direction){
 		super(robot,direction);
@@ -19,7 +18,7 @@ public class Deplacement extends Action{
 		robot.getVue().getPlateau().getGrille()[coordActuel.getHauteur()][coordActuel.getLargeur()].videRobot();
 		//On le deplace sur sa nouvelle position
 		robot.getVue().getPlateau().getGrille()[robot.getCoordonnees().getHauteur()][robot.getCoordonnees().getLargeur()].deplacerSur(robot);
-		
+		robot.setEnergie(robot.getEnergie()-Constante.COUTDEPLACEMENT);
 	}
 	
 	public Coordonnees getDirection(){
@@ -31,13 +30,6 @@ public class Deplacement extends Action{
 		return "Deplacement [robot=" + robot + ", direction=" + direction + "]";
 	}
 	
-	/*public boolean estPossible(){
-		Coordonnees c = 
-		if(robot.getDeplacements().contains(robot.getCoordonnees().modif(direction))){
-			return true;
-		}else{
-			return false;
-		}
-	}*/
+
 	
 }

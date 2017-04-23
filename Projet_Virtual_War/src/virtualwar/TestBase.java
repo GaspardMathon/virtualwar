@@ -4,8 +4,8 @@ public class TestBase {
 
 
 
-		/*public static void main(String[] args){
-			Plateau plat = new Plateau(10,10);
+		public static void main(String[] args){
+			/*Plateau plat = new Plateau(10,10);
 			
 			//Creation d'une base équipe 1
 			Base b1 = new Base(1,1,1);
@@ -25,10 +25,10 @@ public class TestBase {
 			plat.getGrille()[p1.getCoordonnees().getHauteur()][p1.getCoordonnees().getLargeur()].deplacerSur(p1);
 			plat.getGrille()[p2.getCoordonnees().getHauteur()][p2.getCoordonnees().getLargeur()].deplacerSur(p2);
 			plat.getGrille()[t.getCoordonnees().getHauteur()][t.getCoordonnees().getLargeur()].deplacerSur(t);
-			System.out.println(plat.toString());
+			System.out.println(plat.toString());*/
 			
 						
-			//TEST DEPLACEMENT
+		/*	//TEST DEPLACEMENT
 			    //Liste deplacement possible + affichage
 			    System.out.println(p.getDeplacements());
 			    	
@@ -46,9 +46,9 @@ public class TestBase {
 					d.agit();
 					System.out.println(plat.toString());
 			
+*/
 
-
-			System.out.println(t.getEnergie());
+			/*System.out.println(t.getEnergie());
 			t.setTirPossible(2);
 			System.out.println(t.getListeTir());
 			
@@ -61,5 +61,8 @@ public class TestBase {
 			
 			
 			//System.out.println(plat.getGrille()[5][4].robot.toString());
-		}		*/
+			
+			
+			*/
+		}		
 }
