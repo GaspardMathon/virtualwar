@@ -47,16 +47,29 @@ public class Plateau {
 				}
 			}
 		}
-	}
+	}/*
+		+---+
+        | x | 	
+	    +---+
+	
+	
+	
+	
+	*/
 
 	public String toString() {
-		String affichage ="";
+		String affichage = "";
+		
+		
 		for(int i = 0; i < this.grille.length; i++){
+			
 			for(int y = 0; y < this.grille[0].length; y++){
-				affichage += grille[i][y].toString();			
+				affichage+="+---\n";
+				affichage+="| "+this.getGrille()[i][y].toString()+" |";
 			}
 			affichage += "\n";
 		}
-		return affichage;
+		
+		return affichage+"---+";
 	}
 }
