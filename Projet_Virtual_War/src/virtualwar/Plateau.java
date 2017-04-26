@@ -64,12 +64,23 @@ public class Plateau {
 		for(int i = 0; i < this.grille.length; i++){
 			
 			for(int y = 0; y < this.grille[0].length; y++){
-				affichage+="+---\n";
-				affichage+="| "+this.getGrille()[i][y].toString()+" |";
+				affichage+="+---";
 			}
-			affichage += "\n";
+			
+			affichage+="+\n";
+			
+			for(int y = 0; y < this.grille[0].length; y++){
+				affichage+="| "+ this.getGrille()[i][y].toString() + " ";
+			}
+			
+			
+			affichage += "|\n";
 		}
 		
-		return affichage+"---+";
+		for(int y = 0; y < this.grille[0].length; y++){
+			affichage+="+---";
+		}
+		
+		return affichage+"+";
 	}
 }
