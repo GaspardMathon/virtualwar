@@ -25,14 +25,14 @@ abstract public class Cellule {
 	}
 	
 	
-	//Constructeur par défault
+	//Constructeur par dï¿½fault
 	public Cellule(){};
 	
 	//Construteur prenant en compte deux entier servant de Coordonnes
 	public Cellule(int hauteur,int largeur){
 		this.coordonne = new Coordonnees(hauteur,largeur);
 	}
-	//Dit si la case est mine, si minee: renvoie l'équipe
+	//Dit si la case est mine, si minee: renvoie l'ï¿½quipe
 	public int contientMine(){
 		return this.mine;
 	}
@@ -40,13 +40,21 @@ abstract public class Cellule {
 	public int estBase(){
 		return this.base;
 	}
-	//Retourne les coordonnées de la Cellule
+	//Retourne les coordonnï¿½es de la Cellule
 	public Coordonnees getCoordonnees(){
 		return this.coordonne;
 	}
 	//Retounre le robot de la case
 	public Robot getContenu(){
 		return this.robot;
+	}
+	
+	public void setObstacle(boolean b){
+		this.obstacle = b;
+	}
+	
+	public boolean getObstacle(){
+		return this.obstacle;
 	}
 	
 	

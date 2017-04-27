@@ -30,6 +30,7 @@ public class Test {
 		System.out.print("\nla largeur : ");
 		int largeur = sc.nextInt();
 		Plateau plat = new Plateau(hauteur,largeur);
+		plat.setObstacles(plat.choixChanceObstacle());
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
 		for(int copt = 1;copt < 3 ; copt++){
