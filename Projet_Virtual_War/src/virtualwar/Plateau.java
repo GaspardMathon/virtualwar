@@ -2,7 +2,6 @@ package virtualwar;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Plateau {
 	private int hauteur;
@@ -119,21 +118,5 @@ public class Plateau {
 		}
 		
 		return affichage+"+";
-	}
-	
-	@SuppressWarnings("resource")
-	public int choixChanceObstacle(){
-		Scanner sc = new Scanner(System.in);
-		boolean choixOK = false;
-		String choix = "";
-		while(!choixOK){
-			System.out.println("Choississez un pourcentage d'obstacle");
-			choix = sc.nextLine();
-			System.out.println(Integer.parseInt(choix));
-			if(Integer.parseInt(choix)>0 && Integer.parseInt(choix)< 101){
-				choixOK = true;
-			}
-		}
-		return Integer.parseInt(choix);
 	}
 }

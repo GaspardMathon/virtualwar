@@ -6,6 +6,32 @@ import java.util.Scanner;
 public class Test {
 
 	private static Scanner sc;
+	
+	public static int saisieIntProtegee(Scanner sc){
+		boolean saisieCorrecte = false;
+		String nbRobot;
+		int result = 0;
+		do{
+			nbRobot = sc.nextLine();
+			if(nbRobot.equals("")){
+				System.out.print("Il faut rentrer un nombre !\n");
+			}
+			for(int i =0;i<nbRobot.length();i++){
+				if(nbRobot.charAt(i) <= '9' && nbRobot.charAt(i) >= '0'){
+					result += nbRobot.charAt(i);
+					saisieCorrecte = true;
+				}else{
+					System.out.print("Il faut rentrer un nombre !\n");
+					saisieCorrecte = false;
+					break;
+				}
+			}
+			if(saisieCorrecte == true){
+				result =  Integer.parseInt(nbRobot);
+			}
+		}while(!saisieCorrecte);
+		return result;
+	}
 
 	public static void main(String[] args) {
 		sc = new Scanner(System.in);
@@ -13,28 +39,36 @@ public class Test {
 		boolean joueur = r.nextBoolean();
 		Joueur joueurEnCour;
 		int choix = -1;
-		
-		
 		System.out.println("Bienvenue dans cette version prototype de VirtualWar");
+		
 		System.out.print("Entrez le nombre de Robot par equipe : ");
-		int nbRobot = sc.nextInt(5);
+		int nbRobots = saisieIntProtegee(sc);
+		
 		System.out.print("\nVeuillez entrer le nom du joueur 1 : ");
-		String nom1 = sc.next();
-		Joueur J1 = new Joueur(nom1,nbRobot,1);
+		String nom1 = sc.nextLine();
+		Joueur J1 = new Joueur(nom1,nbRobots,1);
 		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
-		String nom2 = sc.next();
-		Joueur J2 = new Joueur(nom2,nbRobot,2);
+		
+		String nom2 = sc.nextLine();
+		Joueur J2 = new Joueur(nom2,nbRobots,2);
+		
+		
 		System.out.println("Entrez la taille de la map : ");
 		System.out.print("la hauteur : ");
-		int hauteur = sc.nextInt();
+		int hauteur = saisieIntProtegee(sc);
+		
 		System.out.print("\nla largeur : ");
-		int largeur = sc.nextInt();
+		int largeur = saisieIntProtegee(sc);
+		
 		Plateau plat = new Plateau(hauteur,largeur);
-		plat.setObstacles(plat.choixChanceObstacle());
+		
+		System.out.print("\nChoississez un pourcentage d'obstacle : ");
+		plat.setObstacles(saisieIntProtegee(sc));
+		
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
 		for(int copt = 1;copt < 3 ; copt++){
-			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
+			for(int cpt = 1 ;cpt < nbRobots+1 ; cpt++){
 				System.out.print("\nJoueur ");System.out.print(copt); System.out.print(" choisissez vos robots : " );
 				System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
 				boolean correct = false;
