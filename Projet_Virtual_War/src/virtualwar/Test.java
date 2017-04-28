@@ -67,10 +67,16 @@ public class Test {
 		
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
+		
+		/*
+		 * Possibilité de créer une méthode pour la saisie d'en dessous ?
+		 */
+		//
 		for(int copt = 1;copt < 3 ; copt++){
 			for(int cpt = 1 ;cpt < nbRobots+1 ; cpt++){
 				System.out.print("\nJoueur ");System.out.print(copt); System.out.print(" choisissez vos robots : " );
 				System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
+				
 				boolean correct = false;
 				while(!correct){
 					String rep = sc.next();
@@ -105,7 +111,9 @@ public class Test {
 			}
 				
 		}
-		System.out.println("Voici le plateau de jeu : \n" + plat);
+		//
+		
+		System.out.println("Voici le plateau de jeu : \n" + plat.toString());
 		while(!J1.aPerdu() || !J2.aPerdu()){
 			if(joueur){
 				joueurEnCour = J1;

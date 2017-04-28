@@ -63,7 +63,7 @@ public class Plateau {
 	 * Obtenir la liste des cellules sur lesquelles ont ne peut pas poser d'obstacle
 	 * @return la listes des cellules bloqués
 	 */
-	public ArrayList<Cellule> caseBloque(){
+	public ArrayList<Cellule> casesBloquees(){
 		ArrayList<Cellule> listeBloque = new ArrayList<>();
 		listeBloque.add(this.getGrille()[1][2]);
 		listeBloque.add(this.getGrille()[2][1]);
@@ -83,16 +83,35 @@ public class Plateau {
 	 */
 	public void setObstacles(int chance){
 		Random r = new Random();
-		int nbCase = this.getHauteur()*this.getLargeur() - this.caseBloque().size();
+		int nbCase = this.getHauteur()*this.getLargeur() - this.casesBloquees().size();
 		int nbObstacle = nbCase *chance/100;
 		int cpt = nbObstacle;
 		while(cpt>0){
 			int x = r.nextInt(this.getHauteur()+1);
 			int y = r.nextInt(this.getLargeur()+1);
-			if(!this.getGrille()[x][y].getObstacle() && !this.caseBloque().contains(this.getGrille()[x][y])){
+			if(!this.getGrille()[x][y].getObstacle() && !this.casesBloquees().contains(this.getGrille()[x][y])){
 				this.getGrille()[x][y].setObstacle(true);
 				cpt--;
 			}
 		}
 	}
+	
+	public String toString() {
+ 		String affichage = "";
+ 		
+ 		for(int i = 0; i < this.grille.length; i++){
+ 			for(int y = 0; y < this.grille[0].length; y++){
+ 				affichage+="+---";
+ 			}
+ 			affichage+="+\n";
+ 			for(int y = 0; y < this.grille[0].length; y++){
+ 				affichage+="| "+ this.getGrille()[i][y].toString() + " ";
+ 			}
+ 			affichage += "|\n";
+ 		}
+ 		for(int y = 0; y < this.grille[0].length; y++){
+ 			affichage+="+---";
+ 		}
+ 		return affichage+"+";
+ 	}
 }
