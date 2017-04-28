@@ -4,87 +4,87 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Piegeur extends Robot {
-
-	private final static int ENERGIEDEBASE = 50;
+/**
+ * La classe piegeur qui hérite de la classe Robot crée un robot capable de se déplacer et de poser des mines
+ * @author Clément
+ *
+ */
+public class Piegeur extends Robot{
 	
-	private static int deplacement = 1;
+	private final static int ENERGIEDEBASEP = 50;
 	private static int coutAction = 2;
-	private static int coutDep = 2;
-	private static int degatsSubis = 2;
+	private static int coutDeplacement = 2;
+	private static int degatSubis = 2;
 	private static String type = "P";
 	private static int portee = 1;
+	private int nbMines;
 	
+	/**
+	 * Constructeur d'un piegeur 
+	 * @param vue Vue du tireur en fonction de son équipe
+	 * @param l largeur pour les coordonnées du Piégeur
+	 * @param h hauteur pour les coordonnées du Piégeur
+	 * @param equipe Entier représentant l'équipe du Piégeur
+	 * @param nbMines Nombre de mine que possède le piégeur
+	 */
 	public Piegeur(Vue vue, int l, int h, int equipe) {
 		super(vue,l,h,equipe,type,50);
+		this.nbMines = 10;
+	}
+	
+	/**
+	 * Obtenir le nombre de mines actuelles du robot
+	 * @return le nombre de mines
+	 */
+	public int getNbMines(){
+		return this.nbMines;
+	}
+	public int getCoutAction(){
+		return Piegeur.coutAction;
 	}
 	
 
+	public int getCoutDeplacement(){
+		return Piegeur.coutDeplacement;
+	}
+	
+
+	public int getDegatSubis(){
+		return Piegeur.degatSubis;
+	}
+	
 	public int getEnergieDeBase(){
-		return ENERGIEDEBASE;
+		return Piegeur.ENERGIEDEBASEP;
 	}
-	
-	private List<Coordonnees> liste;
-
-	private Scanner sc;
-	
-	public  int getDeplacement() {
-		return deplacement;
+	/**
+	 * Actualise le nombre de mines du piégeur 
+	 * @param i nouveau nombre de mines du piégeur
+	 */
+	public void setNbMine(int i){
+		this.nbMines = i;
 	}
-	
-	public int getPortee(){
-		return portee;
-	}
-	
-	public  int getCoutAction() {
-	
-		return coutAction;
-	}
-	
-	public  int getDegatsSubis() {
-		return degatsSubis;
-	}
-	public  String getType() {
-		return type;
-	}
-	
-	//on a modifier ton truc 
 	public List<Coordonnees> getDeplacements(){
-		this.liste = new ArrayList<>();
+		ArrayList<Coordonnees> listedep = new ArrayList<>();
 	
 		for(int i = -1; i<2;i++){
 			for(int j =-1 ; j<2;j++){
 				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j))){
-					liste.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
+					listedep.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
 				}
 			}
 		}
-		return liste;
+		return listedep;
 	}
 	
-	public int getCoutDeplacement(){
-		return coutDep;
-	}
-	
-	public boolean estDans(Coordonnees c){
-		boolean res = false;
-		for(Coordonnees compt : this.getDeplacements()){
-			if(c.getHauteur() == compt.getHauteur() && c.getLargeur() == compt.getLargeur()){
-				return true;
-			}
-		
-		}
-		return res;
-	}
-
+	@SuppressWarnings("resource")
 	public Coordonnees choixMouvement(){
 		String choix;
 		boolean corect= false;
-		sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.DIAGHG 6.DIAGHD 7.DIAGBG 8.DIAGBD");
+			System.out.println("1.En HAUT 2.En BAS 3.En GAUCHE 4.En DROITE 5.En HAUT à GAUCHE 6.En HAUT à DROITE 7.En BAS à GAUCHE 8.En BAS à DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -127,32 +127,48 @@ public class Piegeur extends Robot {
 		}
 		return res;
 	}
+
 	
-	public void deplacement(){
-		boolean mouvement = false;
-		Coordonnees c = new Coordonnees(-1,-1);
-		if(this.getEnergie()< Constante.COUTDEPLACEMENT){
-			System.out.println("Votre robot n'as pas assez d'energie pour se deplacer");
-		}else{
-			while(!mouvement){
-				c = this.choixMouvement();
-				Coordonnees test = new Coordonnees(this.getCoordonnees().getHauteur()+c.getHauteur(),this.getCoordonnees().getLargeur()+c.getLargeur());
-				if(this.estDans(test)){
-					mouvement = true;
+
+	public List<Coordonnees> getCibles(){
+		ArrayList<Coordonnees> listeMinable = new ArrayList<>();
+		for(int i = -Piegeur.portee; i < Piegeur.portee+1; i++){
+			for(int y =-Piegeur.portee; y < Piegeur.portee+1; y++){
+				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+y))){
+					if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getMine() == 0 && this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getBase() == 0){
+						listeMinable.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+y));
+					}
 				}
-				
 			}
-			Deplacement d = new Deplacement(this,c);
-			d.agit();
+		}
+		return listeMinable;
+	}
+	
+	@SuppressWarnings("resource")
+	public Coordonnees choixCible(){
+		Scanner sc = new Scanner(System.in);
+		String choix = "";
+		boolean choixOK = false;
+		System.out.println("Voici les cibles que ce robot peut pièger : " + this.getCibles());
+		while(!choixOK){
+			System.out.println("Quelle cible voulez vous piéger ? (Entrez le numéros des coordonnées dans la liste)");
+			choix = sc.nextLine();
+			if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
+				choixOK = true;
+			}
+		}
+		return this.getCibles().get(Integer.parseInt(choix)-1);
+	}
+
+	public void attaque(){
+		if(this.getEnergie()<this.getCoutAction()){
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
+		}else{
+			this.setEnergie(this.getEnergie()-this.getCoutAction());
+			Coordonnees choix = this.choixCible();
+			this.getVue().getPlateau().getGrille()[choix.getHauteur()][choix.getLargeur()].setMine(this.getEquipe());
+			this.setNbMine(this.getNbMines()-1);
 		}
 	}
-	
-	public void attaque(){
-		
-	}
-					
-			
-			
-					
-	}
+}
 	

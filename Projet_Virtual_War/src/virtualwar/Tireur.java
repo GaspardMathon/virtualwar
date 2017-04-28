@@ -4,124 +4,82 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Tireur extends Robot{
-
+/**
+ * La classe tireur qui hérite de Robot crée un Tireur capable de se déplacer et d'attaquer des Robots énemies
+ * @author Clément
+ *
+ */
+public class Tireur extends Robot {
+	
 	private final static int ENERGIEDEBASET = 40;
-	private static int deplacement = 1;
 	private static int coutAction = 2;
-	private static int coutDep = 1;
-	private static int degatsSubis = 3;
+	private static int coutDeplacement = 1;
+	private static int degatSubis = 3;
 	private static String type = "T";
-	private List<Coordonnees> liste;
-	private List<Coordonnees> listeTir;
 	private int portee;
-	private Scanner sc;
-	private Scanner sc2;
 	
-	public List<Coordonnees> getListeTir(){
-		return this.listeTir;
-	}
-	
+	/**
+	 * Constructeur du tireur 
+	 * @param vue Vue du robot en fonction de son equipe 
+	 * @param l largueur pour les coordonnées du tireur
+	 * @param h hauteur pour les coordonnées du tireur 
+	 * @param equipe Equipe du tireur 
+	 * @param portee portee du tireur
+	 */
 	public Tireur(Vue vue, int l ,int h,int equipe,int portee){
 		super(vue,l,h,equipe,type,ENERGIEDEBASET);
 		this.portee = portee;
 	}
 	
-	public  int getDeplacement() {
-		return deplacement;
+	
+	public int getCoutAction(){
+		return Tireur.coutAction;
+	}
+	
+
+	public int getCoutDeplacement(){
+		return Tireur.coutDeplacement;
+	}
+	
+
+	public int getDegatSubis(){
+		return Tireur.degatSubis;
 	}
 	
 	public int getEnergieDeBase(){
-		return ENERGIEDEBASET;
+		return Tireur.ENERGIEDEBASET;
 	}
 	
-	public  int getCoutAction() {
-		
-		return coutAction;
+	/**
+	 * obtenir la portee du Tireur
+	 * @return la portee du Tireur
+	 */
+	public int getPortee(){
+		return this.portee;
 	}
-	public  int getCoutDeplacement() {
-		return coutDep;
-	}
-	public int getDegatsSubis() {
-		return degatsSubis;
-	}
-
-	public  String getType() {
-		return type;
-	}
+	
 	public List<Coordonnees> getDeplacements(){
-		this.liste = new ArrayList<>();
+		ArrayList<Coordonnees> listedep = new ArrayList<>();
 	
 		for(int i = -1; i<2;i++){
 			for(int j =-1 ; j<2;j++){
 				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j))){
-					liste.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
+					listedep.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
 				}
 			}
 		}
-		return liste;
-	}
-	public void setTirPossible(int portee){
-		this.listeTir = new ArrayList<>();
-		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnees a refuser
-		if(!this.CoordsTir(portee,Constante.BAS).equals(Coordnulle)){
-			listeTir.add(CoordsTir(portee,Constante.BAS));
-		}
-		if(!this.CoordsTir(portee,Constante.HAUT).equals(Coordnulle)){
-			listeTir.add(CoordsTir(portee,Constante.HAUT));
-		}
-		if(!this.CoordsTir(portee,Constante.DROITE).equals(Coordnulle)){
-			listeTir.add(CoordsTir(portee,Constante.DROITE));
-		}
-		if(!this.CoordsTir(portee,Constante.GAUCHE).equals(Coordnulle)){
-			listeTir.add(CoordsTir(portee,Constante.GAUCHE));
-		}
+		return listedep;
 	}
 	
-	public Coordonnees CoordsTir(int portee,Coordonnees Direction){
-		int cpt = 0;
-		Coordonnees memoire = new Coordonnees(this.getCoordonnees().getHauteur(),this.getCoordonnees().getLargeur());
-		while(cpt < portee){
-			memoire.modif(Direction);
-			if(!this.getVue().estDisponible(memoire)){
-				// Recupère l'information : est ce que la cellule contient un robot ?
-				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//Récupère l'information est ce que le robot est de l'équipe ennemi ?
-					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getRobot().getEquipe() != this.getEquipe() ){
-						return memoire;
-					}
-					else{
-						return new Coordonnees(0,0);}
-				}
-				else{
-					return new Coordonnees(0,0);}
-			}
-			cpt++;
-		}
-		return new Coordonnees(0,0); 
-	}
-	
-
-	
-	public boolean estDans(Coordonnees c){
-		boolean res = false;
-		for(Coordonnees compt : this.getDeplacements()){
-			if(c.getHauteur() == compt.getHauteur() && c.getLargeur() == compt.getLargeur()){
-				return true;
-			}
-		
-		}
-		return res;
-	}
-	
+	@SuppressWarnings("resource")
 	public Coordonnees choixMouvement(){
 		String choix;
 		boolean corect= false;
-		sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-		System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE 5.HAUT GAUCHE 6.HAUT DROITE 7.BAS GAUCHE 8.BAS DROITE");
+			System.out.println("1.En HAUT 2.En BAS 3.En GAUCHE 4.En DROITE 5.En HAUT à GAUCHE 6.En HAUT à DROITE 7.En BAS à GAUCHE 8.En BAS à DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -164,55 +122,62 @@ public class Tireur extends Robot{
 		}
 		return res;
 	}
+	
+	
 
-	public void deplacement(){
-		boolean mouvement = false;
-		Coordonnees c = new Coordonnees(-1,-1);
-		if(this.getEnergie()< Constante.COUTDEPLACEMENT){
-			System.out.println("Votre robot n'as pas assez d'energie pour se deplacer");
-		}else{
-			while(!mouvement){
-				c = this.choixMouvement();
-				Coordonnees test = new Coordonnees(this.getCoordonnees().getHauteur()+c.getHauteur(),this.getCoordonnees().getLargeur()+c.getLargeur());
-				if(this.estDans(test)){
-					mouvement = true;
-				}
-				
-			}
-			Deplacement d = new Deplacement(this,c);
-			d.agit();
-		}
-	}
-	public ArrayList<Robot> getTir(){
-		ArrayList<Robot> listeTir = new ArrayList<>();
+
+	
+	public List<Coordonnees> getCibles(){
+		ArrayList<Coordonnees> listeTir = new ArrayList<>();
 		for(int i = -this.portee; i < this.portee+1; i++){
 			for(int y =-this.portee; y < this.portee+1; y++){
 				if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].contientRobot){
-					if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getRobot().getEquipe() != this.getEquipe())
-					listeTir.add(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getRobot());
+					if((this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getContenu().getEquipe() != this.getEquipe())){
+						listeTir.add(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getContenu().getCoordonnees());
+					}	
 				}
 			}
 		}
 		return listeTir;
 	}
 	
-	public Robot choixTir(){
-		sc2 = new Scanner(System.in);
-		Robot choix;
-		System.out.println("Voici les cibles de ce robots : " + this.getTir());
-		System.out.println("Sur quel Robot voulez vous tirer ? (Entrez le numero du robot dans la liste)");
-		choix = this.getTir().get(sc2.nextInt()-1);
-		return choix;
+	@SuppressWarnings("resource")
+	public Coordonnees choixCible(){
+		Scanner sc = new Scanner(System.in);
+		String choix = "";
+		boolean choixOK = false;
+		if(this.getCibles().isEmpty()){
+			System.out.println("Vous n'avez pas de cible à attaquer");
+		}else{
+			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
+			while(!choixOK){
+				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéros des coordonn�es dans la liste)");
+				choix = sc.nextLine();
+				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
+					choixOK = true;
+				}
+			}
+			return this.getCibles().get(Integer.parseInt(choix)-1);
+		}
+		return  this.getCoordonnees();
 	}
 		
+	
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'�nergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
 		}else{
-			Attaque a = new Attaque(this,this.choixTir().getCoordonnees());
-			a.agit();
+			Coordonnees c = this.choixCible();
+			if(!c.equals(this.getCoordonnees())){
+				Attaque a = new Attaque(this,c);
+				a.agit();
+			}else{
+				System.out.println("Votre tireur cherche une cible et passe son tour");
+			}
 		}
 		
 	}
+	
+	
 	
 }
