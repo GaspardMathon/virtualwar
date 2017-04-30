@@ -1,6 +1,6 @@
-/*package virtualwar;
+package virtualwar;
 
-public class TestDeplacement {
+public class TestDeplacement {/*
 	public static void main(String[] args){
 		Plateau plat = new Plateau(10,10);
 		Piegeur p = new Piegeur(new Vue(plat,1),2,4,1);
@@ -16,5 +16,5 @@ public class TestDeplacement {
 			p.deplacement();
 		}
 			System.out.println(p.getDeplacements());
-	}
-}*/
+	}*/
+}

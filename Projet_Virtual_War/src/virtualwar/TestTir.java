@@ -1,8 +1,8 @@
-/*
+
 package virtualwar;
 
 public class TestTir {
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Plateau plat = new Plateau(10,20);
 		Vue v1 = new Vue(plat,1);
 		Vue v2 = new Vue(plat,2);
@@ -22,5 +22,5 @@ public class TestTir {
 		System.out.println(plat);
 		t.Tir();
 		System.out.println(cible1);
-	}
-}*/
+	}*/
+}
