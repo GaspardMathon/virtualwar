@@ -54,16 +54,27 @@ public class Test {
 		
 		
 		System.out.println("Entrez la taille de la map : ");
-		System.out.print("la hauteur : ");
-		int hauteur = saisieIntProtegee(sc);
+		int hauteur;
+		int largeur;
+		do{
+			System.out.print("Hauteur : ");
+			hauteur = saisieIntProtegee(sc);
+		} while(hauteur < 5);
 		
-		System.out.print("\nla largeur : ");
-		int largeur = saisieIntProtegee(sc);
+		do{
+			System.out.print("\nLargeur : ");
+			largeur = saisieIntProtegee(sc);
+		}while(largeur < 5);
+		
 		
 		Plateau plat = new Plateau(hauteur,largeur);
-		
-		System.out.print("\nChoississez un pourcentage d'obstacle : ");
-		plat.setObstacles(saisieIntProtegee(sc));
+	
+		int pourcentageObstacle;
+		do{
+			System.out.print("\nChoississez un pourcentage d'obstacle : ");
+			pourcentageObstacle = saisieIntProtegee(sc);
+		}while(pourcentageObstacle>90 || pourcentageObstacle<0);
+		plat.setObstacles(pourcentageObstacle);
 		
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
