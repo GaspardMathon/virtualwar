@@ -80,7 +80,7 @@ public class Joueur {
 		}
 		System.out.println(" \n Quel  robot voulez vous invoquer : �crivez le numero du n-ieme robot");
 		while(!saisieOK){
-			robot = Test.saisieIntProtegee(sc4);
+			robot = Constante.saisieIntProtegee(sc4);
 			if(robot>0 && robot <=robotInvocable.size()){
 				saisieOK = true;
 			}
@@ -105,8 +105,8 @@ public class Joueur {
 				System.out.println("Coordonnee possible : [2,2]");
 			}
 			while(!ok){
-				 i = Test.saisieIntProtegee(sc3);
-				 y = Test.saisieIntProtegee(sc3);
+				 i = Constante.saisieIntProtegee(sc3);
+				 y = Constante.saisieIntProtegee(sc3);
 				if((i>=1 && i<=2)&&(y>=1 && y<=2)&& !(i==1 && y==1)){
 					ok = true;
 				}
@@ -130,8 +130,8 @@ public class Joueur {
 			}
 			while(!ok){
 				System.out.println("Entrez les coordonn�es : ");
-				i = Test.saisieIntProtegee(sc3);
-				y = Test.saisieIntProtegee(sc3);
+				i = Constante.saisieIntProtegee(sc3);
+				y = Constante.saisieIntProtegee(sc3);
 				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z) && !(i ==x && y == z)){
 					ok = true;
 				}
@@ -176,7 +176,7 @@ public class Joueur {
 			System.out.println("3-Attaquer/Miner avec un robot");
 		}
 		while(!saisieOK){
-			res = Test.saisieIntProtegee(sc);
+			res = Constante.saisieIntProtegee(sc);
 			if((this.baseVide() && res<4 && res>1)||(!this.baseVide() && res<4 && res>0)){
 				saisieOK = true;
 			}
@@ -201,7 +201,7 @@ public class Joueur {
 		}
 		System.out.println("  Quel robot voulez vous utiliser ?");
 		while(!saisieOK){
-			robot = Test.saisieIntProtegee(sc2);
+			robot = Constante.saisieIntProtegee(sc2);
 			if(robot>0 && robot <=robotInvoque.size()){
 				saisieOK = true;
 			}

@@ -130,4 +130,30 @@ public class Constante {
 		}while(!valide);
 		return ' ';
 	}
+	
+	public static int saisieIntProtegee(Scanner sc){
+		boolean saisieCorrecte = false;
+		String nbRobot;
+		int result = 0;
+		do{
+			nbRobot = sc.nextLine();
+			if(nbRobot.equals("")){
+				System.out.print("Il faut rentrer un nombre !\n");
+			}
+			for(int i =0;i<nbRobot.length();i++){
+				if(nbRobot.charAt(i) <= '9' && nbRobot.charAt(i) >= '0'){
+					result += nbRobot.charAt(i);
+					saisieCorrecte = true;
+				}else{
+					System.out.print("Il faut rentrer un nombre !\n");
+					saisieCorrecte = false;
+					break;
+				}
+			}
+			if(saisieCorrecte == true){
+				result =  Integer.parseInt(nbRobot);
+			}
+		}while(!saisieCorrecte);
+		return result;
+	}
 }
