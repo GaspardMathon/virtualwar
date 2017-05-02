@@ -6,32 +6,6 @@ import java.util.Scanner;
 public class Test {
 
 	private static Scanner sc;
-	
-	public static int saisieIntProtegee(Scanner sc){
-		boolean saisieCorrecte = false;
-		String nbRobot;
-		int result = 0;
-		do{
-			nbRobot = sc.nextLine();
-			if(nbRobot.equals("")){
-				System.out.print("Il faut rentrer un nombre !\n");
-			}
-			for(int i =0;i<nbRobot.length();i++){
-				if(nbRobot.charAt(i) <= '9' && nbRobot.charAt(i) >= '0'){
-					result += nbRobot.charAt(i);
-					saisieCorrecte = true;
-				}else{
-					System.out.print("Il faut rentrer un nombre !\n");
-					saisieCorrecte = false;
-					break;
-				}
-			}
-			if(saisieCorrecte == true){
-				result =  Integer.parseInt(nbRobot);
-			}
-		}while(!saisieCorrecte);
-		return result;
-	}
 
 	public static void main(String[] args) {
 		sc = new Scanner(System.in);
@@ -42,7 +16,7 @@ public class Test {
 		System.out.println("Bienvenue dans cette version prototype de VirtualWar");
 		
 		//Recupére le nb de robot entré avec crtl saisie [1-5]
-		System.out.print("Entrez le nombre de Robot par equipe : ");
+		System.out.print("Entrez le nombre de Robot par equipe compris entre " + 1 + " et " + Constante.ROBOTS_MAX + " : ");
 		int nbRobot = Constante.saisieEntier(1,5);
 		
 		//Recupére le nom joueur1 avec crtl saisie
@@ -50,17 +24,14 @@ public class Test {
 		String nom1 = Joueur.saisiePseudo();
 			
 		//Recupére le nom joueur2 avec crtl saisie
-		String nom2 = "";
-		do{
-		System.out.print("\nVeuillez entrer le nom du joueur 2");
-		nom2 = Joueur.saisiePseudo();
-		}while(nom2.equals(nom1));
+		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
+		String nom2 = Joueur.saisiePseudo();
 		
 		//Creer les joueurs
 		Joueur J1 = new Joueur(nom1,nbRobot,1);
 		Joueur J2 = new Joueur(nom2,nbRobot,2);
 		
-		System.out.println("Entrez la taille de la carte:");
+		System.out.println("\nEntrez la taille de la carte:");
 		//Recupére la hauteur avec ctrl saisie [3-20]
 		System.out.println("Hauteur (min 3, max 20) :");
 		int hauteur = Constante.saisieEntier(Constante.HAUTEUR_MIN,Constante.HAUTEUR_MAX);
@@ -72,10 +43,8 @@ public class Test {
 		Plateau plat = new Plateau(hauteur,largeur);
 	
 		int pourcentageObstacle;
-		do{
-			System.out.print("\nChoississez un pourcentage d'obstacle : ");
-			pourcentageObstacle = saisieIntProtegee(sc);
-		}while(pourcentageObstacle>90 || pourcentageObstacle<0);
+		System.out.print("\nChoississez un pourcentage d'obstacle : ");
+		pourcentageObstacle = Constante.saisieEntier(0,100);
 		plat.setObstacles(pourcentageObstacle);
 		
 		Vue Equipe1 = new Vue(plat,1);
