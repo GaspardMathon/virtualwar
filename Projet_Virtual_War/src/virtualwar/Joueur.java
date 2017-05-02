@@ -9,7 +9,6 @@ public class Joueur {
 	private int nbRobot;
 	private int equipe;
 	private List<Robot> listeRobot;
-	private Scanner sc;
 	private Scanner sc2;
 	private Scanner sc3;
 	private Scanner sc4;
@@ -78,7 +77,7 @@ public class Joueur {
 		for(Robot r : robotInvocable){
 			System.out.print("  " + r.toString());
 		}
-		System.out.println(" \n Quel  robot voulez vous invoquer : �crivez le numero du n-ieme robot");
+		System.out.println(" \n Quel  robot voulez vous invoquer : écrivez le numero du n-ieme robot");
 		while(!saisieOK){
 			robot = Constante.saisieIntProtegee(sc4);
 			if(robot>0 && robot <=robotInvocable.size()){
@@ -120,13 +119,13 @@ public class Joueur {
 			z= r.getVue().getPlateau().getGrille()[1].length-2;
 			System.out.println(x+"       "+ z);
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z))){
-				System.out.println("Coordonnee possible : ["+(x-1)+","+z+"]");
+				System.out.println("Coordonnée possible : ["+(x-1)+","+z+"]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x,z-1))){
-				System.out.println("Coordonnee possible : ["+x+","+(z-1)+"]");
+				System.out.println("Coordonnée possible : ["+x+","+(z-1)+"]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z-1))){
-				System.out.println("Coordonnee possible : ["+(x-1)+","+(z-1)+"]");
+				System.out.println("Coordonnée possible : ["+(x-1)+","+(z-1)+"]");
 			}
 			while(!ok){
 				System.out.println("Entrez les coordonn�es : ");
@@ -163,23 +162,18 @@ public class Joueur {
 	}
 	
 	public int choixActions(){
-		sc = new Scanner(System.in);
-		boolean saisieOK = false;
 		int res = -1;
 		System.out.println("Que voulez vous faire ce tour ci ?");
 		
 		if(!this.baseVide()){
+			
 			System.out.println(" 1-Invoquer un robot ?");
+			res = Constante.saisieEntier(1, 1);
 		}
 		if(!this.plateauVide()){
 			System.out.println("2-Deplacer un robot");
 			System.out.println("3-Attaquer/Miner avec un robot");
-		}
-		while(!saisieOK){
-			res = Constante.saisieIntProtegee(sc);
-			if((this.baseVide() && res<4 && res>1)||(!this.baseVide() && res<4 && res>0)){
-				saisieOK = true;
-			}
+			res = Constante.saisieEntier(1, 3);
 		}
 		return res;
 	}

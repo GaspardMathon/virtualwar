@@ -101,6 +101,7 @@ public class Test {
 		System.out.println("Tour du joueur " + joueurEnCour.toString());
 		System.out.println(vueEnCour.toString());
 		System.out.println(joueurEnCour.getListeRobot());
+		
 		choix = joueurEnCour.choixActions();
 		
 		if(choix == 1){
