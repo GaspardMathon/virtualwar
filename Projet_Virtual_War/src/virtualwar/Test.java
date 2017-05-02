@@ -41,32 +41,34 @@ public class Test {
 		int choix = -1;
 		System.out.println("Bienvenue dans cette version prototype de VirtualWar");
 		
+		//Recupére le nb de robot entré avec crtl saisie [1-5]
 		System.out.print("Entrez le nombre de Robot par equipe : ");
-		int nbRobots = saisieIntProtegee(sc);
+		int nbRobot = Constante.saisieEntier(1,5);
 		
+		//Recupére le nom joueur1 avec crtl saisie
 		System.out.print("\nVeuillez entrer le nom du joueur 1 : ");
-		String nom1 = sc.nextLine();
-		Joueur J1 = new Joueur(nom1,nbRobots,1);
-		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
-		
-		String nom2 = sc.nextLine();
-		Joueur J2 = new Joueur(nom2,nbRobots,2);
-		
-		
-		System.out.println("Entrez la taille de la map : ");
-		int hauteur;
-		int largeur;
+		String nom1 = Joueur.saisiePseudo();
+			
+		//Recupére le nom joueur2 avec crtl saisie
+		String nom2 = "";
 		do{
-			System.out.print("Hauteur : ");
-			hauteur = saisieIntProtegee(sc);
-		} while(hauteur < 5);
+		System.out.print("\nVeuillez entrer le nom du joueur 2");
+		nom2 = Joueur.saisiePseudo();
+		}while(nom2.equals(nom1));
 		
-		do{
-			System.out.print("\nLargeur : ");
-			largeur = saisieIntProtegee(sc);
-		}while(largeur < 5);
+		//Creer les joueurs
+		Joueur J1 = new Joueur(nom1,nbRobot,1);
+		Joueur J2 = new Joueur(nom2,nbRobot,2);
 		
+		System.out.println("Entrez la taille de la carte:");
+		//Recupére la hauteur avec ctrl saisie [3-20]
+		System.out.println("Hauteur (min 3, max 20) :");
+		int hauteur = Constante.saisieEntier(Constante.HAUTEUR_MIN,Constante.HAUTEUR_MAX);
+		//Recupére la hauteur avec ctrl saisie [3-20]
+		System.out.println("Largeur (min 3, max 20) :");
+		int largeur = Constante.saisieEntier(Constante.LARGEUR_MIN,Constante.LARGEUR_MAX);
 		
+		//Creation carte
 		Plateau plat = new Plateau(hauteur,largeur);
 	
 		int pourcentageObstacle;
@@ -80,11 +82,11 @@ public class Test {
 		Vue Equipe2 = new Vue(plat,2);
 		
 		/*
-		 * Possibilit� de cr�er une m�thode pour la saisie d'en dessous ?
+		 * Possibilité de créer une méthode pour la saisie d'en dessous ?
 		 */
 		//
 		for(int copt = 1;copt < 3 ; copt++){
-			for(int cpt = 1 ;cpt < nbRobots+1 ; cpt++){
+			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
 				System.out.print("\nJoueur ");System.out.print(copt); System.out.print(" choisissez vos robots : " );
 				System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
 				

@@ -13,6 +13,7 @@ public class Joueur {
 	private Scanner sc2;
 	private Scanner sc3;
 	private Scanner sc4;
+	private static Scanner sc5;
 	
 	public Joueur(String nom,int nbRobot,int equipe){
 		this.listeRobot = new ArrayList<>();
@@ -62,10 +63,6 @@ public class Joueur {
 	public void setListeRobot(List<Robot> listeRobot) {
 		this.listeRobot = listeRobot;
 	}
-	public String toString(){
-		return this.getEquipe()+" "+this.getNom();
-				
-	}
 	
 	public Robot choisirInvocation(){
 		boolean saisieOK = false;
@@ -81,7 +78,7 @@ public class Joueur {
 		for(Robot r : robotInvocable){
 			System.out.print("  " + r.toString());
 		}
-		System.out.println(" \n Quel  robot voulez vous invoquer : écrivez le numero du n-ieme robot");
+		System.out.println(" \n Quel  robot voulez vous invoquer : ï¿½crivez le numero du n-ieme robot");
 		while(!saisieOK){
 			robot = Test.saisieIntProtegee(sc4);
 			if(robot>0 && robot <=robotInvocable.size()){
@@ -132,7 +129,7 @@ public class Joueur {
 				System.out.println("Coordonnee possible : ["+(x-1)+","+(z-1)+"]");
 			}
 			while(!ok){
-				System.out.println("Entrez les coordonnées : ");
+				System.out.println("Entrez les coordonnï¿½es : ");
 				i = Test.saisieIntProtegee(sc3);
 				y = Test.saisieIntProtegee(sc3);
 				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z) && !(i ==x && y == z)){
@@ -211,4 +208,36 @@ public class Joueur {
 		}
 		return robotInvoque.get(robot-1);
  	}
+	
+	public static String saisiePseudo(){
+		sc5 = new Scanner(System.in);
+		String nom ="";
+		nom = sc5.next();
+		boolean valide = false;
+		while(!valide){
+            if(nom.matches("^[a-zA-Z]*$")){
+                valide=true;
+            }else{
+            	System.out.println("Saisie invalide, veulliez recommencer ");
+            	nom = sc5.next();
+            }
+		}
+		return nom;
+	}
+	
+	/**
+	 * Renvoie un string contenant le nom et l'quipe du joueur
+	 */
+	public String toString(){
+    	return "" + this.nom + " (equipe nÂ°" + this.equipe + ") ";
+	}
+	
+	public void robotMort(){
+		for(Robot r : this.getListeRobot()){
+			if(r.getEnergie() <= 0){
+				r.mortDuRobot();
+				this.getListeRobot().remove(r);	
+			}
+		}
+	}
 }

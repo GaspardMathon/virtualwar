@@ -3,14 +3,14 @@ package virtualwar;
 import java.util.ArrayList;
 import java.util.Random;
 
-//le plateau est constitué d'une hauteur, d'une largeur et d'une grille de cellule sur laquelle se déroule la partie
+//le plateau est constituï¿½ d'une hauteur, d'une largeur et d'une grille de cellule sur laquelle se dï¿½roule la partie
 public class Plateau {
 	
 	private int hauteur;
 	private int largeur;
 	private Cellule[][] grille;
 	
-	//Constructeur prenant deux entiers en paramètre, place deux bases opposées et des obstacles tout autour de la grille de jeu
+	//Constructeur prenant deux entiers en paramï¿½tre, place deux bases opposï¿½es et des obstacles tout autour de la grille de jeu
 	public Plateau(int hauteur, int largeur){
 		this.hauteur = hauteur;
 		this.largeur = largeur;
@@ -46,22 +46,22 @@ public class Plateau {
 	public Cellule[][] getGrille(){
 		return this.grille;
 	}
-	//Remplace la hauteur par un entier donné en paramètre
+	//Remplace la hauteur par un entier donnï¿½ en paramï¿½tre
 	public void setHauteur(int i){
 		this.hauteur = i;
 	}
-	//Remplace la largeur par un entier donné en paramètre
+	//Remplace la largeur par un entier donnï¿½ en paramï¿½tre
 	public void setLageur(int i){
 		this.largeur = i;
 	}
-	//Remplace la grille par un tableau de Cellule donné en paramètre
+	//Remplace la grille par un tableau de Cellule donnï¿½ en paramï¿½tre
 	public void setGrille(Cellule[][] grille){
 		this.grille = grille;
 	}
 	
 	/**
 	 * Obtenir la liste des cellules sur lesquelles ont ne peut pas poser d'obstacle
-	 * @return la listes des cellules bloqués
+	 * @return la listes des cellules bloquï¿½s
 	 */
 	public ArrayList<Cellule> casesBloquees(){
 		ArrayList<Cellule> listeBloque = new ArrayList<>();
@@ -72,13 +72,13 @@ public class Plateau {
 		listeBloque.add(this.getGrille()[this.getHauteur()][this.getLargeur()-1]);		
 		listeBloque.add(this.getGrille()[this.getHauteur()-1][this.getLargeur()-1]);
 		//ajouter le chemin
-		
+		listeBloque.addAll(this.caseChemin());
 		return listeBloque;
 
 	}
 	
 	/**
-	 * PLace un nombre des obstacles de façons aléatoire 
+	 * PLace un nombre des obstacles de faï¿½ons alï¿½atoire 
 	 * @param chance INT pourcentage d'obstacle sur la carte
 	 */
 	public void setObstacles(int chance){
@@ -114,4 +114,22 @@ public class Plateau {
  		}
  		return affichage+"+";
  	}
+	
+	/**
+	 * Obtenir la liste des cellules pour avoir un chemin qui rejoins les 2 bases
+	 * @return la listes des cellules Chemin
+	 */
+	public ArrayList<Cellule> caseChemin(){
+		ArrayList<Cellule> listeChemin = new ArrayList<>();
+		for(int i =0;i < this.largeur/2;i++){
+			listeChemin.add(this.getGrille()[1][i]);
+		}
+		for(int j=0;j <this.hauteur;j++){
+			listeChemin.add(this.getGrille()[j][this.largeur/2]);
+		}
+		for(int k = this.largeur/2; k<this.largeur;k++ ){
+			listeChemin.add(this.getGrille()[this.getHauteur()][k]);
+		}
+		return listeChemin;
+	}
 }
