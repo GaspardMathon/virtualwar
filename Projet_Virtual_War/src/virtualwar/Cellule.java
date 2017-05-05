@@ -93,7 +93,8 @@ abstract public class Cellule {
 	public void regenEnergieBase(){
 		if(this.getContientrobot()){
 			if(this.getContenu().getEquipe() == this.getBase()){ 
-				robot.regenEnergie(); 
+				robot.regenEnergie();
+
 			} 
 		} 
 	}

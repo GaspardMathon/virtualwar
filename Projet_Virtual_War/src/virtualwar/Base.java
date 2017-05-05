@@ -14,6 +14,7 @@ public class Base extends Cellule{
 	//ajoute un robot sur la base
 	public void deplacerSur(Robot robot){
 		super.robot = robot;
+		super.contientRobot = true;
 	}
 	
 	

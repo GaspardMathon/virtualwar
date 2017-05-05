@@ -176,9 +176,19 @@ public class Tireur extends Robot {
 		}
 		
 	}
-	
+	/**
+	 * régénère l'énergie du tireur
+	 */
 	public void regenEnergie(){ 
 		this.setEnergie(this.getEnergie()+2); 
+	}
+	
+	public String toString(){
+		String nom = "Tireur de l'equipe "+this.getEquipe()+", ";
+		if(this.getInvoque()){
+			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
+		}
+		return nom;
 	}
 	
 	

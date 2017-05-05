@@ -158,6 +158,19 @@ public class Char extends Robot {
 		}
 		
 	}
+	
+	public String toString(){
+		String nom = "Char de l'equipe "+this.getEquipe()+", ";
+		if(this.getInvoque()){
+			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
+		}
+		return nom;
+	}
+
+
+	public void regenEnergie() {
+		this.setEnergie(this.getEnergie()+2); 
+	}
 
 }
 

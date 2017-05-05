@@ -135,13 +135,7 @@ abstract class Robot {
 	 *Affiche l'�tat du robot : son type, ses coordonn�es et sa vie
 	 *@return nom String qui retourne l'�tat du robot
 	 */
-	public String toString(){
-		String nom = type+" ";
-		if(this.getInvoque()){
-			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
-		}
-		return nom;
-	}
+	abstract public String toString();
 	
 	/**
 	 * Permet de savoir si une coordonn�e fait partie des d�placement que le robot peut effectuer

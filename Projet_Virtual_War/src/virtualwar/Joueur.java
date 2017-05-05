@@ -164,19 +164,22 @@ public class Joueur {
 	public int choixActions(){
 		int res = -1;
 		System.out.println("Que voulez vous faire ce tour ci ?");
-		
-		if(!this.baseVide()){
-			
-			System.out.println("1-Invoquer un robot ?");
-			System.out.println("2-Deplacer un robot");
-			System.out.println("3-Attaquer/Miner avec un robot");
-			res = Constante.saisieEntier(1, 3);
+		if(this.plateauVide()){
+			System.out.println("1-invoquer un robot");
+			res = Constante.saisieEntier(1,1);
+		}else{
+			if(this.baseVide()){
+				System.out.println("2-Deplacer un robot");
+				System.out.println("3-Attaquer/Miner avec un robot");
+				res = Constante.saisieEntier(2,3);
+			}else{
+				System.out.println("1-invoquer un robot");
+				System.out.println("2-Deplacer un robot");
+				System.out.println("3-Attaquer/Miner avec un robot");
+				res = Constante.saisieEntier(1,3);
+			}
 		}
-		if(!this.plateauVide()){
-			System.out.println("2-Deplacer un robot");
-			System.out.println("3-Attaquer/Miner avec un robot");
-			res = Constante.saisieEntier(2, 3);
-		}
+				
 		return res;
 	}
 	
