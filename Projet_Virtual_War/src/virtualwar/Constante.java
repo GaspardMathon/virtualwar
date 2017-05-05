@@ -15,10 +15,10 @@ public class Constante {
 	static final int DEGATMINE = 5;
 	static final int AFFICHE = 6;
 	static final int DEPLACEMENTS = 7;
-	static final int HAUTEUR_MIN = 3;
-	static final int HAUTEUR_MAX = 20;
+	static final int HAUTEUR_MIN = 4;
+	static final int HAUTEUR_MAX = 30;
 	static final int LARGEUR_MIN = 5;
-	static final int LARGEUR_MAX = 30;
+	static final int LARGEUR_MAX = 40;
 	static final int ROBOTS_MAX = 5;
 	
 	

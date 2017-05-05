@@ -3,14 +3,15 @@ package virtualwar;
 import java.util.ArrayList;
 import java.util.Random;
 
-//le plateau est constitu� d'une hauteur, d'une largeur et d'une grille de cellule sur laquelle se d�roule la partie
+//le plateau est constitué d'une hauteur, d'une largeur et d'une grille de cellule sur laquelle se déroule la partie
 public class Plateau {
 	
 	private int hauteur;
 	private int largeur;
 	private Cellule[][] grille;
+	private String[] images = new String[]{}; 
 	
-	//Constructeur prenant deux entiers en param�tre, place deux bases oppos�es et des obstacles tout autour de la grille de jeu
+	//Constructeur prenant deux entiers en paramêtre, place deux bases opposées et des obstacles tout autour de la grille de jeu
 	public Plateau(int hauteur, int largeur){
 		this.hauteur = hauteur;
 		this.largeur = largeur;
@@ -46,22 +47,22 @@ public class Plateau {
 	public Cellule[][] getGrille(){
 		return this.grille;
 	}
-	//Remplace la hauteur par un entier donn� en param�tre
+	//Remplace la hauteur par un entier donné en paramêtre
 	public void setHauteur(int i){
 		this.hauteur = i;
 	}
-	//Remplace la largeur par un entier donn� en param�tre
+	//Remplace la largeur par un entier donné en paramêtre
 	public void setLageur(int i){
 		this.largeur = i;
 	}
-	//Remplace la grille par un tableau de Cellule donn� en param�tre
+	//Remplace la grille par un tableau de Cellule donné en paramêtre
 	public void setGrille(Cellule[][] grille){
 		this.grille = grille;
 	}
 	
 	/**
 	 * Obtenir la liste des cellules sur lesquelles ont ne peut pas poser d'obstacle
-	 * @return la listes des cellules bloqu�s
+	 * @return la listes des cellules bloqués
 	 */
 	public ArrayList<Cellule> casesBloquees(){
 		ArrayList<Cellule> listeBloque = new ArrayList<>();
@@ -78,7 +79,7 @@ public class Plateau {
 	}
 	
 	/**
-	 * PLace un nombre des obstacles de fa�ons al�atoire 
+	 * PLace un nombre des obstacles de façons aléatoire 
 	 * @param chance INT pourcentage d'obstacle sur la carte
 	 */
 	public void setObstacles(int chance){

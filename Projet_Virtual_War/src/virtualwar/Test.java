@@ -22,8 +22,14 @@ public class Test {
 		String nom1 = Joueur.saisiePseudo();
 			
 		//Recupére le nom joueur2 avec crtl saisie
+		String nom2 = "";
 		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
-		String nom2 = Joueur.saisiePseudo();
+		do{
+		nom2 = Joueur.saisiePseudo();
+		if(nom1.equals(nom2)){
+			System.out.println("Votre nom ne peut pas être similaire à celui du joueur 1, veuillez rentrez un nom.");
+		}
+		} while(nom1.equals(nom2));
 		
 		//Creer les joueurs
 		Joueur J1 = new Joueur(nom1,nbRobot,1);
@@ -31,10 +37,10 @@ public class Test {
 		
 		System.out.println("\nEntrez la taille de la carte:");
 		//Recupére la hauteur avec ctrl saisie [3-20]
-		System.out.println("Hauteur (min 3, max 20) :");
+		System.out.println("Hauteur (min " +Constante.HAUTEUR_MIN +", max " + Constante.HAUTEUR_MAX+ " ) :");
 		int hauteur = Constante.saisieEntier(Constante.HAUTEUR_MIN,Constante.HAUTEUR_MAX);
 		//Recupére la hauteur avec ctrl saisie [3-20]
-		System.out.println("Largeur (min 3, max 20) :");
+		System.out.println("Largeur (min "+ Constante.LARGEUR_MIN+", max "+Constante.LARGEUR_MAX+") :");
 		int largeur = Constante.saisieEntier(Constante.LARGEUR_MIN,Constante.LARGEUR_MAX);
 		
 		//Creation carte
