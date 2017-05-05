@@ -167,13 +167,15 @@ public class Joueur {
 		
 		if(!this.baseVide()){
 			
-			System.out.println(" 1-Invoquer un robot ?");
-			res = Constante.saisieEntier(1, 1);
+			System.out.println("1-Invoquer un robot ?");
+			System.out.println("2-Deplacer un robot");
+			System.out.println("3-Attaquer/Miner avec un robot");
+			res = Constante.saisieEntier(1, 3);
 		}
 		if(!this.plateauVide()){
 			System.out.println("2-Deplacer un robot");
 			System.out.println("3-Attaquer/Miner avec un robot");
-			res = Constante.saisieEntier(1, 3);
+			res = Constante.saisieEntier(2, 3);
 		}
 		return res;
 	}
@@ -216,7 +218,11 @@ public class Joueur {
             	nom = sc5.next();
             }
 		}
-		return nom;
+		if(nom.length() >30){
+			return nom.substring(0, 30);
+		} else {
+			return nom.substring(0,nom.length());
+		}
 	}
 	
 	/**

@@ -1,6 +1,6 @@
 package virtualwar;
 
-//la classe arbstraite Cellule permet de représenter les différentes cellules du plateau
+//la classe arbstraite Cellule permet de reprï¿½senter les diffï¿½rentes cellules du plateau
 abstract public class Cellule {
 	
 	protected int mine;
@@ -10,10 +10,10 @@ abstract public class Cellule {
 	protected boolean contientRobot;
 	protected Robot robot;
 
-	//Constructeur par défault sans paramètre
+	//Constructeur par dï¿½fault sans paramï¿½tre
 	public Cellule(){};
 	
-	//Constructeur prenant deux entiers initialisant les Coordonnées
+	//Constructeur prenant deux entiers initialisant les Coordonnï¿½es
 	public Cellule(int hauteur,int largeur){
 		this.coordonne = new Coordonnees(hauteur,largeur);
 		this.obstacle = false;
@@ -21,7 +21,7 @@ abstract public class Cellule {
 		this.mine = 0;
 	}
 	
-	//Constructeur prenant en paramètre deux entiers pour les Coordonnées et deux booleans pour obstacle et contientRobot
+	//Constructeur prenant en paramï¿½tre deux entiers pour les Coordonnï¿½es et deux booleans pour obstacle et contientRobot
 	public Cellule(int hauteur, int largeur, boolean obstacle, boolean cr){
 		this.coordonne = new Coordonnees(hauteur,largeur);
 		this.obstacle = obstacle;
@@ -29,12 +29,12 @@ abstract public class Cellule {
 		this.mine = 0;
 	}
 	
-	//Retourne le numero de l'équipe si la Cellule est minée sinon retourne zéro
+	//Retourne le numero de l'ï¿½quipe si la Cellule est minï¿½e sinon retourne zï¿½ro
 	public int getMine(){
 		return this.mine;
 	}
 	
-	//Retourne le numéro de l'équipe si la Cellule est une base sinon retourne zéro
+	//Retourne le numï¿½ro de l'ï¿½quipe si la Cellule est une base sinon retourne zï¿½ro
 	public int getBase(){
 		return this.base;
 	}
@@ -53,31 +53,31 @@ abstract public class Cellule {
 		return this.robot;
 	}
 	
-	//Donne à l'attribut mine un entier correspondant à l'équipe de la mine
+	//Donne ï¿½ l'attribut mine un entier correspondant ï¿½ l'ï¿½quipe de la mine
 	public void setMine(int i){
 		this.mine = i;
 	}
 	
-	//Remplace la valeure de l'attribut Base par un entier donné en paramètre
+	//Remplace la valeure de l'attribut Base par un entier donnï¿½ en paramï¿½tre
 	public void setBase(int i){
 		this.base = i;
 	}
-	//Remplace la valeure de l'attribut Obstacle par un boolean donné en paramètre
+	//Remplace la valeure de l'attribut Obstacle par un boolean donnï¿½ en paramï¿½tre
 	public void setObstacle(boolean b){
 		this.obstacle = b;
 	}
 	
-	//Remplace la valeur de l'attribut Contientrobot par un boolean donné en paramètre
+	//Remplace la valeur de l'attribut Contientrobot par un boolean donnï¿½ en paramï¿½tre
 	public void setContientrobot(boolean b){
 		this.contientRobot = b;
 	}
 	
-	//Remplace la valeur de l'attribut Robot par un Robot donné en paramètre
+	//Remplace la valeur de l'attribut Robot par un Robot donnï¿½ en paramï¿½tre
 	public void setRobot(Robot r){
 		this.robot = r;
 	}
 	
-	//Enlève le robot présent sur la case
+	//Enlï¿½ve le robot prï¿½sent sur la case
 	public void videRobot(){
 		this.robot = null;
 		this.contientRobot = false;
@@ -89,10 +89,16 @@ abstract public class Cellule {
 	//vide completement la cellule 
 	abstract void videCellule();
 	
-	//restaure, au fil des tours, l'énergie du robot sur la Cellule
-	abstract void regenEnergie();
+	//rÃ©gÃ©nÃ¨re l'Ã©nergie du robot si il est sur sa base
+	public void regenEnergieBase(){
+		if(this.getContientrobot()){
+			if(this.getContenu().getEquipe() == this.getBase()){ 
+				robot.regenEnergie(); 
+			} 
+		} 
+	}
 	
-	//Retourne l'état de la Cellule sous forme de chaine de caratères
+	//Retourne l'ï¿½tat de la Cellule sous forme de chaine de caratï¿½res
 	public String toString(){
 		if(this.base != 0){
 			return "B";

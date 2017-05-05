@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Tireur extends Robot {
 	
-	private final static int ENERGIEDEBASET = 40;
+	private final static int ENERGIEDEBASE = 40;
 	private static int coutAction = 2;
 	private static int coutDeplacement = 1;
 	private static int degatSubis = 3;
@@ -27,7 +27,7 @@ public class Tireur extends Robot {
 	 * @param portee portee du tireur
 	 */
 	public Tireur(Vue vue, int l ,int h,int equipe,int portee){
-		super(vue,l,h,equipe,type,ENERGIEDEBASET);
+		super(vue,l,h,equipe,type,ENERGIEDEBASE);
 		this.portee = portee;
 	}
 	
@@ -47,7 +47,7 @@ public class Tireur extends Robot {
 	}
 	
 	public int getEnergieDeBase(){
-		return Tireur.ENERGIEDEBASET;
+		return Tireur.ENERGIEDEBASE;
 	}
 	
 	/**
@@ -125,7 +125,6 @@ public class Tireur extends Robot {
 	
 	
 
-
 	
 	public List<Coordonnees> getCibles(){
 		ArrayList<Coordonnees> listeTir = new ArrayList<>();
@@ -176,6 +175,10 @@ public class Tireur extends Robot {
 			}
 		}
 		
+	}
+	
+	public void regenEnergie(){ 
+		this.setEnergie(this.getEnergie()+2); 
 	}
 	
 	

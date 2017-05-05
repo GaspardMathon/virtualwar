@@ -1,11 +1,11 @@
 package virtualwar;
-//Une base est Cellule special qui permet d'invoquer les robot et de restaurer leur énergie
+//Une base est Cellule special qui permet d'invoquer les robot et de restaurer leur ï¿½nergie
 public class Base extends Cellule{
 	
-	//Constructeur par défault sans paramètre
+	//Constructeur par dï¿½fault sans paramï¿½tre
 	public Base(){};
 	
-	//Constructeur prenant en paramètre trois entiers pour les Coordonnées et l'équipe
+	//Constructeur prenant en paramï¿½tre trois entiers pour les Coordonnï¿½es et l'ï¿½quipe
 	public Base(int hauteur, int largeur, int equipe){
 		super(hauteur,largeur);
 		super.base = equipe;
@@ -16,14 +16,6 @@ public class Base extends Cellule{
 		super.robot = robot;
 	}
 	
-	//restaure, au fil des tours, l'énergie du robot sur la Base
-	public void regenEnergie(){
-		if(this.getContientrobot()){
-			if(this.getContenu().getEquipe() == this.getBase()){
-				this.getContenu().setEnergie(this.getContenu().getEnergie()+2);
-			}
-		}
-	}
 	
 	//vide la base et la transforme en cellue classique
 	public void videCellule(){

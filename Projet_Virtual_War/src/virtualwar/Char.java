@@ -2,9 +2,10 @@ package virtualwar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
- * la classe char qui hérite de la classe Robot créer un Robot qui ne peut se déplacer qu'en ligne sur 2 cases et de tirer 
+ * la classe char qui hï¿½rite de la classe Robot crï¿½er un Robot qui ne peut se dï¿½placer qu'en ligne sur 2 cases et de tirer 
  * @author salvadoc
  *
  */
@@ -15,15 +16,15 @@ public class Char extends Robot {
 	private static int coutDeplacement = 5;
 	private static int degatSubis = 6;
 	private static String type = "C";
-	private int portee;
+	private int portee = 10;
 	
 	/**
 	 * Contructeur du Char
-	 * @param vue vue du char en fonction de l'équipe
-	 * @param l largeur de la coordonnée initial du char
-	 * @param h hauteur de la coordonnée initial du char
-	 * @param equipe équipe du char
-	 * @param portee portée du char
+	 * @param vue vue du char en fonction de l'ï¿½quipe
+	 * @param l largeur de la coordonnï¿½e initial du char
+	 * @param h hauteur de la coordonnï¿½e initial du char
+	 * @param equipe ï¿½quipe du char
+	 * @param portee portï¿½e du char
 	 */
 	public Char(Vue vue, int l ,int h,int equipe,int portee){
 		super(vue,l,h,equipe,type,ENERGIEDEBASEC);
@@ -78,9 +79,9 @@ public class Char extends Robot {
 
 	
 	/**
-	 * obtenir la coordonnée de tir possible dans une direction donnée  
+	 * obtenir la coordonnï¿½e de tir possible dans une direction donnï¿½e  
 	 * @param Direction dans laquelle on cherche un tir possible
-	 * @return une coordonnée dans laquelle ont peut tirer
+	 * @return une coordonnï¿½e dans laquelle ont peut tirer
 	 */
 	public Coordonnees CoordsTir(Coordonnees Direction){
 		int cpt = 0;
@@ -88,9 +89,9 @@ public class Char extends Robot {
 		while(cpt < this.portee){
 			memoire.ajoute(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recupère l'information : est ce que la cellule contient un robot ?
+				// Recupï¿½re l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//Récupère l'information est ce que le robot est de l'équipe ennemi ?
+					//Rï¿½cupï¿½re l'information est ce que le robot est de l'ï¿½quipe ennemi ?
 					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() != this.getEquipe() ){
 						return memoire;
 					}
@@ -106,9 +107,9 @@ public class Char extends Robot {
 	}
 	
 	/**
-	 * obtenir la liste des coordonnées pour lesquelles le tir est possible
+	 * obtenir la liste des coordonnï¿½es pour lesquelles le tir est possible
 	 * @param portee portee du Char
-	 * @return liste des coordonnées ciblables
+	 * @return liste des coordonnï¿½es ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeTir = new ArrayList<>();
@@ -128,12 +129,29 @@ public class Char extends Robot {
 		return listeTir;
 	}
 	
+	@SuppressWarnings("resource")
 	public Coordonnees choixCible(){
-		return null;
+		Scanner sc = new Scanner(System.in);
+		String choix = "";
+		boolean choixOK = false;
+		if(this.getCibles().isEmpty()){
+			System.out.println("Vous n'avez pas de cible Ã  attaquer");
+		}else{
+			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
+			while(!choixOK){
+				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numÃ©ros des coordonnï¿½es dans la liste)");
+				choix = sc.nextLine();
+				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
+					choixOK = true;
+				}
+			}
+			return this.getCibles().get(Integer.parseInt(choix)-1);
+		}
+		return  this.getCoordonnees();
 	}
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'ï¿½nergie pour attaquer");
 		}else{
 			Attaque a = new Attaque(this,this.choixCible());
 			a.agit();

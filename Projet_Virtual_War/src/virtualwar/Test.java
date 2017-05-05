@@ -121,8 +121,8 @@ public class Test {
 				}
 			}
 		}
-		plat.getGrille()[1][1].regenEnergie();
-		plat.getGrille()[plat.getHauteur()][plat.getLargeur()].regenEnergie();
+		plat.getGrille()[1][1].regenEnergieBase();
+		plat.getGrille()[plat.getHauteur()][plat.getLargeur()].regenEnergieBase();
 		
 		joueur = !joueur;
 	}

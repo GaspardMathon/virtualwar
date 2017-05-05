@@ -5,8 +5,8 @@ import java.util.List;
 
 
 /**
- *Classe abstraite qui défini un Robot en général
- *@author Clément
+ *Classe abstraite qui dï¿½fini un Robot en gï¿½nï¿½ral
+ *@author Clï¿½ment
  */
 abstract class Robot {
 	
@@ -19,12 +19,12 @@ abstract class Robot {
 	
 	/**
 	 * Constructeur du robot
-	 * @param vue vue du robot en fonction de son équipe
-	 * @param h  hauteur pour créer la coordonnée du Robot
-	 * @param l  largeur pour créer la coordonnée du Robot
-	 * @param equipe équipe du robot 
-	 * @param type type du Robot(tireur, piègeur,char)
-	 * @param energie du robot à sa création
+	 * @param vue vue du robot en fonction de son ï¿½quipe
+	 * @param h  hauteur pour crï¿½er la coordonnï¿½e du Robot
+	 * @param l  largeur pour crï¿½er la coordonnï¿½e du Robot
+	 * @param equipe ï¿½quipe du robot 
+	 * @param type type du Robot(tireur, piï¿½geur,char)
+	 * @param energie du robot ï¿½ sa crï¿½ation
 	 */
 	public Robot(Vue vue, int h, int l, int equipe,String type,int energie){
 		this.vue = vue;
@@ -36,16 +36,16 @@ abstract class Robot {
 	}
 	
 	/**
-	 * Obtenir l'énergie du robot
-	 * @return l'énergie du robot
+	 * Obtenir l'ï¿½nergie du robot
+	 * @return l'ï¿½nergie du robot
 	 */
 	public int getEnergie(){
 		return this.energie;
 	}
 	
 	/**
-	 * Obtenir l'équipe du robot
-	 * @return l'équipe du robot
+	 * Obtenir l'ï¿½quipe du robot
+	 * @return l'ï¿½quipe du robot
 	 */
 	public int getEquipe(){
 		return this.equipe;
@@ -76,7 +76,7 @@ abstract class Robot {
 	}
 	
 	/**
-	 * dit si le Robot est invoqué
+	 * dit si le Robot est invoquï¿½
 	 * @return le "invoque" du robot
 	 */
 	public boolean getInvoque(){
@@ -84,24 +84,24 @@ abstract class Robot {
 	}
 	
 	/**
-	 * Remplace l'énergie du robot
-	 * @param i entier qui prend la place de l'énergie actuelle
+	 * Remplace l'ï¿½nergie du robot
+	 * @param i entier qui prend la place de l'ï¿½nergie actuelle
 	 */
 	public void setEnergie(int i){
 		this.energie = i;
 	}
 	
 	/**
-	 * Remplace l'équipe du robot
-	 * @param i entier qui prend la place de l'équipe actuelle
+	 * Remplace l'ï¿½quipe du robot
+	 * @param i entier qui prend la place de l'ï¿½quipe actuelle
 	 */
 	public void setEquipe(int i){
 		this.equipe = i;
 	}
 	
 	/**
-	 * Remplace les coordonnées du robot
-	 * @param c Coordonnées qui prend la place des Coordonnées actuelles
+	 * Remplace les coordonnï¿½es du robot
+	 * @param c Coordonnï¿½es qui prend la place des Coordonnï¿½es actuelles
 	 */
 	public void setCoordonnees(Coordonnees c){
 		this.coordonnees = c;
@@ -132,8 +132,8 @@ abstract class Robot {
 	}
 
 	/**
-	 *Affiche l'état du robot : son type, ses coordonnées et sa vie
-	 *@return nom String qui retourne l'état du robot
+	 *Affiche l'ï¿½tat du robot : son type, ses coordonnï¿½es et sa vie
+	 *@return nom String qui retourne l'ï¿½tat du robot
 	 */
 	public String toString(){
 		String nom = type+" ";
@@ -144,9 +144,9 @@ abstract class Robot {
 	}
 	
 	/**
-	 * Permet de savoir si une coordonnée fait partie des déplacement que le robot peut effectuer
-	 * @param c Coordonnées testée
-	 * @return un Boolean permettant de savoir si elle fait partie des déplacements
+	 * Permet de savoir si une coordonnï¿½e fait partie des dï¿½placement que le robot peut effectuer
+	 * @param c Coordonnï¿½es testï¿½e
+	 * @return un Boolean permettant de savoir si elle fait partie des dï¿½placements
 	 */
 	public boolean estDans(Coordonnees c){
 		boolean res = false;
@@ -170,14 +170,14 @@ abstract class Robot {
 	abstract public int getCoutAction();
 	
 	/**
-	 * Obtenir le cout du déplacement de ce robot
-	 * @return le cout du déplacement
+	 * Obtenir le cout du dï¿½placement de ce robot
+	 * @return le cout du dï¿½placement
 	 */
 	abstract public int getCoutDeplacement();
 	
 	/**
-	 * Obtenir les dégats que subit le robot après une attaque
-	 * @return le dégats subits
+	 * Obtenir les dï¿½gats que subit le robot aprï¿½s une attaque
+	 * @return le dï¿½gats subits
 	 */
 	abstract public int getDegatSubis();
 	
@@ -210,19 +210,19 @@ abstract class Robot {
 	
 	/**
 	 * Obtenir les deplacements effectuables par le robot
-	 * @return la liste des coordonnées pour lesquelles le robot peut se déplacer
+	 * @return la liste des coordonnï¿½es pour lesquelles le robot peut se dï¿½placer
 	 */
 	abstract public List<Coordonnees> getDeplacements();
 	
 	/**
-	 * Obtenir l'énergie initial du Robot
-	 * @return l'énergie de base
+	 * Obtenir l'ï¿½nergie initial du Robot
+	 * @return l'ï¿½nergie de base
 	 */
 	abstract public int getEnergieDeBase();
 	
 	/**
-	 * Demande à l'utilisateur la direction vers laquelle il souhaite déplacer le robot
-	 * @return les Coordonnées vers lesquelles il veut aller
+	 * Demande Ã  l'utilisateur la direction vers laquelle il souhaite dÃ©placer le robot
+	 * @return les CoordonnÃ©es vers lesquelles il veut aller
 	 */
 	abstract public Coordonnees choixMouvement();
 	
@@ -233,11 +233,15 @@ abstract class Robot {
 	abstract public List<Coordonnees> getCibles();
 	
 	/**
-	 * Demande à l'utilisateur la cible sur laquelle il veut attaquer 
-	 * @return les Coordonnée de la cible choisi
+	 * Demande Ã  l'utilisateur la cible sur laquelle il veut attaquer 
+	 * @return les CoordonnÃ©e de la cible choisi
 	 */
 	abstract public Coordonnees choixCible();
 	
-	
+	/**
+     * RÃ©gÃ©nÃ¨re l'Ã©nergie du robot si il est sur sa base
+     */
+    abstract public void regenEnergie();
+
 	
 }

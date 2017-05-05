@@ -1,5 +1,5 @@
 package virtualwar;
-//Une Case est une cellule qui peut être un obstacle ou non, les robots se déplacent sur les cases
+//Une Case est une cellule qui peut ï¿½tre un obstacle ou non, les robots se dï¿½placent sur les cases
 
 public class Case extends Cellule {
 	
@@ -16,14 +16,17 @@ public class Case extends Cellule {
 			super(hauteur,largeur,obstacle,false);
 		}		
 
-		//ajoute un robot à la case un Robot après s'être déplace sur celle-ci, inflige des dégats au robot s'il marche sur une mine ennemie
-		public void deplacerSur(Robot robot){
-			super.robot = robot;
-			super.contientRobot = true;
-			if(this.mine != 0 ){
-				robot.setEnergie(robot.getEnergie()-Constante.DEGATMINE);
+		//ajoute un robot ï¿½ la case un Robot aprï¿½s s'ï¿½tre dï¿½place sur celle-ci, inflige des dï¿½gats au robot s'il marche sur une mine ennemie
+		public void deplacerSur(Robot robot){ 
+			super.robot = robot; 
+			super.contientRobot = true; 
+			if(this.mine != 0 ){ 
+				System.out.println("Votre robot "+robot.toString()+
+						" a marchÃ© sur une mine !"); 
+				robot.setEnergie(robot.getEnergie()-Constante.DEGATMINE); 
+				this.setMine(0); 
+				} 
 			}
-		}
 
 		//vide le contenu de la case
 		public void videCellule(){
@@ -32,15 +35,5 @@ public class Case extends Cellule {
 			super.robot = null;
 			super.obstacle = false;
 		}
-		
-		//Restaure, au fil des tours, l'énergie du robot sur sa Case
-		public void regenEnergie(){
-			if(this.getContientrobot()){
-				if(this.getContenu().getEquipe() == this.getBase()){
-					this.getContenu().setEnergie(this.getContenu().getEnergie()+2);
-				}
-			}
-		}
-		
 	
 }
