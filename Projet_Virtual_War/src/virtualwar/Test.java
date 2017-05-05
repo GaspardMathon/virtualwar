@@ -1,7 +1,7 @@
 package virtualwar;
 
 import java.util.Random;
-
+//test
 public class Test {
 
 	static Vue vueEnCour;

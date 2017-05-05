@@ -5,11 +5,11 @@ import java.util.Random;
 
 //le plateau est constitué d'une hauteur, d'une largeur et d'une grille de cellule sur laquelle se déroule la partie
 public class Plateau {
-	
+
 	private int hauteur;
 	private int largeur;
 	private Cellule[][] grille;
-	
+
 	//Constructeur prenant deux entiers en paramêtre, place deux bases opposées et des obstacles tout autour de la grille de jeu
 	public Plateau(int hauteur, int largeur){
 		this.hauteur = hauteur;
@@ -33,7 +33,7 @@ public class Plateau {
 			}
 		}
 	}
-	
+
 	//Retourne la hauteur du plateau
 	public int getHauteur(){
 		return this.hauteur;
@@ -58,7 +58,7 @@ public class Plateau {
 	public void setGrille(Cellule[][] grille){
 		this.grille = grille;
 	}
-	
+
 	/**
 	 * Obtenir la liste des cellules sur lesquelles ont ne peut pas poser d'obstacle
 	 * @return la listes des cellules bloqués
@@ -72,11 +72,11 @@ public class Plateau {
 		listeBloque.add(this.getGrille()[this.getHauteur()][this.getLargeur()-1]);		
 		listeBloque.add(this.getGrille()[this.getHauteur()-1][this.getLargeur()-1]);
 		//ajouter le chemin
-		listeBloque.addAll(this.caseChemin());
+		listeBloque.addAll(this.caseChemin(listeBloque));
 		return listeBloque;
 
 	}
-	
+
 	/**
 	 * Place un nombre des obstacles de façons aléatoire 
 	 * @param chance INT pourcentage d'obstacle sur la carte
@@ -95,41 +95,46 @@ public class Plateau {
 			}
 		}
 	}
-	
+
 	public String toString() {
- 		String affichage = "";
- 		
- 		for(int i = 0; i < this.grille.length; i++){
- 			for(int y = 0; y < this.grille[0].length; y++){
- 				affichage+="+---";
- 			}
- 			affichage+="+\n";
- 			for(int y = 0; y < this.grille[0].length; y++){
- 				affichage+="| "+ this.getGrille()[i][y].toString() + " ";
- 			}
- 			affichage += "|\n";
- 		}
- 		for(int y = 0; y < this.grille[0].length; y++){
- 			affichage+="+---";
- 		}
- 		return affichage+"+";
- 	}
-	
+		String affichage = "";
+
+		for(int i = 0; i < this.grille.length; i++){
+			for(int y = 0; y < this.grille[0].length; y++){
+				affichage+="+---";
+			}
+			affichage+="+\n";
+			for(int y = 0; y < this.grille[0].length; y++){
+				affichage+="| "+ this.getGrille()[i][y].toString() + " ";
+			}
+			affichage += "|\n";
+		}
+		for(int y = 0; y < this.grille[0].length; y++){
+			affichage+="+---";
+		}
+		return affichage+"+";
+	}
+
 	/**
 	 * Obtenir la liste des cellules pour avoir un chemin qui rejoins les 2 bases
 	 * @return la listes des cellules Chemin
 	 */
-	public ArrayList<Cellule> caseChemin(){
-		ArrayList<Cellule> listeChemin = new ArrayList<>();
-		for(int i =0;i < this.largeur/2;i++){
-			listeChemin.add(this.getGrille()[1][i]);
-		}
-		for(int j=0;j <this.hauteur;j++){
-			listeChemin.add(this.getGrille()[j][this.largeur/2]);
-		}
-		for(int k = this.largeur/2; k<this.largeur;k++ ){
-			listeChemin.add(this.getGrille()[this.getHauteur()][k]);
-		}
-		return listeChemin;
-	}
+	public ArrayList<Cellule> caseChemin(ArrayList<Cellule>listeBloque){ 
+		ArrayList<Cellule> listeChemin = new ArrayList<>(); 
+		for(int i =2;i < this.largeur/2;i++){ 
+			if(!listeBloque.contains(this.getGrille()[2][i])){ 
+				listeChemin.add(this.getGrille()[2][i]); 
+			} 
+		} 
+		for(int j=2;j <this.hauteur-1;j++){ 
+			if(!listeBloque.contains(this.getGrille()[j][this.largeur/2])){ 
+				listeChemin.add(this.getGrille()[j][this.largeur/2]); 
+			} 
+		} 
+		for(int k = this.largeur/2; k<this.largeur;k++ ){ 
+			if(!listeBloque.contains(this.getGrille()[this.getHauteur()][k])){ 
+				listeChemin.add(this.getGrille()[this.getHauteur()-1][k]); 
+			} 
+		} 
+		return listeChemin; }
 }
