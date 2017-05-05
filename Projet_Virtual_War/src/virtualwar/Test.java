@@ -48,7 +48,7 @@ public class Test {
 	
 		int pourcentageObstacle;
 		System.out.print("\nChoississez un pourcentage d'obstacle : ");
-		pourcentageObstacle = Constante.saisieEntier(0,90);
+		pourcentageObstacle = Constante.saisieEntier(Constante.POURCENTAGE_OBSTACLE_MIN,Constante.POURCENTAGE_OBSTACLE_MAX);
 		plat.setObstacles(pourcentageObstacle);
 		
 		Vue Equipe1 = new Vue(plat,1);

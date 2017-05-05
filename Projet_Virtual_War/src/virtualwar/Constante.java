@@ -20,6 +20,8 @@ public class Constante {
 	static final int LARGEUR_MIN = 5;
 	static final int LARGEUR_MAX = 40;
 	static final int ROBOTS_MAX = 5;
+	static final int POURCENTAGE_OBSTACLE_MIN = 0;
+	static final int POURCENTAGE_OBSTACLE_MAX = 90;
 	
 	
 	//Liste des constante de deplacement
