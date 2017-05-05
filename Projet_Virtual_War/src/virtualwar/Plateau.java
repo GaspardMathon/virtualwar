@@ -9,7 +9,7 @@ public class Plateau {
 	private int hauteur;
 	private int largeur;
 	private Cellule[][] grille;
-	private String[] images = new String[]{}; 
+	private String[] images = new String[]{"base.jpg","char.jpg","index.jpg","obstacle.jpg","piegeur.jpg","tireur.jpg"}; 
 	
 	//Constructeur prenant deux entiers en paramêtre, place deux bases opposées et des obstacles tout autour de la grille de jeu
 	public Plateau(int hauteur, int largeur){
