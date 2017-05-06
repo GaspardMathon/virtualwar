@@ -96,7 +96,7 @@ public class Test {
 		
 	
 	
-	while(!J1.aPerdu() || !J2.aPerdu()){
+	while(!J1.aPerdu() && !J2.aPerdu()){
 		if(joueur){			            	
 			joueurEnCour = J1;
 			vueEnCour = Equipe1;
@@ -123,7 +123,7 @@ public class Test {
 		}
 		plat.getGrille()[1][1].regenEnergieBase();
 		plat.getGrille()[plat.getHauteur()][plat.getLargeur()].regenEnergieBase();
-		
+
 		joueur = !joueur;
 	}
 

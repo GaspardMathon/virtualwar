@@ -5,7 +5,7 @@ package virtualwar;
  *
  */
 public class Attaque extends Action {
-	
+
 	/**
 	 * Constructeur d'une Attaque
 	 * @param robot le Robot qui attaque 
@@ -14,13 +14,14 @@ public class Attaque extends Action {
 	public Attaque(Robot robot, Coordonnees direction){
 		super(robot,direction);
 	}
-	
+
 	public void agit(){
 		robot.setEnergie(robot.getEnergie()-robot.getCoutAction());
 		Robot cible = robot.getVue().getPlateau().getGrille()[direction.getHauteur()][direction.getLargeur()].getContenu();
 		cible.setEnergie(cible.getEnergie()-cible.getDegatSubis());
-		if(cible.getEnergie()<0){
+		if(cible.estMort()){
 			cible.getVue().getPlateau().getGrille()[cible.getCoordonnees().getHauteur()][cible.getCoordonnees().getLargeur()].videRobot();
-		}			
-	}
+		}
+	}			
 }
+

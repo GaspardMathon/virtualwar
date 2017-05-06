@@ -24,6 +24,10 @@ public class Case extends Cellule {
 				System.out.println("Votre robot "+robot.toString()+
 						" a marché sur une mine !"); 
 				robot.setEnergie(robot.getEnergie()-Constante.DEGATMINE); 
+				if(robot.estMort()){
+					robot.getVue().getPlateau().getGrille()[robot.getCoordonnees().getHauteur()][robot.getCoordonnees().getLargeur()].videRobot();
+
+				}
 				this.setMine(0); 
 				} 
 			}

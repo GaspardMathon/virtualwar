@@ -153,8 +153,12 @@ abstract class Robot {
 		return res;
 	}
 	
-	public void mortDuRobot(){
-		this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()][this.getCoordonnees().getLargeur()].videRobot();
+	public boolean estMort(){
+		if(this.getEnergie()<=0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	/**

@@ -21,12 +21,13 @@ public class Joueur {
 		this.equipe = equipe;
 	}
 	public boolean aPerdu(){
-		if(nbRobot == 0){
-			return true;
+		for(Robot r : listeRobot){
+			if(!r.estMort()){
+				return false;
+			}
 		}
-		else{
-			return false;
-		}
+		System.out.println("Le joueur "+this.getEquipe()+" "+this.getNom()+" n'a plus de robot et a perdu la partie !");
+		return true;
 	}
 	
 	public void ajouterTireur(Vue vue,int h,int l){
@@ -235,12 +236,5 @@ public class Joueur {
     	return "" + this.nom + " (equipe n°" + this.equipe + ") ";
 	}
 	
-	public void robotMort(){
-		for(Robot r : this.getListeRobot()){
-			if(r.getEnergie() <= 0){
-				r.mortDuRobot();
-				this.getListeRobot().remove(r);	
-			}
-		}
-	}
+
 }
