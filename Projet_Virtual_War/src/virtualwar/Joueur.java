@@ -36,7 +36,7 @@ public class Joueur {
 		listeRobot.add(new Piegeur(vue,h,l,equipe));
 	}
 	public void ajouterChar(Vue vue,int h,int l){
-		listeRobot.add(new Char(vue,h,l,equipe,2));
+		listeRobot.add(new Char(vue,h,l,equipe,10));
 	}
 	public String getNom() {
 		return nom;

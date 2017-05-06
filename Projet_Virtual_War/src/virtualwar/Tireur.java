@@ -123,22 +123,60 @@ public class Tireur extends Robot {
 		return res;
 	}
 	
-	
-
-	
-	public List<Coordonnees> getCibles(){
-		ArrayList<Coordonnees> listeTir = new ArrayList<>();
-		for(int i = -this.portee; i < this.portee+1; i++){
-			for(int y =-this.portee; y < this.portee+1; y++){
-				if(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].contientRobot){
-					if((this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getContenu().getEquipe() != this.getEquipe())){
-						listeTir.add(this.getVue().getPlateau().getGrille()[this.getCoordonnees().getHauteur()+i][this.getCoordonnees().getLargeur()+y].getContenu().getCoordonnees());
-					}	
+	/**
+	 * obtenir la coordonnï¿½e de tir possible dans une direction donnï¿½e  
+	 * @param Direction dans laquelle on cherche un tir possible
+	 * @return une coordonnï¿½e dans laquelle ont peut tirer
+	 */
+	public Coordonnees CoordsTir(Coordonnees Direction){
+		int cpt = 0;
+		Coordonnees memoire = new Coordonnees(this.getCoordonnees().getHauteur(),this.getCoordonnees().getLargeur());
+		while(cpt < this.portee){
+			memoire.ajoute(Direction);
+			if(!this.getVue().estDisponible(memoire)){
+				// Recupï¿½re l'information : est ce que la cellule contient un robot ?
+				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
+					//Rï¿½cupï¿½re l'information est ce que le robot est de l'ï¿½quipe ennemi ?
+					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() != this.getEquipe() ){
+						return memoire;
+					}
+					else{
+						return new Coordonnees(0,0);}
 				}
+				else{
+					return new Coordonnees(0,0);}
 			}
+			cpt++;
+		}
+		return new Coordonnees(0,0); 
+	}
+	
+	/**
+	 * obtenir la liste des coordonnï¿½es pour lesquelles le tir est possible
+	 * @param portee portee du Tireur
+	 * @return liste des coordonnï¿½es ciblables
+	 */
+	public ArrayList<Coordonnees> getCibles(){
+		ArrayList <Coordonnees> listeTir = new ArrayList<>();
+		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnees a refuser
+		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.BAS));
+		}
+		if(!this.CoordsTir(Constante.HAUT).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.HAUT));
+		}
+		if(!this.CoordsTir(Constante.DROITE).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.DROITE));
+		}
+		if(!this.CoordsTir(Constante.GAUCHE).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.GAUCHE));
 		}
 		return listeTir;
 	}
+	
+
+	
+	
 	
 	@SuppressWarnings("resource")
 	public Coordonnees choixCible(){
@@ -171,7 +209,8 @@ public class Tireur extends Robot {
 				Attaque a = new Attaque(this,c);
 				a.agit();
 			}else{
-				System.out.println("Votre tireur cherche une cible et passe son tour");
+				System.out.println("Votre tireur cherche une cible et tire dans le vide");
+				this.setEnergie(this.getEnergie()-this.getCoutAction());
 			}
 		}
 		

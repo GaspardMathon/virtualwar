@@ -16,7 +16,7 @@ public class Char extends Robot {
 	private static int coutDeplacement = 5;
 	private static int degatSubis = 6;
 	private static String type = "C";
-	private int portee = 10;
+	private int portee;
 	
 	/**
 	 * Contructeur du Char
