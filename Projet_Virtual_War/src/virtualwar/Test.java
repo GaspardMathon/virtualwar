@@ -1,7 +1,7 @@
 package virtualwar;
 
 import java.util.Random;
-//test
+
 public class Test {
 
 	static Vue vueEnCour;
@@ -57,7 +57,7 @@ public class Test {
 		/*
 		 * Possibilité de créer une méthode pour la saisie d'en dessous ?
 		 */
-		//
+		
 		for(int copt = 1;copt < 3 ; copt++){
 			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
 				System.out.println("Joueur " + copt + " choisissez le type de votre robot n°" + cpt );
@@ -70,7 +70,7 @@ public class Test {
 								J1.ajouterTireur(Equipe1,0,0);
 							}
 							if(rep.equals("C")){
-								//J1.ajouterChar(Equipe1, 0, 0);
+								J1.ajouterChar(Equipe1, 0, 0);
 							}
 							if( rep.equals("P")){
 								J1.ajouterPiegeur(Equipe1, 0, 0);
@@ -81,7 +81,7 @@ public class Test {
 								J2.ajouterTireur(Equipe2,0,0);
 							}
 							if(rep.equals("C")){
-								//J2.ajouterChar(Equipe2, 0, 0);
+								J2.ajouterChar(Equipe2, 0, 0);
 							}
 							if( rep.equals("P")){
 								J2.ajouterPiegeur(Equipe2, 0, 0);
@@ -128,6 +128,6 @@ public class Test {
 	}
 
 
-	
+
 }
 }

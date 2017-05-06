@@ -61,20 +61,74 @@ public class Char extends Robot {
 		listedirection.add(Constante.BAS);
 		listedirection.add(Constante.DROITE);
 		listedirection.add(Constante.GAUCHE);
-		
+		Coordonnees temp;
+		Coordonnees temp2;
 		for(Coordonnees direction : listedirection){
-			if(this.getVue().estDisponible(this.getCoordonnees().ajoute(direction).ajoute(direction))){
-				listedep.add(this.getCoordonnees().ajoute(direction).ajoute(direction));
-			}else{
-				if(this.getVue().estDisponible(this.getCoordonnees().ajoute(direction))){
-					listedep.add(this.getCoordonnees().ajoute(direction));
+			temp = new Coordonnees(this.getCoordonnees().getHauteur(),this.getCoordonnees().getLargeur());
+			temp.ajoute(direction);
+			if(this.getVue().estDisponible(temp)){
+				temp2 = new Coordonnees(temp.getHauteur(),temp.getLargeur());
+				temp2.ajoute(direction);
+				if(this.getVue().estDisponible(temp2)){
+					listedep.add(temp2);
+				}else{
+					listedep.add(temp);
 				}
 			}
 		}
 		return listedep;
 	}
+	@SuppressWarnings("resource")
 	public Coordonnees choixMouvement(){
-		return null;
+		Coordonnees res = new Coordonnees(-1,-1);
+		String choix;
+		boolean corect= false;
+		Scanner sc = new Scanner(System.in);
+		Coordonnees temp;
+		while(!corect){
+			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
+			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE");
+			choix = sc.nextLine();
+			if(choix.equals("1")){
+				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
+				res.ajoute(Constante.HAUT);
+				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
+				if(!this.estDans(temp)){
+					res.ajoute(Constante.BAS);
+				}
+				corect = true;
+			}
+			if(choix.equals("2")){
+				res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
+				res.ajoute(Constante.BAS);
+				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
+				
+				if(!this.estDans(temp)){
+					res.ajoute(Constante.HAUT);
+				}
+				corect = true;
+			}
+			if(choix.equals("3")){
+				res = new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
+				res.ajoute(Constante.GAUCHE);
+				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
+
+				if(!this.estDans(temp)){
+					res.ajoute(Constante.DROITE);
+				}
+				corect = true;
+			}
+			if(choix.equals("4")){
+				res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
+				res.ajoute(Constante.DROITE);
+				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
+				if(!this.estDans(temp)){
+					res.ajoute(Constante.GAUCHE);
+				}
+				corect = true;
+			}
+		}
+		return res;	
 	}
 
 	
@@ -129,6 +183,7 @@ public class Char extends Robot {
 		return listeTir;
 	}
 	
+
 	@SuppressWarnings("resource")
 	public Coordonnees choixCible(){
 		Scanner sc = new Scanner(System.in);

@@ -145,7 +145,7 @@ abstract class Robot {
 	public boolean estDans(Coordonnees c){
 		boolean res = false;
 		for(Coordonnees compt : this.getDeplacements()){
-			if(c.getHauteur() == compt.getHauteur() && c.getLargeur() == compt.getLargeur()){
+			if(compt.equals(c)){
 				return true;
 			}
 		
