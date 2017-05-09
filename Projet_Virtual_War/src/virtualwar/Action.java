@@ -1,7 +1,7 @@
 package virtualwar;
 /**
- * La classe Action est une classe abstraite qui défini un déplacement ou une attaque
- * @author Clément
+ * La classe Action est une classe abstraite qui dÃ©fini un dÃ©placement ou une attaque
+ * @author ClÃ©ment
  *
  */
 abstract class Action {
@@ -11,8 +11,8 @@ abstract class Action {
 	
 	/**
 	 * Constructeur d'une action
-	 * @param robot le Robot qui va effectué l'action
-	 * @param direction les Coordonnées vers lesquelles est dirigée l'action
+	 * @param robot le Robot qui va effectuÃ© l'action
+	 * @param direction les CoordonnÃ©es vers lesquelles est dirigÃ©e l'action
 	 */
 	public Action(Robot robot, Coordonnees direction){
 		this.robot = robot;
@@ -29,13 +29,13 @@ abstract class Action {
 	
 	/**
 	 * Obtenir la direction de l'action
-	 * @return les Coordonnées ciblée par l'action
+	 * @return les CoordonnÃ©es ciblÃ©e par l'action
 	 */
 	public Coordonnees getDirection(){
 		return this.direction;
 	}
 	/**
-	 * Effectue l'action, attaque la cible ou déplace le robot vers les coordonnées ciblées et dépense l'énergie du robot
+	 * Effectue l'action, attaque la cible ou dÃ©place le robot vers les coordonnÃ©es ciblÃ©es et dÃ©pense l'Ã©nergie du robot
 	 */
 	abstract void agit();
 }

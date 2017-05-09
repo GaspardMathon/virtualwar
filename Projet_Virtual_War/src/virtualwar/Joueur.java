@@ -67,7 +67,7 @@ public class Joueur {
 	public Robot choisirInvocation(){
 		boolean saisieOK = false;
 		int robot = -1;
-		System.out.print("Vos robots dans votre base : ");
+		System.out.print("Voici les robots dans votre base : ");
 		ArrayList<Robot> robotInvocable = new ArrayList<>();
 		sc4 = new Scanner(System.in);
 		for(Robot r : this.getListeRobot()){
@@ -78,7 +78,7 @@ public class Joueur {
 		for(Robot r : robotInvocable){
 			System.out.print("  " + r.toString());
 		}
-		System.out.println(" \n Quel  robot voulez vous invoquer : écrivez le numero du n-ieme robot");
+		System.out.println(" \nQuel  robot voulez-vous invoquer : (écrivez le numero du n-ieme robot)");
 		while(!saisieOK){
 			robot = Constante.saisieIntProtegee(sc4);
 			if(robot>0 && robot <=robotInvocable.size()){
@@ -93,16 +93,16 @@ public class Joueur {
 		boolean ok = false;
 		int i =-1,y=-1,x=-1,z=-1;
 		
-		System.out.println("Ou voulez vous placer votre Robot : ");
+		System.out.println("Où voulez-vous déplacer votre Robot : ");
 		if(this.equipe == 1){
 			if(r.getVue().estDisponible(new Coordonnees(1,2))){
-				System.out.println("Coordonnee possible : [1,2]");
+				System.out.println("\nCoordonnee possible : [1,2]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(2,1))){
 				System.out.println("Coordonnee possible : [2,1]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(2,2))){
-				System.out.println("Coordonnee possible : [2,2]");
+				System.out.println("Coordonnee possible : [2,2]\n");
 			}
 			while(!ok){
 				 i = Constante.saisieIntProtegee(sc3);
@@ -129,7 +129,7 @@ public class Joueur {
 				System.out.println("Coordonnée possible : ["+(x-1)+","+(z-1)+"]");
 			}
 			while(!ok){
-				System.out.println("Entrez les coordonn�es : ");
+				System.out.print("\nEntrez les coordonnées : ");
 				i = Constante.saisieIntProtegee(sc3);
 				y = Constante.saisieIntProtegee(sc3);
 				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z) && !(i ==x && y == z)){
@@ -164,9 +164,9 @@ public class Joueur {
 	
 	public int choixActions(){
 		int res = -1;
-		System.out.println("Que voulez vous faire ce tour ci ?");
+		System.out.println("Que voulez-vous faire ce tour-ci ?");
 		if(this.plateauVide()){
-			System.out.println("1-invoquer un robot");
+			System.out.println("1-Invoquer un robot");
 			res = Constante.saisieEntier(1,1);
 		}else{
 			if(this.baseVide()){
@@ -174,7 +174,8 @@ public class Joueur {
 				System.out.println("3-Attaquer/Miner avec un robot");
 				res = Constante.saisieEntier(2,3);
 			}else{
-				System.out.println("1-invoquer un robot");
+				System.out.println("1-"
+						+ "invoquer un robot");
 				System.out.println("2-Deplacer un robot");
 				System.out.println("3-Attaquer/Miner avec un robot");
 				res = Constante.saisieEntier(1,3);
@@ -199,7 +200,7 @@ public class Joueur {
 		for(Robot r : robotInvoque){
 			System.out.print("  "+r.toString());
 		}
-		System.out.println("  Quel robot voulez vous utiliser ?");
+		System.out.println("Quel robot voulez vous utiliser ?");
 		while(!saisieOK){
 			robot = Constante.saisieIntProtegee(sc2);
 			if(robot>0 && robot <=robotInvoque.size()){

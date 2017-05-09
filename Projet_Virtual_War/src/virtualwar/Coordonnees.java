@@ -1,37 +1,37 @@
 package virtualwar;
-//La classe coordonnées permet de situer les differentes cellules du plateau et les differents robots
+//La classe coordonnÃ©es permet de situer les differentes cellules du plateau et les differents robots
 //Elle possede deux attributs entier : largeur et hauteur
 public class Coordonnees {
 	private int hauteur;
 	private int largeur;
 	
-	//Unique constructeur prenant en paramètre deux entiers :  hauteur et largeur
+	//Unique constructeur prenant en paramÃªtre deux entiers :  hauteur et largeur
 	public Coordonnees(int hauteur, int largeur){
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 	}
 	
-	//retourne l'attribut hauteur de la Coordonnée
+	//retourne l'attribut hauteur de la coordonnÃ©e
 	public int getHauteur(){
 		return this.hauteur;
 	}
 	
-	//retourne l'attribut largeur de la Coordonné
+	//retourne l'attribut largeur de la coordonnÃ©e
 	public int getLargeur(){
 		return this.largeur;
 	}
 	
-	//remplace la hauteur de la Coordonnées par un entier donné en paramètre
+	//remplace la hauteur de la coordonnÃ©es par un entier donnÃ© en paramÃªtre
 	public void setHauteur(int i){
 		this.hauteur = i;
 	}
 	
-	//remplace la largeur de la Coordonnées par un entier donné en paramètre
+	//remplace la largeur de la coordonnÃ©es par un entier donnÃ© en paramÃªtre
 	public void setLargeur(int i){
 		this.largeur = i;
 	}
 	
-	//retourne VRAI si la coordonnée est égale à celle donnée en paramètre
+	//retourne VRAI si la coordonnÃ©e est Ã©gale Ã  celle donnÃ©e en paramÃªtre
 	public boolean equals(Coordonnees c){
 		if(this.hauteur == c.getHauteur() && this.largeur == c.getLargeur()){
 			return true;
@@ -39,14 +39,14 @@ public class Coordonnees {
 		else { return false;}
 	}
 	
-	//ajoute la coordonnées actuelle à une autre coordonnée donnée en paramètre
+	//ajoute la coordonnÃ©es actuelle Ã  une autre coordonnÃ©e donnÃ©e en paramÃªtre
 	public Coordonnees ajoute(Coordonnees c){
 		this.hauteur += c.hauteur; 
 		this.largeur += c.largeur;
 		return this;
 	}
 	
-	//renvoit une chaine de caractère représentant la coordonnée
+	//renvoit une chaine de caractÃ¨re reprÃ©sentant la coordonnÃ©e
 	public String toString(){
 		return "["+this.getHauteur()+","+this.getLargeur()+"]";
 	}

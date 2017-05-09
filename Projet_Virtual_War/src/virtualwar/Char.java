@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * la classe char qui h�rite de la classe Robot cr�er un Robot qui ne peut se d�placer qu'en ligne sur 2 cases et de tirer 
+ * la classe char qui hérite de la classe Robot créer un Robot qui ne peut se déplacer qu'en ligne sur 2 cases et de tirer 
  * @author salvadoc
  *
  */
@@ -20,11 +20,11 @@ public class Char extends Robot {
 	
 	/**
 	 * Contructeur du Char
-	 * @param vue vue du char en fonction de l'�quipe
-	 * @param l largeur de la coordonn�e initial du char
-	 * @param h hauteur de la coordonn�e initial du char
-	 * @param equipe �quipe du char
-	 * @param portee port�e du char
+	 * @param vue vue du char en fonction de l'équipe
+	 * @param l largeur de la coordonnée initial du char
+	 * @param h hauteur de la coordonnée initial du char
+	 * @param equipe équipe du char
+	 * @param portee portée du char
 	 */
 	public Char(Vue vue, int l ,int h,int equipe,int portee){
 		super(vue,l,h,equipe,type,ENERGIEDEBASEC);
@@ -82,10 +82,10 @@ public class Char extends Robot {
 	public Coordonnees choixMouvement(){
 		Coordonnees res = new Coordonnees(-1,-1);
 		String choix;
-		boolean corect= false;
+		boolean correct= false;
 		Scanner sc = new Scanner(System.in);
 		Coordonnees temp;
-		while(!corect){
+		while(!correct){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
 			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE");
 			choix = sc.nextLine();
@@ -96,7 +96,7 @@ public class Char extends Robot {
 				if(!this.estDans(temp)){
 					res.ajoute(Constante.BAS);
 				}
-				corect = true;
+				correct = true;
 			}
 			if(choix.equals("2")){
 				res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
@@ -106,7 +106,7 @@ public class Char extends Robot {
 				if(!this.estDans(temp)){
 					res.ajoute(Constante.HAUT);
 				}
-				corect = true;
+				correct = true;
 			}
 			if(choix.equals("3")){
 				res = new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
@@ -116,7 +116,7 @@ public class Char extends Robot {
 				if(!this.estDans(temp)){
 					res.ajoute(Constante.DROITE);
 				}
-				corect = true;
+				correct = true;
 			}
 			if(choix.equals("4")){
 				res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
@@ -125,17 +125,17 @@ public class Char extends Robot {
 				if(!this.estDans(temp)){
 					res.ajoute(Constante.GAUCHE);
 				}
-				corect = true;
+				correct = true;
 			}
 		}
-		return res;	
+		return res;
 	}
 
 	
 	/**
-	 * obtenir la coordonn�e de tir possible dans une direction donn�e  
+	 * obtenir la coordonnée de tir possible dans une direction donnée  
 	 * @param Direction dans laquelle on cherche un tir possible
-	 * @return une coordonn�e dans laquelle ont peut tirer
+	 * @return une coordonnée dans laquelle ont peut tirer
 	 */
 	public Coordonnees CoordsTir(Coordonnees Direction){
 		int cpt = 0;
@@ -143,9 +143,9 @@ public class Char extends Robot {
 		while(cpt < this.portee){
 			memoire.ajoute(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recup�re l'information : est ce que la cellule contient un robot ?
+				// Récupère l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//R�cup�re l'information est ce que le robot est de l'�quipe ennemi ?
+					//Récupère l'information est ce que le robot est de l'équipe ennemi ?
 					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() != this.getEquipe() ){
 						return memoire;
 					}
@@ -161,13 +161,13 @@ public class Char extends Robot {
 	}
 	
 	/**
-	 * obtenir la liste des coordonn�es pour lesquelles le tir est possible
+	 * obtenir la liste des coordonnées pour lesquelles le tir est possible
 	 * @param portee portee du Char
-	 * @return liste des coordonn�es ciblables
+	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeTir = new ArrayList<>();
-		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnees a refuser
+		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnées a refuser
 		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.BAS));
 		}
@@ -194,7 +194,7 @@ public class Char extends Robot {
 		}else{
 			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
 			while(!choixOK){
-				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéros des coordonn�es dans la liste)");
+				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéro de la n-ième coordonnée du robot à attaquer)");
 				choix = sc.nextLine();
 				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
 					choixOK = true;
@@ -206,7 +206,7 @@ public class Char extends Robot {
 	}
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'�nergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
 		}else{
 			Attaque a = new Attaque(this,this.choixCible());
 			a.agit();

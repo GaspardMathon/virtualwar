@@ -1,7 +1,7 @@
 package virtualwar;
 /**
- * La classe Attaque qui hérite de la classe Action permet d'efectuer un tir d'un Tireur ou d'un char sur un autre robot
- * @author Clément
+ * La classe Attaque qui hÃ©rite de la classe Action permet d'efectuer un tir d'un Tireur ou d'un char sur un autre robot
+ * @author ClÃ©ment
  *
  */
 public class Attaque extends Action {
@@ -9,7 +9,7 @@ public class Attaque extends Action {
 	/**
 	 * Constructeur d'une Attaque
 	 * @param robot le Robot qui attaque 
-	 * @param direction les Coordonnées de cible du robot 
+	 * @param direction les CoordonnÃ©es de cible du robot 
 	 */
 	public Attaque(Robot robot, Coordonnees direction){
 		super(robot,direction);

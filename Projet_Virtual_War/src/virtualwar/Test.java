@@ -11,7 +11,7 @@ public class Test {
 		boolean joueur = r.nextBoolean();
 		Joueur joueurEnCour;
 		int choix = -1;
-		System.out.println("Bienvenue dans cette version prototype de VirtualWar");
+		Constante.titreAleatoire();
 		
 		//Recupére le nb de robot entré avec crtl saisie [1-5]
 		System.out.print("Entrez le nombre de Robot par equipe (compris entre " + 1 + " et " + Constante.ROBOTS_MAX + ") : ");

@@ -1,16 +1,16 @@
 package virtualwar;
 
 /**
- * La classe Déplacement qui hérite de la classe action permet de faire déplacer un robot
- * @author Clément
+ * La classe DÃ©placement qui hÃ©rite de la classe action permet de faire dÃ©placer un robot
+ * @author ClÃ©ment
  *
  */
 public class Deplacement extends Action {
 	
 	/**
-	 * Constructeur d'un déplacement
-	 * @param robot Robot qui effetue le déplacement
-	 * @param direction Coordonnées sur lesquelles il se déplace
+	 * Constructeur d'un dÃ©placement
+	 * @param robot Robot qui effetue le dÃ©placement
+	 * @param direction CoordonnÃ©es sur lesquelles il se dÃ©place
 	 */
 	public Deplacement(Robot robot, Coordonnees direction){
 		super(robot,direction);

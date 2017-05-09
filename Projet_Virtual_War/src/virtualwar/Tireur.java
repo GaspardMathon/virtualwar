@@ -188,7 +188,7 @@ public class Tireur extends Robot {
 		}else{
 			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
 			while(!choixOK){
-				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéros des coordonn�es dans la liste)");
+				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéros des coordonnées dans la liste)");
 				choix = sc.nextLine();
 				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
 					choixOK = true;
