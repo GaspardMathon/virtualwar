@@ -217,7 +217,7 @@ public class Char extends Robot {
 	public String toString(){
 		String nom = "Char de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
-			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
+			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+"/"+ENERGIEDEBASEC;
 		}
 		return nom;
 	}

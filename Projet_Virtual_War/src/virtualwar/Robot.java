@@ -186,7 +186,7 @@ abstract class Robot {
 		boolean mouvement = false;
 		Coordonnees c = new Coordonnees(-1,-1);
 		if(this.getEnergie()< Constante.COUTDEPLACEMENT){
-			System.out.println("Votre robot n'as pas assez d'energie pour se deplacer");
+			System.out.println("Votre robot n'as pas assez d'energie pour se déplacer");
 		}else{
 			while(!mouvement){
 				c = this.choixMouvement();

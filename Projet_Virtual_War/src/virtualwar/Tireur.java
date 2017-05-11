@@ -225,7 +225,7 @@ public class Tireur extends Robot {
 	public String toString(){
 		String nom = "Tireur de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
-			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
+			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+"/"+ENERGIEDEBASE;
 		}
 		return nom;
 	}

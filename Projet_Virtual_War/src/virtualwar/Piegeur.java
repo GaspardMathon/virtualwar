@@ -179,7 +179,7 @@ public class Piegeur extends Robot{
 	public String toString(){
 		String nom = "Piègeur(s) de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
-			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+", nb mine(s) :" + this.getNbMines();
+			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+"/"+ENERGIEDEBASEP+", nb mine(s) :" + this.getNbMines();
 		}
 		return nom;
 	}
