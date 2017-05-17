@@ -87,7 +87,7 @@ public class Char extends Robot {
 		Coordonnees temp;
 		while(!correct){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.HAUT 2.BAS 3.GAUCHE 4.DROITE");
+			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());

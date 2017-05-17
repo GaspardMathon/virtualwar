@@ -8,14 +8,9 @@ public class Constante {
 	HashMap<Coordonnees,String> listeCoord;	
 	
 	//Liste des constante de saisie 
-	static final int DEPLACEMENT = 0;
-	static final int ENERGIE = 1;
-	static final int COUTACTION = 2;
 	static final int COUTDEPLACEMENT = 3;
 	static final int DEGATTIR = 4;
 	static final int DEGATMINE = 5;
-	static final int AFFICHE = 6;
-	static final int DEPLACEMENTS = 7;
 	static final int HAUTEUR_MIN = 4;
 	static final int HAUTEUR_MAX = 30;
 	static final int LARGEUR_MIN = 5;
@@ -125,6 +120,8 @@ public class Constante {
 					return 'C';
 				}else if(saisie.charAt(0) =='p' || saisie.charAt(0) == 'P'){
 					return 'P';
+				}else if(saisie.charAt(0) =='s' || saisie.charAt(0) == 'S'){
+					return 'S';
 				}else{
 					System.out.println("Saisie invalide, veulliez recommencer ");
 					saisie = sc2.next();

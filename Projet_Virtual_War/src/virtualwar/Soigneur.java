@@ -5,17 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * La classe tireur qui hérite de Robot crée un Tireur capable de se déplacer et d'attaquer des Robots énemies
- * @author Clément
+ * La classe soigneur qui hérite de Robot crée un Soigneur capable de régénérer les points de vie des Robots alliés
+ * @author Gaspard
  *
  */
-public class Tireur extends Robot {
+
+public class Soigneur extends Robot{
 	
-	private final static int ENERGIEDEBASE = 40;
-	private static int coutAction = 2;
+	private final static int ENERGIEDEBASE = 30;
+	private static int coutAction = 4;
 	private static int coutDeplacement = 1;
-	private static int degatSubis = 3;
-	private static String type = "T";
+	private static int degatSubis = 12;
+	private static String type = "S";
 	private int portee;
 	
 	/**
@@ -26,28 +27,29 @@ public class Tireur extends Robot {
 	 * @param equipe Equipe du tireur 
 	 * @param portee portee du tireur
 	 */
-	public Tireur(Vue vue, int l ,int h,int equipe,int portee){
+	
+	public Soigneur(Vue vue, int l ,int h,int equipe,int portee){
 		super(vue,l,h,equipe,type,ENERGIEDEBASE);
 		this.portee = portee;
 	}
 	
 	
 	public int getCoutAction(){
-		return Tireur.coutAction;
+		return Soigneur.coutAction;
 	}
 	
 
 	public int getCoutDeplacement(){
-		return Tireur.coutDeplacement;
+		return Soigneur.coutDeplacement;
 	}
 	
 
 	public int getDegatSubis(){
-		return Tireur.degatSubis;
+		return Soigneur.degatSubis;
 	}
 	
 	public int getEnergieDeBase(){
-		return Tireur.ENERGIEDEBASE;
+		return Soigneur.ENERGIEDEBASE;
 	}
 	
 	/**
@@ -124,20 +126,20 @@ public class Tireur extends Robot {
 	}
 	
 	/**
-	 * obtenir la coordonnï¿½e de tir possible dans une direction donnï¿½e  
+	 * obtenir la coordonnée où le soin est possible dans une direction donnée  
 	 * @param Direction dans laquelle on cherche un tir possible
-	 * @return une coordonnï¿½e dans laquelle ont peut tirer
+	 * @return une coordonnée dans laquelle ont peut tirer
 	 */
-	public Coordonnees CoordsTir(Coordonnees Direction){
+	public Coordonnees CoordsSoin(Coordonnees Direction){
 		int cpt = 0;
 		Coordonnees memoire = new Coordonnees(this.getCoordonnees().getHauteur(),this.getCoordonnees().getLargeur());
 		while(cpt < this.portee){
 			memoire.ajoute(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recupï¿½re l'information : est ce que la cellule contient un robot ?
+				// Recupère l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//Rï¿½cupï¿½re l'information est ce que le robot est de l'ï¿½quipe ennemi ?
-					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() != this.getEquipe() ){
+					//Rï¿½cupï¿½re l'information est ce que le robot est de l'équipe alliée ?
+					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() == this.getEquipe() ){
 						return memoire;
 					}
 					else{
@@ -152,31 +154,40 @@ public class Tireur extends Robot {
 	}
 	
 	/**
-	 * obtenir la liste des coordonnï¿½es pour lesquelles le tir est possible
-	 * @param portee portee du Tireur
-	 * @return liste des coordonnï¿½es ciblables
+	 * obtenir la liste des coordonnées pour lesquelles le soin est possible
+	 * @param portee portee du Soigneur
+	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
-		ArrayList <Coordonnees> listeTir = new ArrayList<>();
-		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnees a refuser
-		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.BAS));
+		ArrayList <Coordonnees> listeSoin = new ArrayList<>();
+		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnées a refuser
+		if(!this.CoordsSoin(Constante.BAS).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.BAS));
 		}
-		if(!this.CoordsTir(Constante.HAUT).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.HAUT));
+		if(!this.CoordsSoin(Constante.HAUT).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.HAUT));
 		}
-		if(!this.CoordsTir(Constante.DROITE).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.DROITE));
+		if(!this.CoordsSoin(Constante.DROITE).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.DROITE));
 		}
-		if(!this.CoordsTir(Constante.GAUCHE).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.GAUCHE));
+		if(!this.CoordsSoin(Constante.GAUCHE).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.GAUCHE));
 		}
-		return listeTir;
+		if(!this.CoordsSoin(Constante.DIAGBD).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.DIAGBD));
+		}
+		if(!this.CoordsSoin(Constante.DIAGBG).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.DIAGBG));
+		}
+		if(!this.CoordsSoin(Constante.DIAGHD).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.DIAGHD));
+		}
+		if(!this.CoordsSoin(Constante.DIAGHG).equals(Coordnulle)){
+			listeSoin.add(CoordsSoin(Constante.DIAGHG));
+		}
+			listeSoin.add(this.getCoordonnees());
+		return listeSoin;
 	}
-	
-
-	
-	
 	
 	@SuppressWarnings("resource")
 	public Coordonnees choixCible(){
@@ -188,7 +199,7 @@ public class Tireur extends Robot {
 		}else{
 			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
 			while(!choixOK){
-				System.out.println("Quelle cible voulez vous attaquer ? (Entrez le numéros des coordonnées dans la liste)");
+				System.out.println("Quelle cible voulez-vous soigner ? (Entrez les numéros des deux coordonnées dans la liste)");
 				choix = sc.nextLine();
 				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
 					choixOK = true;
@@ -198,7 +209,6 @@ public class Tireur extends Robot {
 		}
 		return  this.getCoordonnees();
 	}
-		
 	
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
@@ -207,29 +217,28 @@ public class Tireur extends Robot {
 			Coordonnees c = this.choixCible();
 			if(!c.equals(this.getCoordonnees())){
 				Attaque a = new Attaque(this,c);
-				a.agit();
+				a.soigne();
 			}else{
-				System.out.println("Votre tireur cherche une cible et tire dans le vide");
+				System.out.println("Votre soigneur cherche une cible et soigne dans le vide");
 				this.setEnergie(this.getEnergie()-this.getCoutAction());
 			}
 		}
 		
 	}
+	
 	/**
-	 * régénère l'énergie du tireur
+	 * régénère l'énergie du soigneur
 	 */
 	public void regenEnergie(){ 
 		this.setEnergie(this.getEnergie()+2); 
 	}
 	
 	public String toString(){
-		String nom = "Tireur de l'equipe "+this.getEquipe()+", ";
+		String nom = "Soigneur de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
 			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+"/"+ENERGIEDEBASE;
 		}
 		return nom;
 	}
-	
-	
-	
+
 }

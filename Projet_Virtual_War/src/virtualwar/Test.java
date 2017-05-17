@@ -54,15 +54,12 @@ public class Test {
 		Vue Equipe1 = new Vue(plat,1);
 		Vue Equipe2 = new Vue(plat,2);
 		
-		/*
-		 * Possibilité de créer une méthode pour la saisie d'en dessous ?
-		 */
 		
 		for(int copt = 1;copt < 3 ; copt++){
 			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
 				System.out.println("Joueur " + copt + " choisissez le type de votre robot n°" + cpt );
-				System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
-					//Crtl de saisie : "t,T-c,C-p,P" accépté.
+				System.out.println("Entrez T pour un Tireur , C pour un Char, P pour un Piegeur ou S pour un soigneur : ");
+					//Crtl de saisie : "t,T-c,C-p,P-S-s" accépté.
 					String rep = "" + Constante.saisieTypeRobot();
 					//Ajoute les robots
 						if(copt == 1){
@@ -75,6 +72,9 @@ public class Test {
 							if( rep.equals("P")){
 								J1.ajouterPiegeur(Equipe1, 0, 0);
 							}
+							if( rep.equals("S")){
+								J1.ajouterSoigneur(Equipe1, 0, 0);
+							}
 						}
 						if(copt == 2){
 							if(rep.equals("T")){
@@ -85,6 +85,9 @@ public class Test {
 							}
 							if( rep.equals("P")){
 								J2.ajouterPiegeur(Equipe2, 0, 0);
+							}
+							if( rep.equals("S")){
+								J2.ajouterSoigneur(Equipe2, 0, 0);
 							}
 						}
 				}

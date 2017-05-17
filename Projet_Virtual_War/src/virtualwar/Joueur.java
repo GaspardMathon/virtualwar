@@ -39,6 +39,9 @@ public class Joueur {
 	public void ajouterChar(Vue vue,int h,int l){
 		listeRobot.add(new Char(vue,h,l,equipe,10));
 	}
+	public void ajouterSoigneur(Vue vue,int h,int l){
+		listeRobot.add(new Soigneur(vue,h,l,equipe,2));
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -171,12 +174,12 @@ public class Joueur {
 		}else{
 			if(this.baseVide()){
 				System.out.println("2-Deplacer un robot");
-				System.out.println("3-Attaquer/Miner avec un robot");
+				System.out.println("3-Agir avec un robot(Attaquer, Miner, Soigner)");
 				res = Constante.saisieEntier(2,3);
 			}else{
 				System.out.println("1-Invoquer un robot");
 				System.out.println("2-Deplacer un robot");
-				System.out.println("3-Attaquer/Miner avec un robot");
+				System.out.println("3-Agir avec un robot(Attaquer, Miner, Soigner)");
 				res = Constante.saisieEntier(1,3);
 			}
 		}

@@ -84,7 +84,7 @@ public class Piegeur extends Robot{
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.En HAUT 2.En BAS 3.En GAUCHE 4.En DROITE 5.En HAUT à GAUCHE 6.En HAUT à DROITE 7.En BAS à GAUCHE 8.En BAS à DROITE");
+			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE 5.En HAUT à GAUCHE 6.En HAUT à DROITE 7.En BAS à GAUCHE 8.En BAS à DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
