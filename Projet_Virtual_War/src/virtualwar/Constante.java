@@ -21,14 +21,14 @@ public class Constante {
 	
 	
 	//Liste des constante de deplacement
-	static final Coordonnees DIAGBD = new Coordonnees(1,1);
-	static final Coordonnees DIAGBG = new Coordonnees(1,-1);
-	static final Coordonnees DIAGHD = new Coordonnees(-1,1);
-	static final Coordonnees DIAGHG = new Coordonnees(-1,-1);
-	static final Coordonnees GAUCHE = new Coordonnees(0,-1);
-	static final Coordonnees DROITE = new Coordonnees(0,1);
-	static final Coordonnees HAUT = new Coordonnees(-1,0);
-	static final Coordonnees BAS = new Coordonnees(1,0);
+	public static final Coordonnees DIAGBD = new Coordonnees(1,1);
+	public static final Coordonnees DIAGBG = new Coordonnees(1,-1);
+	public static final Coordonnees DIAGHD = new Coordonnees(-1,1);
+	public static final Coordonnees DIAGHG = new Coordonnees(-1,-1);
+	public static final Coordonnees GAUCHE = new Coordonnees(0,-1);
+	public static final Coordonnees DROITE = new Coordonnees(0,1);
+	public static final Coordonnees HAUT = new Coordonnees(-1,0);
+	public static final Coordonnees BAS = new Coordonnees(1,0);
 
 	private static Scanner sc;
 

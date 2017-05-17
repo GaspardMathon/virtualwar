@@ -6,6 +6,8 @@ import java.io.File;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,8 +22,8 @@ public class PlateauG extends Application {
 	GridPane tableau;
 	
 	public void start(Stage stage){
-		final String imageURI = new File("/home/infoetu/salvaoc/Images/moustache.png").toURI().toString();
-		Image img = new Image(imageURI);
+		//final String imageURI = new File("/home/infoetu/salvaoc/Images/moustache.png").toURI().toString();
+		Image img = new Image("file:/home/infoetu/salvaoc/Images/sad_frog.jpg");
 		ImageView imgvue = new ImageView();
 		imgvue.setImage(img);
 		imgvue.setFitHeight(100);
@@ -33,10 +35,14 @@ public class PlateauG extends Application {
 		
 		for(int i = 0; i < plat.getHauteur()+2;i++){
 			for(int y = 0; y < plat.getLargeur()+2;y++){
-				Label label =  new Label();
-				label.setText(plat.getGrille()[i][y].toString());
-				label.setStyle("-fx-font : 34px Verdana");
-				tableau.add(label, y, i);
+				//Label label =  new Label();
+				//label.setText(plat.getGrille()[i][y].toString());
+				//label.setStyle("-fx-font : 34px Verdana");
+				Canvas c = new Canvas(60,60);
+				GraphicsContext gc = c.getGraphicsContext2D();
+				gc.drawImage(img,0,0);
+			
+				tableau.add(c, 1, 1);
 			}
 		}
 		

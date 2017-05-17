@@ -27,7 +27,11 @@ public class Attaque extends Action {
 	public void soigne(){
 		robot.setEnergie(robot.getEnergie()-robot.getCoutAction());
 		Robot cible = robot.getVue().getPlateau().getGrille()[direction.getHauteur()][direction.getLargeur()].getContenu();
-		cible.setEnergie(cible.getEnergie()+this.getRobot().getDegatSubis());
+		if(cible.getEnergie()+this.getRobot().getDegatSubis()> cible.getEnergieDeBase()){
+			cible.setEnergie(cible.getEnergieDeBase());
+		}else {
+			cible.setEnergie(cible.getEnergie()+this.getRobot().getDegatSubis());
+		}
 		if(cible.estMort()){
 			cible.getVue().getPlateau().getGrille()[cible.getCoordonnees().getHauteur()][cible.getCoordonnees().getLargeur()].videRobot();
 		}

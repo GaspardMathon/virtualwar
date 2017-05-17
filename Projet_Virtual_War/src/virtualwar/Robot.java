@@ -8,7 +8,7 @@ import java.util.List;
  *Classe abstraite qui défini un Robot en général
  *@author Clément
  */
-abstract class Robot {
+public abstract class Robot {
 	
 	private int energie;
 	private int equipe;

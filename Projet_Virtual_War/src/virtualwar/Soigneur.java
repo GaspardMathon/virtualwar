@@ -185,7 +185,6 @@ public class Soigneur extends Robot{
 		if(!this.CoordsSoin(Constante.DIAGHG).equals(Coordnulle)){
 			listeSoin.add(CoordsSoin(Constante.DIAGHG));
 		}
-			listeSoin.add(this.getCoordonnees());
 		return listeSoin;
 	}
 	
