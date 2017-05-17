@@ -8,32 +8,32 @@ public class Constante {
 	HashMap<Coordonnees,String> listeCoord;	
 	
 	//Liste des constante de saisie 
-	static final int DEPLACEMENT = 0;
-	static final int ENERGIE = 1;
-	static final int COUTACTION = 2;
-	static final int COUTDEPLACEMENT = 3;
-	static final int DEGATTIR = 4;
-	static final int DEGATMINE = 5;
-	static final int AFFICHE = 6;
-	static final int DEPLACEMENTS = 7;
-	static final int HAUTEUR_MIN = 4;
-	static final int HAUTEUR_MAX = 30;
-	static final int LARGEUR_MIN = 5;
-	static final int LARGEUR_MAX = 40;
-	static final int ROBOTS_MAX = 5;
-	static final int POURCENTAGE_OBSTACLE_MIN = 0;
-	static final int POURCENTAGE_OBSTACLE_MAX = 100;
+	public static final int DEPLACEMENT = 0;
+	public static final int ENERGIE = 1;
+	public static final int COUTACTION = 2;
+	public static final int COUTDEPLACEMENT = 3;
+	public static final int DEGATTIR = 4;
+	public static final int DEGATMINE = 5;
+	public static final int AFFICHE = 6;
+	public static final int DEPLACEMENTS = 7;
+	public static final int HAUTEUR_MIN = 4;
+	public static final int HAUTEUR_MAX = 30;
+	public static final int LARGEUR_MIN = 5;
+	public static final int LARGEUR_MAX = 40;
+	public static final int ROBOTS_MAX = 5;
+	public static final int POURCENTAGE_OBSTACLE_MIN = 0;
+	public static final int POURCENTAGE_OBSTACLE_MAX = 100;
 	
 	
 	//Liste des constante de deplacement
-	static final Coordonnees DIAGBD = new Coordonnees(1,1);
-	static final Coordonnees DIAGBG = new Coordonnees(1,-1);
-	static final Coordonnees DIAGHD = new Coordonnees(-1,1);
-	static final Coordonnees DIAGHG = new Coordonnees(-1,-1);
-	static final Coordonnees GAUCHE = new Coordonnees(0,-1);
-	static final Coordonnees DROITE = new Coordonnees(0,1);
-	static final Coordonnees HAUT = new Coordonnees(-1,0);
-	static final Coordonnees BAS = new Coordonnees(1,0);
+	public static final Coordonnees DIAGBD = new Coordonnees(1,1);
+	public static final Coordonnees DIAGBG = new Coordonnees(1,-1);
+	public static final Coordonnees DIAGHD = new Coordonnees(-1,1);
+	public static final Coordonnees DIAGHG = new Coordonnees(-1,-1);
+	public static final Coordonnees GAUCHE = new Coordonnees(0,-1);
+	public static final Coordonnees DROITE = new Coordonnees(0,1);
+	public static final Coordonnees HAUT = new Coordonnees(-1,0);
+	public static final Coordonnees BAS = new Coordonnees(1,0);
 
 	private static Scanner sc;
 

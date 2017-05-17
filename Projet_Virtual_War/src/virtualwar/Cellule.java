@@ -7,7 +7,7 @@ abstract public class Cellule {
 	protected int base;
 	protected Coordonnees coordonne;
 	protected boolean obstacle;
-	protected boolean contientRobot;
+	boolean contientRobot;
 	protected Robot robot;
 
 	//Constructeur par d�fault sans param�tre
@@ -84,7 +84,7 @@ abstract public class Cellule {
 	}
 	
 	//deplace un robot sur cette cellule
-	abstract void deplacerSur(Robot robot);
+	public abstract void deplacerSur(Robot robot);
 	
 	//vide completement la cellule 
 	abstract void videCellule();
