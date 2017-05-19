@@ -8,16 +8,16 @@ public class Constante {
 	HashMap<Coordonnees,String> listeCoord;	
 	
 	//Liste des constante de saisie 
-	static final int COUTDEPLACEMENT = 3;
-	static final int DEGATTIR = 4;
-	static final int DEGATMINE = 5;
-	static final int HAUTEUR_MIN = 4;
-	static final int HAUTEUR_MAX = 30;
-	static final int LARGEUR_MIN = 5;
-	static final int LARGEUR_MAX = 40;
-	static final int ROBOTS_MAX = 5;
-	static final int POURCENTAGE_OBSTACLE_MIN = 0;
-	static final int POURCENTAGE_OBSTACLE_MAX = 100;
+	public static final int COUTDEPLACEMENT = 3;
+	public static final int DEGATTIR = 4;
+	public static final int DEGATMINE = 5;
+	public static final int HAUTEUR_MIN = 4;
+	public static final int HAUTEUR_MAX = 30;
+	public static final int LARGEUR_MIN = 5;
+	public static final int LARGEUR_MAX = 40;
+	public static final int ROBOTS_MAX = 5;
+	public static final int POURCENTAGE_OBSTACLE_MIN = 0;
+	public static final int POURCENTAGE_OBSTACLE_MAX = 100;
 	
 	
 	//Liste des constante de deplacement

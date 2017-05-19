@@ -103,18 +103,18 @@ abstract public class Cellule {
 	public String toString(){
 		if(this.base != 0){
 			return "B";
+		}else{
+			if(this.obstacle){
+				return "O";
 			}else{
-				if(this.obstacle){
-					return "O";
+				if(!(this.robot == null)){
+					return this.robot.getType();
 				}else{
-					if(!(this.robot == null)){
-						return this.robot.getType();
-					}else{
-							return " ";
-					}
+					return " ";
 				}
 			}
 		}
-	
-
+	}
 }
+
+

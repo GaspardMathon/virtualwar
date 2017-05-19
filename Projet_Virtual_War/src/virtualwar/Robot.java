@@ -72,7 +72,11 @@ public abstract class Robot {
 	 * @return le Type du robot
 	 */
 	public String getType(){
-		return this.type;
+		if(this.getEquipe() == 1){
+			return this.type;
+		}else{
+			return this.type.toLowerCase();
+		}
 	}
 	
 	/**
