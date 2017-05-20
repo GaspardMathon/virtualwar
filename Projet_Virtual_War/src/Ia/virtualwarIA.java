@@ -13,11 +13,11 @@ public class virtualwarIA {
 		int choix = -1;
 		Constante.titreAleatoire();
 
-		//Recupï¿½re le nb de robot entrï¿½ avec crtl saisie [1-5]
+		//Recupére le nb de robot entré avec crtl saisie [1-5]
 		System.out.print("Entrez le nombre de Robot par equipe (compris entre " + 1 + " et " + Constante.ROBOTS_MAX + ") : ");
 		int nbRobot = Constante.saisieEntier(1,Constante.ROBOTS_MAX);
 
-		//Recupï¿½re le nom joueur1 avec crtl saisie
+		//Recupére le nom joueur1 avec crtl saisie
 		System.out.print("\nVeuillez entrer votre nom : ");
 		String nom1 = Joueur.saisiePseudo();
 
@@ -28,10 +28,10 @@ public class virtualwarIA {
 		IntelligenceArtificielle ia = new IntelligenceArtificielle("BOT Steeve", nbRobot,2);
 
 		System.out.println("\nEntrez la taille de la carte:");
-		//Recupï¿½re la hauteur avec ctrl saisie [3-20]
+		//Recupére la hauteur avec ctrl saisie [3-20]
 		System.out.println("Hauteur (min " +Constante.HAUTEUR_MIN +", max " + Constante.HAUTEUR_MAX+ " ) :");
 		int hauteur = Constante.saisieEntier(Constante.HAUTEUR_MIN,Constante.HAUTEUR_MAX);
-		//Recupï¿½re la hauteur avec ctrl saisie [3-20]
+		//Recupére la hauteur avec ctrl saisie [3-20]
 		System.out.println("Largeur (min "+ Constante.LARGEUR_MIN+", max "+Constante.LARGEUR_MAX+") :");
 		int largeur = Constante.saisieEntier(Constante.LARGEUR_MIN,Constante.LARGEUR_MAX);
 
@@ -47,17 +47,23 @@ public class virtualwarIA {
 		Vue VueIA = new Vue(plat,2);
 
 		/*
-		 * Possibilitï¿½ de crï¿½er une mï¿½thode pour la saisie d'en dessous ?
+		 * Possibilité de créer une méthode pour la saisie d'en dessous ?
 		 */
 
 		for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
-			System.out.println("Joueur " + 1 + " choisissez le type de votre robot nï¿½" + cpt );
-			System.out.println("Entrez T pour un Tireur , C pour un Char ou P pour un Piegeur");
-			//Crtl de saisie : "t,T-c,C-p,P" accï¿½ptï¿½.
+			System.out.println("Joueur " + 1 + " choisissez le type de votre robot n°" + cpt );
+			System.out.println("Entrez T pour un Tireur , C pour un Char, P pour un Piegeur, S pour un Soigneur ou F pour un Furtif");
+			//Crtl de saisie : "t,T-c,C-p,P" accépté.
 			String rep = "" + Constante.saisieTypeRobot();
 			//Ajoute les robot
 			if(rep.equals("T")){
 				J1.ajouterTireur(Equipe1,0,0);
+			}
+			if(rep.equals("S")){
+				J1.ajouterSoigneur(Equipe1,0,0);
+			}
+			if(rep.equals("F")){
+				J1.ajouterFurtif(Equipe1,0,0);
 			}
 			if(rep.equals("C")){
 				J1.ajouterChar(Equipe1, 0, 0);

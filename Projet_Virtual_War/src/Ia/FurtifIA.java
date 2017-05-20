@@ -5,100 +5,94 @@ import java.util.List;
 import java.util.Random;
 
 import virtualwar.*;
-
-public class TireurIA extends Robot {
-
-	private final static int ENERGIEDEBASE = 40;
-	private static int coutAction = 2;
-	private static int coutDeplacement = 1;
+public class FurtifIA extends Robot {
+	
+	private final static int ENERGIEDEBASEC = 25;
+	private static int coutAction = 1;
+	private static int coutDeplacement = 4;
 	private static int degatSubis = 3;
-	private static String type = "T";
+	private static String type = "F";
 	private int portee;
 	
 	/**
-	 * Constructeur du tireur 
-	 * @param vue Vue du robot en fonction de son equipe 
-	 * @param l largueur pour les coordonnées du tireur
-	 * @param h hauteur pour les coordonnées du tireur 
-	 * @param equipe Equipe du tireur 
-	 * @param portee portee du tireur
+	 * Contructeur du FurtifIA
+	 * @param vue vue du FurtifIA en fonction de l'équipe
+	 * @param l largeur de la coordonnée initial du FurtifIA
+	 * @param h hauteur de la coordonnée initial du FurtifIA
+	 * @param equipe équipe du FurtifIA
+	 * @param portee portée du FurtifIA
 	 */
-	public TireurIA(Vue vue, int l ,int h,int equipe,int portee){
-		super(vue,l,h,equipe,type,ENERGIEDEBASE);
+	public FurtifIA(Vue vue, int l ,int h,int equipe,int portee){
+		super(vue,l,h,equipe,type,ENERGIEDEBASEC);
 		this.portee = portee;
-	}
-	
+	}	
+
 	
 	public int getCoutAction(){
-		return TireurIA.coutAction;
+		return FurtifIA.coutAction;
 	}
 	
 
 	public int getCoutDeplacement(){
-		return TireurIA.coutDeplacement;
+		return FurtifIA.coutDeplacement;
 	}
 	
 
 	public int getDegatSubis(){
-		return TireurIA.degatSubis;
+		return FurtifIA.degatSubis;
 	}
 	
 	public int getEnergieDeBase(){
-		return TireurIA.ENERGIEDEBASE;
+		return FurtifIA.ENERGIEDEBASEC;
 	}
 	
-	/**
-	 * obtenir la portee du Tireur
-	 * @return la portee du Tireur
-	 */
 	public int getPortee(){
 		return this.portee;
 	}
 	
 	public List<Coordonnees> getDeplacements(){
 		ArrayList<Coordonnees> listedep = new ArrayList<>();
-	
-		for(int i = -1; i<2;i++){
-			for(int j =-1 ; j<2;j++){
-				if(this.getVue().estDisponible(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j))){
-					listedep.add(new Coordonnees(this.getCoordonnees().getHauteur()+i,this.getCoordonnees().getLargeur()+j)); 
+		ArrayList<Coordonnees> listedirection = new ArrayList<>();
+		listedirection.add(Constante.HAUT);
+		listedirection.add(Constante.BAS);
+		listedirection.add(Constante.DROITE);
+		listedirection.add(Constante.GAUCHE);
+		Coordonnees temp;
+		Coordonnees temp2;
+		for(Coordonnees direction : listedirection){
+			temp = new Coordonnees(this.getCoordonnees().getHauteur(),this.getCoordonnees().getLargeur());
+			temp.ajoute(direction);
+			if(this.getVue().estDisponible(temp)){
+				temp2 = new Coordonnees(temp.getHauteur(),temp.getLargeur());
+				temp2.ajoute(direction);
+				if(this.getVue().estDisponible(temp2)){
+					listedep.add(temp2);
+				}else{
+					listedep.add(temp);
 				}
 			}
 		}
 		return listedep;
 	}
-	
 	public Coordonnees choixMouvement(){
-		int choix = new Random().nextInt(8);
 		Coordonnees res = new Coordonnees(-1,-1);
-		if(choix == 0){
+		int choix = new Random().nextInt(4)+1;
+		if(choix == 1){
 			res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
 		}
-		if(choix == 1){
-			res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
-
-		}
 		if(choix == 2){
-			res =  new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
+			res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
 		}
 		if(choix == 3){
-			res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
+			res = new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
 		}
 		if(choix == 4){
-			res = new Coordonnees(Constante.DIAGHG.getHauteur(),Constante.DIAGHG.getLargeur());
+			res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
 		}
-		if(choix == 5){
-			res = new Coordonnees(Constante.DIAGHD.getHauteur(),Constante.DIAGHD.getLargeur());
-		}
-		if(choix == 6){
-			res =  new Coordonnees(Constante.DIAGBG.getHauteur(),Constante.DIAGBG.getLargeur());
-		}
-		if(choix == 7){
-			res =  new Coordonnees(Constante.DIAGBD.getHauteur(),Constante.DIAGBD.getLargeur());
-		}
+		
 		return res;
-
 	}
+
 	
 	/**
 	 * obtenir la coordonnée de tir possible dans une direction donnée  
@@ -111,9 +105,9 @@ public class TireurIA extends Robot {
 		while(cpt < this.portee){
 			memoire.ajoute(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recupére l'information : est ce que la cellule contient un robot ?
+				// RécupÃ¨re l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContientrobot()){ 
-					//Récupére l'information est ce que le robot est de l'équipe ennemi ?
+					//RécupÃ¨re l'information est ce que le robot est de l'équipe ennemi ?
 					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() != this.getEquipe() ){
 						return memoire;
 					}
@@ -130,12 +124,12 @@ public class TireurIA extends Robot {
 	
 	/**
 	 * obtenir la liste des coordonnées pour lesquelles le tir est possible
-	 * @param portee portee du Tireur
+	 * @param portee portee du FurtifIA
 	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeTir = new ArrayList<>();
-		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnees a refuser
+		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnées a refuser
 		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.BAS));
 		}
@@ -152,9 +146,6 @@ public class TireurIA extends Robot {
 	}
 	
 
-	
-	
-	
 	public Coordonnees choixCible(){
 		if(this.getCibles().isEmpty()){
 			return this.getCoordonnees();
@@ -162,49 +153,28 @@ public class TireurIA extends Robot {
 			return this.getCibles().get(new Random().nextInt(this.getCibles().size()));
 		}
 	}
-		
-	
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
 			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
 		}else{
-			Coordonnees c = this.choixCible();
-			if(!c.equals(this.getCoordonnees())){
-				Attaque a = new Attaque(this,c);
-				a.agit();
-			}else{
-				System.out.println("Votre tireur cherche une cible et tire dans le vide");
-				this.setEnergie(this.getEnergie()-this.getCoutAction());
-			}
+			Attaque a = new Attaque(this,this.choixCible());
+			a.agit();
 		}
 		
 	}
-	/**
-	 * régénére l'énergie du tireur
-	 */
-	public void regenEnergie(){ 
-		this.setEnergie(this.getEnergie()+2); 
-	}
 	
 	public String toString(){
-		String nom = "Tireur de l'equipe "+this.getEquipe()+", ";
+		String nom = "FurtifIA de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
 			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie();
 		}
 		return nom;
 	}
-	
+
+
+	public void regenEnergie() {
+		this.setEnergie(this.getEnergie()+2); 
+	}
 	
 	
 }
-
-
-
-
-
-
-	
-	
-	
-	
-

@@ -17,11 +17,11 @@ public class PiegeurIA extends Robot{
 	
 	/**
 	 * Constructeur d'un piegeur 
-	 * @param vue Vue du tireur en fonction de son ï¿½quipe
-	 * @param l largeur pour les coordonnï¿½es du Piï¿½geur
-	 * @param h hauteur pour les coordonnï¿½es du Piï¿½geur
-	 * @param equipe Entier reprï¿½sentant l'ï¿½quipe du Piï¿½geur
-	 * @param nbMines Nombre de mine que possï¿½de le piï¿½geur
+	 * @param vue Vue du tireur en fonction de son équipe
+	 * @param l largeur pour les coordonnées du Piégeur
+	 * @param h hauteur pour les coordonnées du Piégeur
+	 * @param equipe Entier représentant l'équipe du Piégeur
+	 * @param nbMines Nombre de mine que posséde le piégeur
 	 */
 	public PiegeurIA(Vue vue, int l, int h, int equipe) {
 		super(vue,l,h,equipe,type,50);
@@ -53,8 +53,8 @@ public class PiegeurIA extends Robot{
 		return PiegeurIA.ENERGIEDEBASEP;
 	}
 	/**
-	 * Actualise le nombre de mines du piï¿½geur 
-	 * @param i nouveau nombre de mines du piï¿½geur
+	 * Actualise le nombre de mines du piégeur 
+	 * @param i nouveau nombre de mines du piégeur
 	 */
 	public void setNbMine(int i){
 		this.nbMines = i;
@@ -130,7 +130,7 @@ public class PiegeurIA extends Robot{
 
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'ï¿½nergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
 		}else{
 			this.setEnergie(this.getEnergie()-this.getCoutAction());
 			Coordonnees choix = this.choixCible();
@@ -145,7 +145,7 @@ public class PiegeurIA extends Robot{
 	}
 	
 	public String toString(){
-		String nom = "Piï¿½geur(s) de l'equipe "+this.getEquipe()+", ";
+		String nom = "Piégeur(s) de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
 			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+", nb mine(s) :" + this.getNbMines();
 		}

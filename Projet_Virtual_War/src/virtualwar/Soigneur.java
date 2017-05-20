@@ -20,12 +20,12 @@ public class Soigneur extends Robot{
 	private int portee;
 	
 	/**
-	 * Constructeur du tireur 
+	 * Constructeur du Soigneur 
 	 * @param vue Vue du robot en fonction de son equipe 
-	 * @param l largueur pour les coordonnées du tireur
-	 * @param h hauteur pour les coordonnées du tireur 
-	 * @param equipe Equipe du tireur 
-	 * @param portee portee du tireur
+	 * @param l largueur pour les coordonnées du Soigneur
+	 * @param h hauteur pour les coordonnées du Soigneur 
+	 * @param equipe Equipe du Soigneur 
+	 * @param portee portee du Soigneur
 	 */
 	
 	public Soigneur(Vue vue, int l ,int h,int equipe,int portee){
@@ -53,8 +53,8 @@ public class Soigneur extends Robot{
 	}
 	
 	/**
-	 * obtenir la portee du Tireur
-	 * @return la portee du Tireur
+	 * obtenir la portee du Soigneur
+	 * @return la portee du Soigneur
 	 */
 	public int getPortee(){
 		return this.portee;
