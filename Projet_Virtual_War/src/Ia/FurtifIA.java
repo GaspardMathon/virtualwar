@@ -53,10 +53,10 @@ public class FurtifIA extends Robot {
 	public List<Coordonnees> getDeplacements(){
 		ArrayList<Coordonnees> listedep = new ArrayList<>();
 		ArrayList<Coordonnees> listedirection = new ArrayList<>();
-		listedirection.add(Constante.HAUT);
-		listedirection.add(Constante.BAS);
-		listedirection.add(Constante.DROITE);
-		listedirection.add(Constante.GAUCHE);
+		listedirection.add(Constante.DIAGHG);
+		listedirection.add(Constante.DIAGHD);
+		listedirection.add(Constante.DIAGBD);
+		listedirection.add(Constante.DIAGBG);
 		Coordonnees temp;
 		Coordonnees temp2;
 		for(Coordonnees direction : listedirection){
@@ -78,16 +78,16 @@ public class FurtifIA extends Robot {
 		Coordonnees res = new Coordonnees(-1,-1);
 		int choix = new Random().nextInt(4)+1;
 		if(choix == 1){
-			res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
+			res = new Coordonnees(Constante.DIAGHG.getHauteur(),Constante.DIAGHG.getLargeur());
 		}
 		if(choix == 2){
-			res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
+			res = new Coordonnees(Constante.DIAGHD.getHauteur(),Constante.DIAGHD.getLargeur());
 		}
 		if(choix == 3){
-			res = new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
+			res = new Coordonnees(Constante.DIAGBG.getHauteur(),Constante.DIAGBG.getLargeur());
 		}
 		if(choix == 4){
-			res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
+			res = new Coordonnees(Constante.DIAGBD.getHauteur(),Constante.DIAGBD.getLargeur());
 		}
 		
 		return res;
@@ -130,11 +130,11 @@ public class FurtifIA extends Robot {
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeTir = new ArrayList<>();
 		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnées a refuser
-		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.BAS));
-		}
 		if(!this.CoordsTir(Constante.HAUT).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.HAUT));
+		}
+		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.BAS));
 		}
 		if(!this.CoordsTir(Constante.DROITE).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.DROITE));
@@ -143,8 +143,7 @@ public class FurtifIA extends Robot {
 			listeTir.add(CoordsTir(Constante.GAUCHE));
 		}
 		return listeTir;
-	}
-	
+	}	
 
 	public Coordonnees choixCible(){
 		if(this.getCibles().isEmpty()){

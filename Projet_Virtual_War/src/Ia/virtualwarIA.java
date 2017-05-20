@@ -51,7 +51,7 @@ public class virtualwarIA {
 		 */
 
 		for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
-			System.out.println("Joueur " + 1 + " choisissez le type de votre robot n°" + cpt );
+			System.out.println("\nJoueur " + 1 + " choisissez le type de votre robot n°" + cpt );
 			System.out.println("Entrez T pour un Tireur , C pour un Char, P pour un Piegeur, S pour un Soigneur ou F pour un Furtif");
 			//Crtl de saisie : "t,T-c,C-p,P" accépté.
 			String rep = "" + Constante.saisieTypeRobot();
@@ -87,7 +87,7 @@ public class virtualwarIA {
 			if(joueur){
 				System.out.println("Tour du joueur " + J1.toString());
 				System.out.println(Equipe1.toString());
-				System.out.println(J1.getListeRobot());
+				System.out.println(J1.getListeRobot() + "\n");
 
 				choix = J1.choixActions();
 

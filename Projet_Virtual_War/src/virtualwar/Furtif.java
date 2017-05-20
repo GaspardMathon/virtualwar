@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * la classe furtif qui hérite de la classe Robot créer un Robot qui ne peut se déplacer qu'en ligne sur 5 cases et de tirer 
+ * la classe furtif qui hérite de la classe Robot créer un Robot qui ne peut se déplacer qu'en diag sur 2 cases et de tirer 
  * @author Gaspard
  *
  */
 public class Furtif extends Robot {
 	
-	private final static int ENERGIEDEBASEF = 25;
+	private final static int ENERGIEDEBASEF = 35;
 	private static int coutAction = 1;
 	private static int coutDeplacement = 4;
 	private static int degatSubis = 3;
@@ -57,10 +57,10 @@ public class Furtif extends Robot {
 	public List<Coordonnees> getDeplacements(){
 		ArrayList<Coordonnees> listedep = new ArrayList<>();
 		ArrayList<Coordonnees> listedirection = new ArrayList<>();
-		listedirection.add(Constante.HAUT);
-		listedirection.add(Constante.BAS);
-		listedirection.add(Constante.DROITE);
-		listedirection.add(Constante.GAUCHE);
+		listedirection.add(Constante.DIAGHG);
+		listedirection.add(Constante.DIAGHD);
+		listedirection.add(Constante.DIAGBD);
+		listedirection.add(Constante.DIAGBG);
 		Coordonnees temp;
 		Coordonnees temp2;
 		for(Coordonnees direction : listedirection){
@@ -87,43 +87,43 @@ public class Furtif extends Robot {
 		Coordonnees temp;
 		while(!correct){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE");
+			System.out.println("1.En HAUT à GAUCHE 2.En HAUT à DROITE 3.En BAS à GAUCHE 4.En BAS à DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
-				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
-				res.ajoute(Constante.HAUT);
+				res = new Coordonnees(Constante.DIAGHG.getHauteur(),Constante.DIAGHG.getLargeur());
+				res.ajoute(Constante.DIAGHG);
 				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
 				if(!this.estDans(temp)){
-					res.ajoute(Constante.BAS);
+					res.ajoute(Constante.DIAGBD);
 				}
 				correct = true;
 			}
 			if(choix.equals("2")){
-				res = new Coordonnees(Constante.BAS.getHauteur(),Constante.BAS.getLargeur());
-				res.ajoute(Constante.BAS);
+				res = new Coordonnees(Constante.DIAGHD.getHauteur(),Constante.DIAGHD.getLargeur());
+				res.ajoute(Constante.DIAGHD);
 				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
 				
 				if(!this.estDans(temp)){
-					res.ajoute(Constante.HAUT);
+					res.ajoute(Constante.DIAGBG);
 				}
 				correct = true;
 			}
 			if(choix.equals("3")){
-				res = new Coordonnees(Constante.GAUCHE.getHauteur(),Constante.GAUCHE.getLargeur());
-				res.ajoute(Constante.GAUCHE);
+				res = new Coordonnees(Constante.DIAGBG.getHauteur(),Constante.DIAGBG.getLargeur());
+				res.ajoute(Constante.DIAGBG);
 				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
 
 				if(!this.estDans(temp)){
-					res.ajoute(Constante.DROITE);
+					res.ajoute(Constante.DIAGHD);
 				}
 				correct = true;
 			}
 			if(choix.equals("4")){
-				res = new Coordonnees(Constante.DROITE.getHauteur(),Constante.DROITE.getLargeur());
-				res.ajoute(Constante.DROITE);
+				res = new Coordonnees(Constante.DIAGBD.getHauteur(),Constante.DIAGBD.getLargeur());
+				res.ajoute(Constante.DIAGBD);
 				temp = new Coordonnees(this.getCoordonnees().getHauteur()+res.getHauteur(),this.getCoordonnees().getLargeur()+res.getLargeur());
 				if(!this.estDans(temp)){
-					res.ajoute(Constante.GAUCHE);
+					res.ajoute(Constante.DIAGHG);
 				}
 				correct = true;
 			}
@@ -168,11 +168,11 @@ public class Furtif extends Robot {
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeTir = new ArrayList<>();
 		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonnées a refuser
-		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
-			listeTir.add(CoordsTir(Constante.BAS));
-		}
 		if(!this.CoordsTir(Constante.HAUT).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.HAUT));
+		}
+		if(!this.CoordsTir(Constante.BAS).equals(Coordnulle)){
+			listeTir.add(CoordsTir(Constante.BAS));
 		}
 		if(!this.CoordsTir(Constante.DROITE).equals(Coordnulle)){
 			listeTir.add(CoordsTir(Constante.DROITE));
