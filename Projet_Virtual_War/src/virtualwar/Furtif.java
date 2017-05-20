@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * la classe furtif qui hérite de la classe Robot créer un Robot qui ne peut se déplacer qu'en ligne sur 5 cases et de tirer 
- * @author salvadoc
+ * @author Gaspard
  *
  */
 public class Furtif extends Robot {

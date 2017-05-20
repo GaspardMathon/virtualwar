@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * La classe soigneur qui h√©rite de Robot cr√©e un Soigneur capable de r√©g√©n√©rer les points de vie des Robots alli√©s
+ * La classe soigneur qui hÈrite de Robot crÈe un Soigneur capable de rÈgÈnÈrer les points de vie des Robots alliÈs
  * @author Gaspard
  *
  */
@@ -22,8 +22,8 @@ public class Soigneur extends Robot{
 	/**
 	 * Constructeur du tireur 
 	 * @param vue Vue du robot en fonction de son equipe 
-	 * @param l largueur pour les coordonn√©es du tireur
-	 * @param h hauteur pour les coordonn√©es du tireur 
+	 * @param l largueur pour les coordonnÈes du tireur
+	 * @param h hauteur pour les coordonnÈes du tireur 
 	 * @param equipe Equipe du tireur 
 	 * @param portee portee du tireur
 	 */
@@ -81,7 +81,7 @@ public class Soigneur extends Robot{
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE 5.En HAUT √† GAUCHE 6.En HAUT √† DROITE 7.En BAS √† GAUCHE 8.En BAS √† DROITE");
+			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE 5.En HAUT ‡† GAUCHE 6.En HAUT ‡† DROITE 7.En BAS ‡† GAUCHE 8.En BAS ‡† DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -126,9 +126,9 @@ public class Soigneur extends Robot{
 	}
 	
 	/**
-	 * obtenir la coordonn√©e o√π le soin est possible dans une direction donn√©e  
+	 * obtenir la coordonnÈe o‡π le soin est possible dans une direction donnÈe  
 	 * @param Direction dans laquelle on cherche un tir possible
-	 * @return une coordonn√©e dans laquelle ont peut tirer
+	 * @return une coordonnÈe dans laquelle ont peut tirer
 	 */
 	public Coordonnees CoordsSoin(Coordonnees Direction){
 		int cpt = 0;
@@ -136,9 +136,9 @@ public class Soigneur extends Robot{
 		while(cpt < this.portee){
 			memoire.ajoute(Direction);
 			if(!this.getVue().estDisponible(memoire)){
-				// Recup√®re l'information : est ce que la cellule contient un robot ?
+				// Recup‡®re l'information : est ce que la cellule contient un robot ?
 				if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].contientRobot){ 
-					//R√Ø¬ø¬Ωcup√Ø¬ø¬Ωre l'information est ce que le robot est de l'√©quipe alli√©e ?
+					//R‡Ø¬ø¬Ωcup‡Ø¬ø¬Ωre l'information est ce que le robot est de l'Èquipe alliÈe ?
 					if(this.getVue().getPlateau().getGrille()[memoire.getHauteur()][memoire.getLargeur()].getContenu().getEquipe() == this.getEquipe() ){
 						return memoire;
 					}
@@ -154,13 +154,13 @@ public class Soigneur extends Robot{
 	}
 	
 	/**
-	 * obtenir la liste des coordonn√©es pour lesquelles le soin est possible
+	 * obtenir la liste des coordonnÈes pour lesquelles le soin est possible
 	 * @param portee portee du Soigneur
-	 * @return liste des coordonn√©es ciblables
+	 * @return liste des coordonnÈes ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
 		ArrayList <Coordonnees> listeSoin = new ArrayList<>();
-		Coordonnees Coordnulle = new Coordonnees(0,0); // Coordonn√©es a refuser
+		Coordonnees Coordnulle = new Coordonnees(0,0); // CoordonnÈes a refuser
 		if(!this.CoordsSoin(Constante.BAS).equals(Coordnulle)){
 			listeSoin.add(CoordsSoin(Constante.BAS));
 		}
@@ -194,11 +194,11 @@ public class Soigneur extends Robot{
 		String choix = "";
 		boolean choixOK = false;
 		if(this.getCibles().isEmpty()){
-			System.out.println("Vous n'avez pas de cible √† attaquer");
+			System.out.println("Vous n'avez pas de cible ‡† attaquer");
 		}else{
 			System.out.println("Voici les cibles potentielles de ce robot : " + this.getCibles());
 			while(!choixOK){
-				System.out.println("Quelle cible voulez-vous soigner ? (Entrez les num√©ros des deux coordonn√©es dans la liste)");
+				System.out.println("Quelle cible voulez-vous soigner ? (Entrez les numÈros des deux coordonnÈes dans la liste)");
 				choix = sc.nextLine();
 				if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
 					choixOK = true;
@@ -211,7 +211,7 @@ public class Soigneur extends Robot{
 	
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'√©nergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'Ènergie pour attaquer");
 		}else{
 			Coordonnees c = this.choixCible();
 			if(!c.equals(this.getCoordonnees())){
@@ -226,7 +226,7 @@ public class Soigneur extends Robot{
 	}
 	
 	/**
-	 * r√©g√©n√®re l'√©nergie du soigneur
+	 * rÈgÈn‡®re l'Ènergie du soigneur
 	 */
 	public void regenEnergie(){ 
 		this.setEnergie(this.getEnergie()+2); 

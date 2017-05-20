@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * La classe piegeur qui hÃ©rite de la classe Robot crÃ©e un robot capable de se dÃ©placer et de poser des mines
- * @author Clï¿½ment
+ * La classe piegeur qui hérite de la classe Robot crée un robot capable de se déplacer et de poser des mines
+ * @author Clément
  *
  */
 public class Piegeur extends Robot{
@@ -21,11 +21,11 @@ public class Piegeur extends Robot{
 	
 	/**
 	 * Constructeur d'un piegeur 
-	 * @param vue Vue du tireur en fonction de son Ã©quipe
-	 * @param l largeur pour les coordonnÃ©es du PiÃ©geur
-	 * @param h hauteur pour les coordonnÃ©es du PiÃ©geur
-	 * @param equipe Entier reprÃ©sentant l'Ã©quipe du PiÃ©geur
-	 * @param nbMines Nombre de mine que possÃ¨de le piÃ©geur
+	 * @param vue Vue du tireur en fonction de son équipe
+	 * @param l largeur pour les coordonnées du Piégeur
+	 * @param h hauteur pour les coordonnées du Piégeur
+	 * @param equipe Entier représentant l'équipe du Piégeur
+	 * @param nbMines Nombre de mine que possède le piégeur
 	 */
 	public Piegeur(Vue vue, int l, int h, int equipe) {
 		super(vue,l,h,equipe,type,50);
@@ -57,8 +57,8 @@ public class Piegeur extends Robot{
 		return Piegeur.ENERGIEDEBASEP;
 	}
 	/**
-	 * Actualise le nombre de mines du piÃ©geur 
-	 * @param i nouveau nombre de mines du piÃ©geur
+	 * Actualise le nombre de mines du piégeur 
+	 * @param i nouveau nombre de mines du piégeur
 	 */
 	public void setNbMine(int i){
 		this.nbMines = i;
@@ -84,7 +84,7 @@ public class Piegeur extends Robot{
 		Coordonnees res = new Coordonnees(-1,-1);
 		while(!corect){
 			System.out.println("Dans quelle direction voulez vous vous deplacer ?");
-			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE 5.En HAUT Ã  GAUCHE 6.En HAUT Ã  DROITE 7.En BAS Ã  GAUCHE 8.En BAS Ã  DROITE");
+			System.out.println("1.En HAUT 2.En BAS 3.A GAUCHE 4.A DROITE 5.En HAUT à  GAUCHE 6.En HAUT à  DROITE 7.En BAS à  GAUCHE 8.En BAS à  DROITE");
 			choix = sc.nextLine();
 			if(choix.equals("1")){
 				res = new Coordonnees(Constante.HAUT.getHauteur(),Constante.HAUT.getLargeur());
@@ -149,9 +149,9 @@ public class Piegeur extends Robot{
 		Scanner sc = new Scanner(System.in);
 		String choix = "";
 		boolean choixOK = false;
-		System.out.println("Voici les cibles que ce robot peut piÃ¨ger : " + this.getCibles());
+		System.out.println("Voici les cibles que ce robot peut pièger : " + this.getCibles());
 		while(!choixOK){
-			System.out.println("Quelle cible voulez vous piÃ¨ger ? (Entrez le numÃ©ros des coordonnÃ©es dans la liste)");
+			System.out.println("Quelle cible voulez vous pièger ? (Entrez le numéros des coordonnées dans la liste)");
 			choix = sc.nextLine();
 			if(Integer.parseInt(choix) > 0 && Integer.parseInt(choix)<this.getCibles().size()+1){
 				choixOK = true;
@@ -162,7 +162,7 @@ public class Piegeur extends Robot{
 
 	public void attaque(){
 		if(this.getEnergie()<this.getCoutAction()){
-			System.out.println("Votre robot n'a pas assez d'Ã©nergie pour attaquer");
+			System.out.println("Votre robot n'a pas assez d'énergie pour attaquer");
 		}else{
 			this.setEnergie(this.getEnergie()-this.getCoutAction());
 			Coordonnees choix = this.choixCible();
@@ -177,7 +177,7 @@ public class Piegeur extends Robot{
 	}
 	
 	public String toString(){
-		String nom = "PiÃ¨geur(s) de l'equipe "+this.getEquipe()+", ";
+		String nom = "Piègeur(s) de l'equipe "+this.getEquipe()+", ";
 		if(this.getInvoque()){
 			nom += this.getCoordonnees().toString()+", Vie : "+this.getEnergie()+"/"+ENERGIEDEBASEP+", nb mine(s) :" + this.getNbMines();
 		}
