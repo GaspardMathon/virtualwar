@@ -13,21 +13,21 @@ public class Test {
 		int choix = -1;
 		Constante.titreAleatoire();
 		
-		//RecupÃ©re le nb de robot entrÃ© avec crtl saisie [1-5]
+		//Recupère le nb de robot entrè avec crtl saisie [1-5]
 		System.out.print("Entrez le nombre de Robot par equipe (compris entre " + 1 + " et " + Constante.ROBOTS_MAX + ") : ");
 		int nbRobot = Constante.saisieEntier(1,Constante.ROBOTS_MAX);
 		
-		//RecupÃ©re le nom joueur1 avec crtl saisie
+		//Recupère le nom joueur1 avec crtl saisie
 		System.out.print("\nVeuillez entrer le nom du joueur 1 : ");
 		String nom1 = Joueur.saisiePseudo();
 			
-		//RecupÃ©re le nom joueur2 avec crtl saisie
+		//Recupère le nom joueur2 avec crtl saisie
 		String nom2 = "";
 		System.out.print("\nVeuillez entrer le nom du joueur 2 : ");
 		do{
 		nom2 = Joueur.saisiePseudo();
 		if(nom1.equals(nom2)){
-			System.out.println("Votre nom ne peut pas Ãªtre similaire Ã  celui du joueur 1, veuillez rentrez un nom.");
+			System.out.println("Votre nom ne peut pas être similaire à  celui du joueur 1, veuillez rentrez un nom.");
 		}
 		} while(nom1.equals(nom2));
 		
@@ -36,10 +36,10 @@ public class Test {
 		Joueur J2 = new Joueur(nom2,nbRobot,2);
 		
 		System.out.println("\nEntrez la taille de la carte:");
-		//RecupÃ©re la hauteur avec ctrl saisie [3-20]
+		//Recupère la hauteur avec ctrl saisie [3-20]
 		System.out.println("Hauteur (min " +Constante.HAUTEUR_MIN +", max " + Constante.HAUTEUR_MAX+ " ) :");
 		int hauteur = Constante.saisieEntier(Constante.HAUTEUR_MIN,Constante.HAUTEUR_MAX);
-		//RecupÃ©re la hauteur avec ctrl saisie [3-20]
+		//Recupère la hauteur avec ctrl saisie [3-20]
 		System.out.println("Largeur (min "+ Constante.LARGEUR_MIN+", max "+Constante.LARGEUR_MAX+") :");
 		int largeur = Constante.saisieEntier(Constante.LARGEUR_MIN,Constante.LARGEUR_MAX);
 		
@@ -57,9 +57,9 @@ public class Test {
 		
 		for(int copt = 1;copt < 3 ; copt++){
 			for(int cpt = 1 ;cpt < nbRobot+1 ; cpt++){
-				System.out.println("Joueur " + copt + " choisissez le type de votre robot nÂ°" + cpt );
-				System.out.println("Entrez T pour un Tireur , C pour un Char, P pour un Piegeur ou S pour un soigneur : ");
-					//Crtl de saisie : "t,T-c,C-p,P-S-s" accÃ©ptÃ©.
+				System.out.println("Joueur " + copt + " choisissez le type de votre robot n°" + cpt );
+				System.out.println("Entrez T pour un Tireur , C pour un Char, P pour un Piegeur, S pour un soigneur ou F pour un Furtif : ");
+					//Crtl de saisie : "t,T-c,C-p,P-S-s" accèptè.
 					String rep = "" + Constante.saisieTypeRobot();
 					//Ajoute les robots
 						if(copt == 1){
@@ -75,6 +75,9 @@ public class Test {
 							if( rep.equals("S")){
 								J1.ajouterSoigneur(Equipe1, 0, 0);
 							}
+							if(rep.equals("F")){
+								J1.ajouterFurtif(Equipe1,0,0);
+							}
 						}
 						if(copt == 2){
 							if(rep.equals("T")){
@@ -88,6 +91,9 @@ public class Test {
 							}
 							if( rep.equals("S")){
 								J2.ajouterSoigneur(Equipe2, 0, 0);
+							}
+							if(rep.equals("F")){
+								J1.ajouterFurtif(Equipe2,0,0);
 							}
 						}
 				}

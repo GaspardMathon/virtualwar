@@ -40,22 +40,38 @@ public class Vue {
 	
 	//affiche le plateau en fonction de l'équipe(on ne voit pas les mines ennemies)
 	public String toString() {
-		String affichage = "";
+		int y = 0;
+		String affichage = "    ";
 		
-		
-		for(int i = 0; i < this.getPlateau().getGrille().length; i++){
-			
-			for(int y = 0; y < this.getPlateau().getGrille()[0].length; y++){
-				affichage+="+---";
+		for(int l = 0; l <= (this.getPlateau().getGrille()[0].length)-1; l++){
+			if(l<9){
+				affichage+="  " + l + " ";
+			}else{
+				affichage+="  " + l;
 			}
 			
-			affichage+="+\n";
+		}
+		
+		affichage+="\n";
+		
+		for(int i = 0; i < this.getPlateau().getGrille().length; i++){
+			affichage+="    ";
+			for(int k = 0; k < this.getPlateau().getGrille()[0].length; k++){
+				affichage+="+---";
+			}
+			if(y<10){
+				affichage+="+\n " + y + "  ";
+				y++;
+			}else{
+				affichage+="+\n " + y + " ";
+				y++;
+			}
 			
-			for(int y = 0; y < this.getPlateau().getGrille()[0].length; y++){
-				if(this.getEquipe() == this.getPlateau().getGrille()[i][y].getMine()){
+			for(int z = 0; z < this.getPlateau().getGrille()[0].length; z++){
+				if(this.getEquipe() == this.getPlateau().getGrille()[i][z].getMine()){
 					affichage += "| X ";
 				}else{
-					affichage+="| "+ this.getPlateau().getGrille()[i][y].toString() + " ";
+					affichage+= "| "+ this.getPlateau().getGrille()[i][z].toString() + " ";
 				}
 			}
 			
@@ -63,7 +79,8 @@ public class Vue {
 			affichage += "|\n";
 		}
 		
-		for(int y = 0; y < this.getPlateau().getGrille()[0].length; y++){
+		affichage+="    ";
+		for(int f = 0; f < this.getPlateau().getGrille()[0].length; f++){
 			affichage+="+---";
 		}
 		

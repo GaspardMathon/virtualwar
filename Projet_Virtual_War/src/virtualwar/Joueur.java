@@ -42,6 +42,9 @@ public class Joueur {
 	public void ajouterSoigneur(Vue vue,int h,int l){
 		listeRobot.add(new Soigneur(vue,h,l,equipe,2));
 	}
+	public void ajouterFurtif(Vue vue,int h,int l){
+		listeRobot.add(new Furtif(vue,h,l,equipe,4));
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -81,7 +84,7 @@ public class Joueur {
 		for(Robot r : robotInvocable){
 			System.out.print("  " + r.toString());
 		}
-		System.out.println(" \nQuel  robot voulez-vous invoquer : (Ã©crivez le numero du n-ieme robot)");
+		System.out.println(" \nQuel  robot voulez-vous invoquer : (écrivez le numero du n-ieme robot)");
 		while(!saisieOK){
 			robot = Constante.saisieIntProtegee(sc4);
 			if(robot>0 && robot <=robotInvocable.size()){
@@ -96,7 +99,7 @@ public class Joueur {
 		boolean ok = false;
 		int i =-1,y=-1,x=-1,z=-1;
 		
-		System.out.println("OÃ¹ voulez-vous dÃ©placer votre Robot : ");
+		System.out.println("Où voulez-vous déplacer votre Robot : ");
 		if(this.equipe == 1){
 			if(r.getVue().estDisponible(new Coordonnees(1,2))){
 				System.out.println("\nCoordonnee possible : [1,2]");
@@ -123,16 +126,16 @@ public class Joueur {
 			z= r.getVue().getPlateau().getGrille()[1].length-2;
 			System.out.println(x+"       "+ z);
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z))){
-				System.out.println("CoordonnÃ©e possible : ["+(x-1)+","+z+"]");
+				System.out.println("Coordonnée possible : ["+(x-1)+","+z+"]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x,z-1))){
-				System.out.println("CoordonnÃ©e possible : ["+x+","+(z-1)+"]");
+				System.out.println("Coordonnée possible : ["+x+","+(z-1)+"]");
 			}
 			if(r.getVue().estDisponible(new Coordonnees(x-1,z-1))){
-				System.out.println("CoordonnÃ©e possible : ["+(x-1)+","+(z-1)+"]");
+				System.out.println("Coordonnée possible : ["+(x-1)+","+(z-1)+"]");
 			}
 			while(!ok){
-				System.out.print("\nEntrez les coordonnÃ©es : ");
+				System.out.print("\nEntrez les coordonnées : ");
 				i = Constante.saisieIntProtegee(sc3);
 				y = Constante.saisieIntProtegee(sc3);
 				if((i>=x-1&&i<=x)&&(y>=z-1 && y<=z) && !(i ==x && y == z)){
@@ -236,7 +239,7 @@ public class Joueur {
 	 * Renvoie un string contenant le nom et l'quipe du joueur
 	 */
 	public String toString(){
-    	return "" + this.nom + " (equipe nÂ°" + this.equipe + ") ";
+    	return "" + this.nom + " (equipe n°" + this.equipe + ") ";
 	}
 	
 

@@ -1,4 +1,4 @@
-package virtualwar;
+package graphique;
 
 public class Menu1 {
 	int nBRobots;

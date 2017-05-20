@@ -98,7 +98,6 @@ public class Plateau {
 
 	public String toString() {
 		String affichage = "";
-		
 
 		for(int i = 0; i < this.grille.length; i++){
 			for(int y = 0; y < this.grille[0].length; y++){

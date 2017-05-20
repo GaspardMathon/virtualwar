@@ -122,8 +122,10 @@ public class Constante {
 					return 'P';
 				}else if(saisie.charAt(0) =='s' || saisie.charAt(0) == 'S'){
 					return 'S';
+				}else if(saisie.charAt(0) =='f' || saisie.charAt(0) == 'F'){
+					return 'F';
 				}else{
-					System.out.println("Saisie invalide, veulliez recommencer ");
+					System.out.println("Saisie invalide, veuillez recommencer ");
 					saisie = sc2.next();
 				}
 			}	
@@ -160,7 +162,7 @@ public class Constante {
 	public static void titreAleatoire(){
 		Random r = new Random();
 		
-		int alea = r.nextInt(5)+1;
+		int alea = r.nextInt(3)+1;
 		
 		switch (alea)
 
@@ -168,91 +170,64 @@ public class Constante {
 
 		  case 1:
 
-		    System.out.println(
-		    		"██╗   ██╗██╗██████╗ ████████╗██╗   ██╗ █████╗ ██╗         ██╗    ██╗ █████╗ ██████╗ \n"
-		    	+	"██║   ██║██║██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║         ██║    ██║██╔══██╗██╔══██╗\n"
-		    	+	"██║   ██║██║██████╔╝   ██║   ██║   ██║███████║██║         ██║ █╗ ██║███████║██████╔╝\n"
-		    	+	"╚██╗ ██╔╝██║██╔══██╗   ██║   ██║   ██║██╔══██║██║         ██║███╗██║██╔══██║██╔══██╗\n"
-		    	+	" ╚████╔╝ ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗    ╚███╔███╔╝██║  ██║██║  ██║\n"
-		    	+	"  ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n"
-		    		                                                                                    );
+			  System.out.println(                                                                                                                                                                                                          
+				    	 "	VVVVVVVV           VVVVVVVV iiii                              tttt                                              lllllll      WWWWWWWW                           WWWWWWWW                                  \n"
+				    	+"	V::::::V           V::::::Vi::::i                          ttt:::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
+				    	+"	V::::::V           V::::::V iiii                           t:::::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
+				    	+"	V::::::V           V::::::V                                t:::::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
+				    	+"	 V:::::V           V:::::Viiiiiiirrrrr   rrrrrrrrr   ttttttt:::::ttttttt    uuuuuu    uuuuuu    aaaaaaaaaaaaa    l::::l       W:::::W           WWWWW           W:::::Waaaaaaaaaaaaa  rrrrr   rrrrrrrrr   \n"
+				    	+"	  V:::::V         V:::::V i:::::ir::::rrr:::::::::r  t:::::::::::::::::t    u::::u    u::::u    a::::::::::::a   l::::l        W:::::W         W:::::W         W:::::W a::::::::::::a r::::rrr:::::::::r  \n"
+				    	+"	   V:::::V       V:::::V   i::::ir:::::::::::::::::r t:::::::::::::::::t    u::::u    u::::u    aaaaaaaaa:::::a  l::::l         W:::::W       W:::::::W       W:::::W  aaaaaaaaa:::::ar:::::::::::::::::r \n"
+				    	+"	    V:::::V     V:::::V    i::::irr::::::rrrrr::::::rtttttt:::::::tttttt    u::::u    u::::u             a::::a  l::::l          W:::::W     W:::::::::W     W:::::W            a::::arr::::::rrrrr::::::r\n"
+				    	+"	     V:::::V   V:::::V     i::::i r:::::r     r:::::r      t:::::t          u::::u    u::::u      aaaaaaa:::::a  l::::l           W:::::W   W:::::W:::::W   W:::::W      aaaaaaa:::::a r:::::r     r:::::r\n"
+				    	+"	      V:::::V V:::::V      i::::i r:::::r     rrrrrrr      t:::::t          u::::u    u::::u    aa::::::::::::a  l::::l            W:::::W W:::::W W:::::W W:::::W     aa::::::::::::a r:::::r     rrrrrrr\n"
+				    	+"	       V:::::V:::::V       i::::i r:::::r                  t:::::t          u::::u    u::::u   a::::aaaa::::::a  l::::l             W:::::W:::::W   W:::::W:::::W     a::::aaaa::::::a r:::::r            \n"
+				    	+"	        V:::::::::V        i::::i r:::::r                  t:::::t    ttttttu:::::uuuu:::::u  a::::a    a:::::a  l::::l              W:::::::::W     W:::::::::W     a::::a    a:::::a r:::::r            \n"
+				    	+"	         V:::::::V        i::::::ir:::::r                  t::::::tttt:::::tu:::::::::::::::uua::::a    a:::::a l::::::l              W:::::::W       W:::::::W      a::::a    a:::::a r:::::r            \n"
+				    	+"	          V:::::V         i::::::ir:::::r                  tt::::::::::::::t u:::::::::::::::ua:::::aaaa::::::a l::::::l               W:::::W         W:::::W       a:::::aaaa::::::a r:::::r            \n"
+				    	+"	           V:::V          i::::::ir:::::r                    tt:::::::::::tt  uu::::::::uu:::u a::::::::::aa:::al::::::l                W:::W           W:::W         a::::::::::aa:::ar:::::r            \n"
+				    	+"	            VVV           iiiiiiiirrrrrrr                      ttttttttttt      uuuuuuuu  uuuu  aaaaaaaaaa  aaaallllllll                 WWW             WWW           aaaaaaaaaa  aaaarrrrrrr            \n"
+				    		                                                                                                                                                                                                          
+				    		                                                                                                                                                                                                          
+				    		                                                                                                                                                                                                          );
 
-		    break;
+				    break;
 		    
 
 		  case 2:
 
-		    System.out.println(                                                                                                                                                                                                          
-		    	 "	VVVVVVVV           VVVVVVVV iiii                              tttt                                              lllllll      WWWWWWWW                           WWWWWWWW                                  \n"
-		    	+"	V::::::V           V::::::Vi::::i                          ttt:::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
-		    	+"	V::::::V           V::::::V iiii                           t:::::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
-		    	+"	V::::::V           V::::::V                                t:::::t                                              l:::::l      W::::::W                           W::::::W                                  \n"
-		    	+"	 V:::::V           V:::::Viiiiiiirrrrr   rrrrrrrrr   ttttttt:::::ttttttt    uuuuuu    uuuuuu    aaaaaaaaaaaaa    l::::l       W:::::W           WWWWW           W:::::Waaaaaaaaaaaaa  rrrrr   rrrrrrrrr   \n"
-		    	+"	  V:::::V         V:::::V i:::::ir::::rrr:::::::::r  t:::::::::::::::::t    u::::u    u::::u    a::::::::::::a   l::::l        W:::::W         W:::::W         W:::::W a::::::::::::a r::::rrr:::::::::r  \n"
-		    	+"	   V:::::V       V:::::V   i::::ir:::::::::::::::::r t:::::::::::::::::t    u::::u    u::::u    aaaaaaaaa:::::a  l::::l         W:::::W       W:::::::W       W:::::W  aaaaaaaaa:::::ar:::::::::::::::::r \n"
-		    	+"	    V:::::V     V:::::V    i::::irr::::::rrrrr::::::rtttttt:::::::tttttt    u::::u    u::::u             a::::a  l::::l          W:::::W     W:::::::::W     W:::::W            a::::arr::::::rrrrr::::::r\n"
-		    	+"	     V:::::V   V:::::V     i::::i r:::::r     r:::::r      t:::::t          u::::u    u::::u      aaaaaaa:::::a  l::::l           W:::::W   W:::::W:::::W   W:::::W      aaaaaaa:::::a r:::::r     r:::::r\n"
-		    	+"	      V:::::V V:::::V      i::::i r:::::r     rrrrrrr      t:::::t          u::::u    u::::u    aa::::::::::::a  l::::l            W:::::W W:::::W W:::::W W:::::W     aa::::::::::::a r:::::r     rrrrrrr\n"
-		    	+"	       V:::::V:::::V       i::::i r:::::r                  t:::::t          u::::u    u::::u   a::::aaaa::::::a  l::::l             W:::::W:::::W   W:::::W:::::W     a::::aaaa::::::a r:::::r            \n"
-		    	+"	        V:::::::::V        i::::i r:::::r                  t:::::t    ttttttu:::::uuuu:::::u  a::::a    a:::::a  l::::l              W:::::::::W     W:::::::::W     a::::a    a:::::a r:::::r            \n"
-		    	+"	         V:::::::V        i::::::ir:::::r                  t::::::tttt:::::tu:::::::::::::::uua::::a    a:::::a l::::::l              W:::::::W       W:::::::W      a::::a    a:::::a r:::::r            \n"
-		    	+"	          V:::::V         i::::::ir:::::r                  tt::::::::::::::t u:::::::::::::::ua:::::aaaa::::::a l::::::l               W:::::W         W:::::W       a:::::aaaa::::::a r:::::r            \n"
-		    	+"	           V:::V          i::::::ir:::::r                    tt:::::::::::tt  uu::::::::uu:::u a::::::::::aa:::al::::::l                W:::W           W:::W         a::::::::::aa:::ar:::::r            \n"
-		    	+"	            VVV           iiiiiiiirrrrrrr                      ttttttttttt      uuuuuuuu  uuuu  aaaaaaaaaa  aaaallllllll                 WWW             WWW           aaaaaaaaaa  aaaarrrrrrr            \n"
-		    		                                                                                                                                                                                                          
-		    		                                                                                                                                                                                                          
-		    		                                                                                                                                                                                                          );
+			  System.out.println(
+					    "		 #     #                                       #     #               \n"
+					   +"		 #     # # #####  ##### #    #   ##   #        #  #  #   ##   #####  \n"
+					   +"		 #     # # #    #   #   #    #  #  #  #        #  #  #  #  #  #    # \n"
+					   +"		 #     # # #    #   #   #    # #    # #        #  #  # #    # #    # \n"
+					   +"		  #   #  # #####    #   #    # ###### #        #  #  # ###### #####  \n"
+					   +"		   # #   # #   #    #   #    # #    # #        #  #  # #    # #   #  \n"
+					   +"		    #    # #    #   #    ####  #    # ######    ## ##  #    # #    # \n"
+					   +"		                                                                     \n"
 
-		    break;
+			);
+
+					    break;
+					    
 		    
 
 		  case 3:
 
-		    System.out.println(
-		    	 "         ▄█    █▄   ▄█     ▄████████     ███     ███    █▄     ▄████████  ▄█            ▄█     █▄     ▄████████    ▄████████ \n"
-		    	+"	███    ███ ███    ███    ███ ▀█████████▄ ███    ███   ███    ███ ███           ███     ███   ███    ███   ███    ███ \n"
-		    	+"	███    ███ ███▌   ███    ███    ▀███▀▀██ ███    ███   ███    ███ ███           ███     ███   ███    ███   ███    ███ \n"
-		    	+"	███    ███ ███▌  ▄███▄▄▄▄██▀     ███   ▀ ███    ███   ███    ███ ███           ███     ███   ███    ███  ▄███▄▄▄▄██▀ \n"
-		    	+"	███    ███ ███▌ ▀▀███▀▀▀▀▀       ███     ███    ███ ▀███████████ ███           ███     ███ ▀███████████ ▀▀███▀▀▀▀▀   \n"
-		    	+"	███    ███ ███  ▀███████████     ███     ███    ███   ███    ███ ███           ███     ███   ███    ███ ▀███████████ \n"
-		    	+"        ███    ███ ███    ███    ███     ███     ███    ███   ███    ███ ███▌    ▄     ███ ▄█▄ ███   ███    ███   ███    ███ \n"
-		    	+"	 ▀██████▀  █▀     ███    ███    ▄████▀   ████████▀    ███    █▀  █████▄▄██      ▀███▀███▀    ███    █▀    ███    ███ \n"
-		    	+"	                  ███    ███                                     ▀                                        ███    ███ \n");
+			  System.out.println(
+				    	 "        ##     ## #### ########  ######## ##     ##    ###    ##         ##      ##    ###    ########  \n"
+				    	+"	##     ##  ##  ##     ##    ##    ##     ##   ## ##   ##         ##  ##  ##   ## ##   ##     ## \n"
+				    	+"	##     ##  ##  ##     ##    ##    ##     ##  ##   ##  ##         ##  ##  ##  ##   ##  ##     ## \n"
+				    	+"	##     ##  ##  ########     ##    ##     ## ##     ## ##         ##  ##  ## ##     ## ########  \n"
+				    	+"	 ##   ##   ##  ##   ##      ##    ##     ## ######### ##         ##  ##  ## ######### ##   ##   \n"
+				    	+"	  ## ##    ##  ##    ##     ##    ##     ## ##     ## ##         ##  ##  ## ##     ## ##    ##  \n"
+				    	+"	   ###    #### ##     ##    ##     #######  ##     ## ########    ###  ###  ##     ## ##     ## \n"
+		);
 
-		    break;
+			  			break;
+				    
 		    
 
-		  case 4:
-
-		    System.out.println(
-		    "		 #     #                                       #     #               \n"
-		   +"		 #     # # #####  ##### #    #   ##   #        #  #  #   ##   #####  \n"
-		   +"		 #     # # #    #   #   #    #  #  #  #        #  #  #  #  #  #    # \n"
-		   +"		 #     # # #    #   #   #    # #    # #        #  #  # #    # #    # \n"
-		   +"		  #   #  # #####    #   #    # ###### #        #  #  # ###### #####  \n"
-		   +"		   # #   # #   #    #   #    # #    # #        #  #  # #    # #   #  \n"
-		   +"		    #    # #    #   #    ####  #    # ######    ## ##  #    # #    # \n"
-		   +"		                                                                     \n"
-
-);
-
-		    break;
-		    
-
-		  case 5:
-
-		    System.out.println(
-		    	 "        ##     ## #### ########  ######## ##     ##    ###    ##         ##      ##    ###    ########  \n"
-		    	+"	##     ##  ##  ##     ##    ##    ##     ##   ## ##   ##         ##  ##  ##   ## ##   ##     ## \n"
-		    	+"	##     ##  ##  ##     ##    ##    ##     ##  ##   ##  ##         ##  ##  ##  ##   ##  ##     ## \n"
-		    	+"	##     ##  ##  ########     ##    ##     ## ##     ## ##         ##  ##  ## ##     ## ########  \n"
-		    	+"	 ##   ##   ##  ##   ##      ##    ##     ## ######### ##         ##  ##  ## ######### ##   ##   \n"
-		    	+"	  ## ##    ##  ##    ##     ##    ##     ## ##     ## ##         ##  ##  ## ##     ## ##    ##  \n"
-		    	+"	   ###    #### ##     ##    ##     #######  ##     ## ########    ###  ###  ##     ## ##     ## \n"
-);
-
-		    break;
-		    
 		  default:
 
 		    System.out.println("Bienvenue sur Virtual War");
