@@ -1,11 +1,11 @@
 package virtualwar;
-//la classe vue sert Ã  l'affichage, elle a en paramÃªtre le plateau et une Ã©quipe
+//la classe vue sert à  l'affichage, elle a en paramêtre le plateau et une équipe
 public class Vue {
 	
 	private int equipe;
 	private Plateau plateau;
 	
-	//Constructeur prenant en paramÃªtre un plateau et une Ã©quipe
+	//Constructeur prenant en paramêtre un plateau et une équipe
 	public Vue(Plateau plateau, int equipe){
 		this.plateau = plateau;
 		this.equipe = equipe;
@@ -15,15 +15,15 @@ public class Vue {
 	public Plateau getPlateau(){
 		return this.plateau;
 	}
-	//retourne l'Ã©quipe de la vue
+	//retourne l'équipe de la vue
 	public int getEquipe(){
 		return this.equipe;
 	}
-	//Remplace le plateau par un plateau donnÃ© en paramÃªtre
+	//Remplace le plateau par un plateau donné en paramêtre
 	public void setPlateau(Plateau p){
 		this.plateau = p;
 	}
-	//Remplace l'Ã©quipe par un entier donnÃ© en paramÃªtre
+	//Remplace l'équipe par un entier donné en paramêtre
 	public void setEquipe(int i){
 		this.equipe = i;
 	}
@@ -38,7 +38,7 @@ public class Vue {
 		}
 	}
 	
-	//affiche le plateau en fonction de l'Ã©quipe(on ne voit pas les mines ennemies)
+	//affiche le plateau en fonction de l'équipe(on ne voit pas les mines ennemies)
 	public String toString() {
 		int y = 0;
 		String affichage = "    ";
