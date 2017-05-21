@@ -51,8 +51,8 @@ public class Constante {
 	/**
 	 * Controle de saisie d'entier [min-max]
 	 * Demande un nombre tant qu'il n'est pas valide.
-	 * @param nbMin 
-	 * @param nbMax 
+	 * @param nbMin nombre minimum à rentré
+	 * @param nbMax nombre max à rentrer
 	 * @return le nombre valide
 	 */
 	public static int saisieEntier(int nbMin, int nbMax){

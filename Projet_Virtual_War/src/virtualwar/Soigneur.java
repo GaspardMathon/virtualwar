@@ -155,7 +155,6 @@ public class Soigneur extends Robot{
 	
 	/**
 	 * obtenir la liste des coordonnées pour lesquelles le soin est possible
-	 * @param portee portee du Soigneur
 	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){

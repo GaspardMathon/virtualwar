@@ -195,6 +195,7 @@ public class IntelligenceArtificielle {
 	
 	/**
 	 * Creer la composition de l'ï¿½quipe
+	 * @param vue vue de l'équipe
 	 */
 	public void choixEquipe(Vue vue){
 		if(this.getNbRobot()==1){

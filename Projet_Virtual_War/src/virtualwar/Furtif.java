@@ -162,7 +162,6 @@ public class Furtif extends Robot {
 	
 	/**
 	 * obtenir la liste des coordonnées pour lesquelles le tir est possible
-	 * @param portee portee du Furtif
 	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){

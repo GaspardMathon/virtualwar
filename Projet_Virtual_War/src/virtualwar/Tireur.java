@@ -153,7 +153,6 @@ public class Tireur extends Robot {
 	
 	/**
 	 * obtenir la liste des coordonnï¿½es pour lesquelles le tir est possible
-	 * @param portee portee du Tireur
 	 * @return liste des coordonnï¿½es ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){

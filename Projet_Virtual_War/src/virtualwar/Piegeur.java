@@ -25,7 +25,6 @@ public class Piegeur extends Robot{
 	 * @param l largeur pour les coordonnées du Piégeur
 	 * @param h hauteur pour les coordonnées du Piégeur
 	 * @param equipe Entier représentant l'équipe du Piégeur
-	 * @param nbMines Nombre de mine que possède le piégeur
 	 */
 	public Piegeur(Vue vue, int l, int h, int equipe) {
 		super(vue,l,h,equipe,type,50);

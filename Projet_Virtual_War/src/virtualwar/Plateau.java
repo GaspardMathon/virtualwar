@@ -117,6 +117,7 @@ public class Plateau {
 
 	/**
 	 * Obtenir la liste des cellules pour avoir un chemin qui rejoins les 2 bases
+	 * @param listeBloque liste ou le chemin n'est pas possible
 	 * @return la listes des cellules Chemin
 	 */
 	public ArrayList<Cellule> caseChemin(ArrayList<Cellule>listeBloque){ 

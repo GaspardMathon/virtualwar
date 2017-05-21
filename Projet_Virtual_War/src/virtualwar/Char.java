@@ -162,7 +162,6 @@ public class Char extends Robot {
 	
 	/**
 	 * obtenir la liste des coordonnées pour lesquelles le tir est possible
-	 * @param portee portee du Char
 	 * @return liste des coordonnées ciblables
 	 */
 	public ArrayList<Coordonnees> getCibles(){
